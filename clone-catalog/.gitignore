@@ -1,0 +1,29 @@
+# Original archives (large files)
+Sites/*.zip
+Sites/*.html
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+*.tmp
+tmpclaude-*
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Build output
+dist/
+build/

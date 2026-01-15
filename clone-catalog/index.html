@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone Catalog</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="header__brand">
+                  A SynthCity DigiLabs Project
+                </div>
+                <nav class="header__nav">
+                    <a href="https://github.com/Skyweldor/clone-catalog" target="_blank">github <span class="arrow">↗</span></a>
+                    <a href="#catalog">catalog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__title-wrapper">
+                    <h1 class="hero__title striped-text">CLONE CATALOG</h1>
+                    <div class="stripe-overlay"></div>
+                </div>
+                <p class="hero__intro">A curated collection of prototypes for learning and inspiration.</p>
+                <p class="hero__timestamp" id="timestamp">Last updated: --</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls Section -->
+    <section class="controls-section" id="catalog">
+        <div class="container">
+            <div class="controls-section__header">
+                <span class="results-count" id="results-count">
+                    <span id="shown-count">0</span> of <span id="total-count">0</span> results
+                </span>
+            </div>
+            <div class="filter-tags" id="filter-tags"></div>
+        </div>
+    </section>
+
+    <!-- Hidden element for JS compatibility -->
+    <span id="site-count" style="display: none;">0</span>
+
+    <!-- Catalog Grid -->
+    <main class="catalog-section">
+        <div class="container">
+            <section class="catalog-grid" id="catalog-grid">
+                <!-- Site cards will be dynamically inserted here -->
+            </section>
+            <p class="fig-label">Fig 1 — Browse the collection above.</p>
+        </div>
+    </main>
+
+    <!-- Dark CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-section__inner">
+                <div class="cta-section__text">
+                    <p class="cta-section__headline">Feeling lucky?</p>
+                    <p class="cta-section__subtext">
+                        <em>Discover something unexpected from the archive.</em>
+                    </p>
+                </div>
+                <button class="surprise-btn" id="surprise-btn">
+                    <span class="surprise-btn__icon">→</span>
+                    <span>Surprise Me</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    A SynthCity DigiLabs Project
+                </div>
+                <nav class="footer__nav">
+                    <a href="https://github.com/Skyweldor/clone-catalog" target="_blank">github <span class="arrow">↗</span></a>
+                    <a href="#">back to top</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick Preview Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="preview-modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-content">
+                <img class="modal-image" id="modal-image" src="" alt="Site preview">
+                <p class="fig-label modal-fig">Fig — Site preview</p>
+                <div class="modal-info">
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <p class="modal-description" id="modal-description"></p>
+                    <div class="modal-tags" id="modal-tags"></div>
+                    <div class="modal-actions">
+                        <a href="#" class="btn btn-primary" id="modal-view-btn" target="_blank">View Site →</a>
+                        <a href="#" class="btn btn-secondary" id="modal-original-btn" target="_blank">Original</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
