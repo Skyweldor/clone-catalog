@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mainframe - Interfaces for the Future</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Easy to customize
+           ============================================ */
+        :root {
+            /* Colors */
+            --color-bg: #f5f5f3;
+            --color-bg-dark: #1a1a1a;
+            --color-text: #1a1a1a;
+            --color-text-light: #f5f5f3;
+            --color-text-muted: #666;
+            --color-accent: #e63946;
+            --color-border: #ddd;
+            --color-border-dark: #333;
+            
+            /* Typography */
+            --font-mono: 'IBM Plex Mono', monospace;
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-xxl: 8rem;
+            
+            /* Container */
+            --container-max: 1200px;
+            --container-padding: 2rem;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Figure captions */
+        .fig-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-sm);
+        }
+
+        /* ============================================
+           SECTION: Header / Navigation
+           Removable: Yes
+           ============================================ */
+        .header {
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header__brand {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .header__brand strong {
+            font-weight: 600;
+        }
+
+        .header__nav {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .header__nav a {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            transition: color 0.2s;
+        }
+
+        .header__nav a:hover {
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        /* ============================================
+           SECTION: Hero
+           Removable: Yes
+           ============================================ */
+        .hero {
+            padding: var(--spacing-xl) 0;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero__content {
+            max-width: 700px;
+        }
+
+        .hero__text {
+            font-family: var(--font-mono);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 500;
+            line-height: 1.4;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-md);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECTION: Interface Preview
+           Removable: Yes
+           ============================================ */
+        .interface-preview {
+            padding: var(--spacing-xl) 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .interface-preview__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .interface-preview__window {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .interface-preview__titlebar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .interface-preview__dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-border);
+        }
+
+        .interface-preview__dot--red {
+            background: var(--color-accent);
+        }
+
+        .interface-preview__body {
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .interface-preview__shape {
+            width: 60px;
+            height: 60px;
+            background: var(--color-text);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .interface-preview__shape--small {
+            width: 40px;
+            height: 40px;
+        }
+
+        .interface-preview__shape--large {
+            width: 80px;
+            height: 80px;
+        }
+
+        .interface-preview__text {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .interface-preview__meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-sm);
+        }
+
+        /* ============================================
+           SECTION: Apps Grid
+           Removable: Yes
+           ============================================ */
+        .apps-grid {
+            padding: var(--spacing-xl) 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .apps-grid__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .apps-grid__text {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .apps-grid__text p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .apps-grid__visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-sm);
+        }
+
+        .app-icon {
+            aspect-ratio: 1;
+            background: var(--color-text);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .app-icon::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+
+        .app-icon__badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--color-accent);
+            color: white;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        /* ============================================
+           SECTION: Shift (Dark Section)
+           Removable: Yes
+           ============================================ */
+        .shift-section {
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        .shift-section__intro {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .shift-section__title {
+            font-family: var(--font-mono);
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 600;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            margin-bottom: var(--spacing-lg);
+            /* Create outline effect */
+            -webkit-text-stroke: 2px var(--color-text-light);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .shift-section__subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 400px;
+            margin-left: auto;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           SECTION: Vision / Future
+           Removable: Yes
+           ============================================ */
+        .vision-section {
+            padding: var(--spacing-xxl) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .vision-section__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .vision-section__text {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .vision-section__text p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .vision-section__highlight {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .vision-section__button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background: var(--color-text);
+            color: var(--color-text-light);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-top: var(--spacing-md);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .vision-section__button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-decoration: none;
+        }
+
+        .vision-section__button::before {
+            content: "✓";
+            opacity: 0.7;
+        }
+
+        .vision-section__result {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-top: var(--spacing-md);
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SECTION: Abstract Graphics (Dark)
+           Removable: Yes
+           ============================================ */
+        .abstract-section {
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .abstract-section__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .abstract-section__text {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .abstract-section__text p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .abstract-section__visual {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .pixel-art {
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            gap: 2px;
+            padding: var(--spacing-md);
+        }
+
+        .pixel-art__block {
+            aspect-ratio: 1;
+            background: var(--color-text-light);
+        }
+
+        .pixel-art__block--empty {
+            background: transparent;
+        }
+
+        .abstract-section__caption {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-align: right;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ============================================
+           SECTION: Promise
+           Removable: Yes
+           ============================================ */
+        .promise-section {
+            padding: var(--spacing-xxl) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .promise-section__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .promise-section__text {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            line-height: 1.8;
+            text-decoration: underline;
+            text-decoration-color: var(--color-border);
+            text-underline-offset: 4px;
+        }
+
+        .promise-section__highlight {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .promise-section__highlight p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .promise-section__highlight strong {
+            font-weight: 500;
+        }
+
+        /* ============================================
+           SECTION: CTA / Meet Mainframe
+           Removable: Yes
+           ============================================ */
+        .cta-section {
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .cta-section__header {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .cta-section__title {
+            font-family: var(--font-sans);
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .cta-section__subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .cta-section__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .cta-section__form-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .cta-section__icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .cta-section__form-title {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .cta-section__input-wrapper {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .cta-section__input {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 18px;
+            border-radius: 4px;
+            color: var(--color-text-light);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .cta-section__input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .cta-section__submit {
+            background: var(--color-text-light);
+            color: var(--color-text);
+            border: none;
+            padding: 14px 24px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cta-section__submit:hover {
+            transform: scale(1.02);
+        }
+
+        /* Access Card */
+        .access-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+        }
+
+        .access-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .access-card__badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            background: var(--color-accent);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .access-card__details {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 1.8;
+            opacity: 0.7;
+        }
+
+        .access-card__preview {
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .access-card__name {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .access-card__meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-sm);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+        }
+
+        .access-card__meta-item {
+            opacity: 0.6;
+        }
+
+        .access-card__meta-value {
+            opacity: 1;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           SECTION: Footer
+           Removable: Yes
+           ============================================ */
+        .footer {
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer__brand {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .footer__brand strong {
+            font-weight: 600;
+        }
+
+        .footer__nav {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .footer__nav a {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            transition: color 0.2s;
+        }
+
+        .footer__nav a:hover {
+            color: var(--color-text);
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 768px) {
+            .header__inner {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .interface-preview__grid,
+            .apps-grid__content,
+            .vision-section__grid,
+            .abstract-section__grid,
+            .promise-section__grid,
+            .cta-section__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shift-section__subtitle {
+                margin-left: 0;
+                text-align: left;
+            }
+
+            .footer__inner {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .apps-grid__visual {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         SECTION: Header
+         To remove: Delete this entire <header> block
+         ========================================== -->
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="header__brand">
+                    <strong>Mainframe Computer, Inc.</strong><br>
+                    Copyright 2026<br>
+                    All Rights Reserved
+                </div>
+                <nav class="header__nav">
+                    <a href="#blog">blog</a>
+                    <a href="#careers">careers</a>
+                    <a href="#social">@mainframe</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         SECTION: Hero
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <p class="hero__text">
+                    cd, rm, ping: commands we memorized<br>
+                    to translate our desires into actions...<br>
+                    if we chose to learn them.
+                </p>
+                <p class="hero__subtitle">
+                    Last login: Mon Jan 6 14:32:01 2026<br>
+                    Terminal: /dev/ttys001
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: Interface Preview
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="interface-preview">
+        <div class="container">
+            <div class="interface-preview__grid">
+                <div>
+                    <div class="interface-preview__window">
+                        <div class="interface-preview__titlebar">
+                            <span class="interface-preview__dot interface-preview__dot--red"></span>
+                            <span class="interface-preview__dot"></span>
+                            <span class="interface-preview__dot"></span>
+                        </div>
+                        <div class="interface-preview__body">
+                            <div class="interface-preview__shape interface-preview__shape--small"></div>
+                            <div class="interface-preview__shape interface-preview__shape--large"></div>
+                            <div class="interface-preview__shape"></div>
+                            <div class="interface-preview__shape interface-preview__shape--small"></div>
+                            <div class="interface-preview__shape interface-preview__shape--large"></div>
+                        </div>
+                    </div>
+                    <p class="fig-label">Fig 1 &nbsp;&nbsp;&nbsp; A window from the future.</p>
+                </div>
+                <div>
+                    <p class="interface-preview__text">
+                        So, we made our computers look more like our world, to make their immense power accessible to everyone.
+                    </p>
+                    <p class="interface-preview__meta">— The evolution of computing interfaces</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: Apps Grid
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="apps-grid">
+        <div class="container">
+            <div class="apps-grid__content">
+                <div class="apps-grid__text">
+                    <p>We wrapped our actions inside apps, of ever-increasing complexity. Now, we spend most of our waking hours inside them.</p>
+                    <p>Over time, operating systems gave way to bloated corporate "experiences" designed to keep us in, not get things done.</p>
+                </div>
+                <div>
+                    <div class="apps-grid__visual">
+                        <div class="app-icon" data-label="256">
+                            <span class="app-icon__badge">New</span>
+                        </div>
+                        <div class="app-icon" data-label="256"></div>
+                        <div class="app-icon" data-label="128">
+                            <span class="app-icon__badge">Pro</span>
+                        </div>
+                        <div class="app-icon" data-label="128"></div>
+                        <div class="app-icon" data-label="32"></div>
+                        <div class="app-icon" data-label="32"></div>
+                    </div>
+                    <p class="fig-label" style="margin-top: 40px;">Fig 2 &nbsp;&nbsp;&nbsp; Apps from the past tense.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: Shift (Dark)
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="shift-section">
+        <div class="container">
+            <p class="shift-section__intro">Now, we believe it's time for</p>
+            <h2 class="shift-section__title">SHIFT</h2>
+            <p class="shift-section__subtitle">
+                To a future where operating systems take center stage once again.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: Vision / Future
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="vision-section">
+        <div class="container">
+            <div class="vision-section__grid">
+                <div class="vision-section__text">
+                    <p>We believe the computers of the future will be built around actions, not apps.</p>
+                    <p>Instead of waiting for us to click, drag, tap, and type.</p>
+                </div>
+                <div class="vision-section__highlight">
+                    <button class="vision-section__button">Tasks completed</button>
+                    <p class="vision-section__result">They will simply do for us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: Abstract Graphics (Dark)
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="abstract-section">
+        <div class="container">
+            <div class="abstract-section__grid">
+                <div class="abstract-section__text">
+                    <p>They will breathe AI like oxygen, a feature that became a fabric. A new raw material for action.</p>
+                    <p>But what shape will they take? Will they open to a desktop, or to something else entirely?</p>
+                </div>
+                <div class="abstract-section__visual">
+                    <div class="pixel-art">
+                        <!-- Row 1 -->
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <!-- Row 2 -->
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <!-- Row 3 -->
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <!-- Row 4 -->
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <!-- Row 5 -->
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                        <div class="pixel-art__block--empty"></div>
+                    </div>
+                    <p class="abstract-section__caption">A calendar?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: Promise
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="promise-section">
+        <div class="container">
+            <div class="promise-section__grid">
+                <p class="promise-section__text">
+                    Without the overwrapping interfaces and business models of the past lording over us, almost anything is possible.
+                </p>
+                <div class="promise-section__highlight">
+                    <p>A future where operating systems barely need you to operate them at all.</p>
+                    <p><strong>AI's final promise, finally before us.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: CTA / Meet Mainframe
+         To remove: Delete this entire <section> block
+         ========================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-section__header">
+                <h2 class="cta-section__title">Meet Mainframe</h2>
+                <p class="cta-section__subtitle">Interfaces for the future.</p>
+            </div>
+            <div class="cta-section__grid">
+                <div class="cta-section__form-wrapper">
+                    <div class="cta-section__icon">✉️</div>
+                    <h3 class="cta-section__form-title">Claim your early access card.</h3>
+                    <div class="cta-section__input-wrapper">
+                        <input 
+                            type="email" 
+                            class="cta-section__input" 
+                            placeholder="Enter your email address"
+                        >
+                        <button class="cta-section__submit">→</button>
+                    </div>
+                </div>
+                <div class="access-card">
+                    <div class="access-card__header">
+                        <div class="access-card__details">
+                            <strong>Cohort</strong><br>
+                            Explorers / Early Birds
+                        </div>
+                        <span class="access-card__badge">Early Access</span>
+                    </div>
+                    <div class="access-card__preview">
+                        <p class="access-card__name">Lou Meta</p>
+                        <div class="access-card__meta">
+                            <div class="access-card__meta-item">
+                                <span>Name</span><br>
+                                <span class="access-card__meta-value">Mainframe Computer</span>
+                            </div>
+                            <div class="access-card__meta-item">
+                                <span>No.</span><br>
+                                <span class="access-card__meta-value">10.0001</span>
+                            </div>
+                            <div class="access-card__meta-item">
+                                <span>Date</span><br>
+                                <span class="access-card__meta-value">07/06/25</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fig-label" style="color: rgba(255,255,255,0.5); margin-top: 0;">Fig 4 &nbsp;&nbsp;&nbsp; Be among the first to explore Mainframe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: Footer
+         To remove: Delete this entire <footer> block
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <strong>Mainframe Computer, Inc.</strong><br>
+                    Copyright 2026<br>
+                    All Rights Reserved
+                </div>
+                <nav class="footer__nav">
+                    <a href="#blog">blog</a>
+                    <a href="#careers">careers</a>
+                    <a href="#social">@mainframe</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+    <script>
+        // Simple scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form submission handler
+        document.querySelector('.cta-section__submit').addEventListener('click', function() {
+            const email = document.querySelector('.cta-section__input').value;
+            if (email) {
+                alert('Thank you for signing up! Email: ' + email);
+            }
+        });
+    </script>
+
+</body>
+</html>

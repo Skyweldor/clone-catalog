@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONA - Explore New Worlds in the Monaverse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ============================================
+         SECTION: HEADER / NAVIGATION
+         - Sticky navigation bar
+         - Logo + nav links + CTA button
+         ============================================ -->
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span class="logo-text">MONA</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#explore">EXPLORE</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#marketplace">MARKETPLACE</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn btn-primary">SIGN UP</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============================================
+             SECTION: HERO / FEATURED WORLD
+             - Large featured space showcase
+             - Decorative script typography
+             - Enter/Collect CTAs
+             ============================================ -->
+        <section class="hero-section" id="hero">
+            <div class="hero-intro">
+                <h1 class="hero-logo">MONA<span class="hero-logo-script">MONA</span></h1>
+                <p class="hero-tagline">Explore new worlds in the Monaverse</p>
+                <p class="hero-description">Mona spaces are beautiful<br>social worlds for you to<br>collect, show your art, and<br>gather with others.</p>
+            </div>
+            
+            <div class="featured-world">
+                <span class="featured-label">Featured World</span>
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" alt="MSS Pandora - Futuristic Space">
+                    <div class="featured-overlay">
+                        <h2 class="featured-title">Nobody In Particular<br><span>MSS Pandora</span></h2>
+                    </div>
+                    <div class="featured-actions">
+                        <button class="btn btn-dark">ENTER SPACE</button>
+                        <button class="btn btn-outline">COLLECT</button>
+                    </div>
+                </div>
+                <div class="featured-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Nobody In Particular</span>
+                        <span class="meta-value">MSS Pandora</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-tag">Space</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">An interactive space for<br>those who wish they<br>could own their own<br>spaceship...</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Price</span>
+                        <span class="meta-value price">1ETH</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: MISSION STATEMENT
+             - Elegant script typography
+             - Centered mission text
+             - Learn more CTA
+             ============================================ -->
+        <section class="mission-section" id="mission">
+            <div class="container">
+                <h2 class="mission-title">Our Mission</h2>
+                <p class="mission-text">
+                    Mona's mission is to empower people around the<br>
+                    world to create, collect, and share the highest<br>
+                    quality immersive experiences on the blockchain,<br>
+                    growing the Open Metaverse.
+                </p>
+                <a href="#" class="link-underline">LEARN MORE ABOUT MONA</a>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: METAVERSE GALLERY
+             - Category filters (sidebar)
+             - Featured space card
+             - Grid of space cards
+             ============================================ -->
+        <section class="gallery-section" id="explore">
+            <div class="gallery-container">
+                <div class="gallery-sidebar">
+                    <h3 class="gallery-title">Enter the<br>Metaverse</h3>
+                    <ul class="category-filters">
+                        <li><a href="#" class="active">Popular</a></li>
+                        <li><a href="#">Nature</a></li>
+                        <li><a href="#">Sci-Fi</a></li>
+                        <li><a href="#">Classical</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Music</a></li>
+                    </ul>
+                </div>
+                
+                <div class="gallery-content">
+                    <!-- Featured Gallery Item -->
+                    <div class="gallery-featured">
+                        <div class="gallery-tags">
+                            <span class="tag tag-active">Nature</span>
+                            <span class="tag">Sci-Fi</span>
+                            <span class="tag">Classical</span>
+                        </div>
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=800&q=80" alt="Anima">
+                        </div>
+                        <div class="gallery-meta">
+                            <div class="meta-col">
+                                <span class="meta-label">Creator</span>
+                                <span class="meta-value">Anima</span>
+                            </div>
+                            <div class="meta-col">
+                                <span class="meta-tag">Space</span>
+                            </div>
+                            <div class="meta-col">
+                                <span class="meta-description">Anima: a current of air,<br>wind or breath... the<br>vital principle of life</span>
+                            </div>
+                            <div class="meta-col">
+                                <span class="meta-label">Price</span>
+                                <span class="meta-value">MAKE AN OFFER</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Grid -->
+                    <div class="gallery-grid">
+                        <article class="space-card">
+                            <div class="card-tags">
+                                <span class="tag">Gallery</span>
+                            </div>
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&q=80" alt="TAG-3">
+                            </div>
+                            <div class="card-info">
+                                <span class="card-creator">Bryan Yu</span>
+                                <h4 class="card-title">TAG-3</h4>
+                                <span class="card-category">Space</span>
+                            </div>
+                            <div class="card-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">MAKE AN OFFER</span>
+                            </div>
+                        </article>
+                        
+                        <article class="space-card">
+                            <div class="card-tags">
+                                <span class="tag">Sci-Fi</span>
+                                <span class="tag">Gallery</span>
+                            </div>
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=400&q=80" alt="Neon City Streets">
+                            </div>
+                            <div class="card-info">
+                                <span class="card-creator">NeonArtist88 & TRspatial</span>
+                                <h4 class="card-title">Neon City Streets</h4>
+                                <span class="card-category">Space</span>
+                            </div>
+                            <div class="card-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">MAKE AN OFFER</span>
+                            </div>
+                        </article>
+                        
+                        <article class="space-card">
+                            <div class="card-tags">
+                                <span class="tag">Classical</span>
+                                <span class="tag">Sci-Fi</span>
+                                <span class="tag">Nature</span>
+                                <span class="tag">Gallery</span>
+                            </div>
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=400&q=80" alt="Temple Garden">
+                            </div>
+                            <div class="card-info">
+                                <span class="card-creator">History</span>
+                                <h4 class="card-title">Temple Garden</h4>
+                                <span class="card-category">Space</span>
+                            </div>
+                            <div class="card-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">MAKE AN OFFER</span>
+                            </div>
+                        </article>
+                        
+                        <article class="space-card">
+                            <div class="card-tags">
+                                <span class="tag">Nature</span>
+                                <span class="tag">Sci-Fi</span>
+                                <span class="tag">Gallery</span>
+                            </div>
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Fallen Giant">
+                            </div>
+                            <div class="card-info">
+                                <span class="card-creator">Jason Suchontan</span>
+                                <h4 class="card-title">Fallen Giant</h4>
+                                <span class="card-category">Space</span>
+                            </div>
+                            <div class="card-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">MAKE AN OFFER</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: NEWS / BLOG
+             - Sidebar with category links
+             - Featured article with image
+             - Read more CTA
+             ============================================ -->
+        <section class="news-section" id="news">
+            <div class="news-container">
+                <div class="news-sidebar">
+                    <h3 class="news-title">Mona News</h3>
+                    <ul class="news-categories">
+                        <li><a href="#">Featured</a></li>
+                        <li><a href="#">Announcements</a></li>
+                        <li><a href="#">Community Updates</a></li>
+                        <li><a href="#">Builder Spotlights</a></li>
+                    </ul>
+                </div>
+                
+                <div class="news-content">
+                    <article class="news-article">
+                        <div class="article-body">
+                            <span class="article-category">Featured</span>
+                            <h2 class="article-title">Meet the artist behind the space, MSS-Pandora: NobodyInParticular</h2>
+                            <span class="article-source">● Mona Team</span>
+                            <p class="article-excerpt">
+                                NobodyInParticular is an environment artist in the visual effect industry. After launching his career working on films and TV shows, he began supervising a team at Digital Domain. Working in the field allowed him to gather experience and knowledge of modeling and texturing 3D assets for environmental work. The metaverse allows him to apply his experience in a real-time environment. The artist's space, MSS-Pandora, is centered around a white spaceship. Users feel the weight and size of the ship ...
+                            </p>
+                            <a href="#" class="btn btn-dark">READ MORE</a>
+                        </div>
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&q=80" alt="MSS-Pandora Spaceship">
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: CALL TO ACTION
+             - Script typography header
+             - Centered description
+             - Become a creator CTA
+             ============================================ -->
+        <section class="cta-section" id="cta">
+            <div class="container">
+                <h2 class="cta-title">Start Building</h2>
+                <p class="cta-text">
+                    Join thousands of the world's top architects,<br>
+                    game designers, 3D artists, developers,<br>
+                    collectors, and explorers from around the world.
+                </p>
+                <a href="#" class="link-underline">BECOME A CREATOR</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================
+         SECTION: FOOTER
+         - Logo + tagline
+         - Navigation columns (Explore, About)
+         - Social links
+         - Legal links
+         ============================================ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">MONA</span>
+                <span class="footer-tagline">The Nation of the Metaverse</span>
+            </div>
+            
+            <div class="footer-nav">
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#">MARKETPLACE</a></li>
+                        <li><a href="#">SPACES</a></li>
+                        <li><a href="#">AVATARS</a></li>
+                        <li><a href="#">START BUILDING</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">HOW IT WORKS</a></li>
+                        <li><a href="#">ABOUT MONA</a></li>
+                        <li><a href="#">PARTNERS</a></li>
+                        <li><a href="#">BLOG</a></li>
+                        <li><a href="#">JOIN THE COMMUNITY</a></li>
+                        <li><a href="#">CAREERS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="#" aria-label="Discord">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+            <div class="legal-links">
+                <a href="#">PRIVACY</a>
+                <a href="#">TERMS</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

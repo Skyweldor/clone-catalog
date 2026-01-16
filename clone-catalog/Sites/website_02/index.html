@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Template | Modern Product Landing Page</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================
+       SECTION: HEADER / NAVIGATION
+       - Sticky navigation with logo and menu
+       - Easy to modify: change logo, nav links
+       ============================================ -->
+  <header class="header" id="header">
+    <div class="header__container">
+      <a href="/" class="header__logo">BRAND</a>
+      
+      <nav class="header__nav">
+        <a href="#shop" class="header__link">Shop</a>
+        <a href="#learn" class="header__link">Learn</a>
+        <a href="#community" class="header__link">Community</a>
+      </nav>
+      
+      <div class="header__actions">
+        <button class="header__cart" aria-label="Cart">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </button>
+        <button class="header__menu-btn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Announcement Bar (optional sub-component) -->
+    <div class="header__announcement">
+      So nice <em>The New York Times</em> wrote about us (thrice)
+    </div>
+  </header>
+
+
+  <main>
+    <!-- ============================================
+         SECTION: HERO
+         - Main headline with background image/gradient
+         - CTA buttons
+         - Customize: headline text, buttons, background
+         ============================================ -->
+    <section class="hero" id="hero">
+      <div class="hero__background">
+        <img src="https://images.unsplash.com/photo-1515621061946-ber0c2c0c7e2?w=1200&auto=format" alt="" class="hero__image">
+        <div class="hero__overlay"></div>
+      </div>
+      
+      <div class="hero__content">
+        <h1 class="hero__title">
+          PRODUCTS MADE FOR<br>
+          <span class="hero__title-accent">THIS CENTURY</span>
+        </h1>
+        
+        <div class="hero__buttons">
+          <a href="#shop" class="btn btn--primary">Shop Now</a>
+          <a href="#learn" class="btn btn--secondary">Get Educated</a>
+        </div>
+      </div>
+      
+      <!-- Decorative element -->
+      <div class="hero__scroll-indicator">
+        <span>Scroll</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M19 12l-7 7-7-7"/>
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION: MARQUEE / FEATURES BANNER
+         - Horizontal scrolling text animation
+         - Highlight key features/USPs
+         - Customize: feature text, icons
+         ============================================ -->
+    <section class="marquee" id="marquee">
+      <div class="marquee__track">
+        <div class="marquee__content">
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            made by experts
+          </span>
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            expert-led video tutorials
+          </span>
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            virtual talk circles
+          </span>
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            community support
+          </span>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee__content" aria-hidden="true">
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            made by experts
+          </span>
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            expert-led video tutorials
+          </span>
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            virtual talk circles
+          </span>
+          <span class="marquee__item">
+            <span class="marquee__icon">✦</span>
+            community support
+          </span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION: PRODUCTS
+         - Product grid with cards
+         - "Shop All" link
+         - Customize: products, prices, images
+         ============================================ -->
+    <section class="products" id="products">
+      <div class="products__container">
+        <div class="products__header">
+          <div class="products__label">
+            <span class="section-icon">★</span>
+            <span class="section-label">THE SHOP</span>
+          </div>
+          <h2 class="products__title">Product Essentials</h2>
+          <a href="#" class="products__link">Shop All →</a>
+        </div>
+        
+        <div class="products__grid">
+          <!-- Product Card 1 -->
+          <article class="product-card">
+            <div class="product-card__badge">Best Seller</div>
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format" alt="Product 1" class="product-card__image">
+            </div>
+            <div class="product-card__content">
+              <h3 class="product-card__name">The Starter Kit</h3>
+              <p class="product-card__price">$99.99</p>
+              <p class="product-card__description">A complete kit with everything you need to get started.</p>
+              <button class="btn btn--primary btn--full">Add to Cart</button>
+            </div>
+          </article>
+          
+          <!-- Product Card 2 -->
+          <article class="product-card">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format" alt="Product 2" class="product-card__image">
+            </div>
+            <div class="product-card__content">
+              <h3 class="product-card__name">Cloud Comfort</h3>
+              <p class="product-card__price">$65</p>
+              <p class="product-card__description">Multi-use support for everyday comfort.</p>
+              <button class="btn btn--primary btn--full">Add to Cart</button>
+            </div>
+          </article>
+          
+          <!-- Product Card 3 -->
+          <article class="product-card">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&auto=format" alt="Product 3" class="product-card__image">
+            </div>
+            <div class="product-card__content">
+              <h3 class="product-card__name">The Essentials Duo</h3>
+              <p class="product-card__price">$22</p>
+              <p class="product-card__description">Quick relief when you need it most.</p>
+              <button class="btn btn--primary btn--full">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION: RESOURCES / EDUCATION
+         - Video/article cards carousel
+         - Category tags
+         - Customize: videos, thumbnails, categories
+         ============================================ -->
+    <section class="resources" id="resources">
+      <div class="resources__container">
+        <div class="resources__header">
+          <div class="resources__intro">
+            <span class="section-icon section-icon--light">★</span>
+            <span class="section-label section-label--light">LEARNING CENTER</span>
+            <h2 class="resources__title">Your #1 Resource for<br>Learning and Beyond.</h2>
+          </div>
+          <div class="resources__cta">
+            <p class="resources__subtitle">75+ videos and articles for mastering your craft—starting today.</p>
+            <a href="#" class="btn btn--outline-light">Let's Learn →</a>
+          </div>
+        </div>
+        
+        <div class="resources__carousel">
+          <!-- Resource Card 1 -->
+          <article class="resource-card">
+            <div class="resource-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&auto=format" alt="Resource 1" class="resource-card__image">
+              <button class="resource-card__play" aria-label="Play video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </button>
+            </div>
+            <div class="resource-card__tags">
+              <span class="tag tag--primary">Beginner</span>
+              <span class="tag">Tutorial</span>
+            </div>
+            <h3 class="resource-card__title">Getting Started: The Basics</h3>
+            <p class="resource-card__meta">Watch Now • 2:07 Min</p>
+          </article>
+          
+          <!-- Resource Card 2 -->
+          <article class="resource-card">
+            <div class="resource-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format" alt="Resource 2" class="resource-card__image">
+              <button class="resource-card__play" aria-label="Play video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </button>
+            </div>
+            <div class="resource-card__tags">
+              <span class="tag tag--primary">Advanced</span>
+              <span class="tag">Workshop</span>
+            </div>
+            <h3 class="resource-card__title">Advanced Techniques & Options</h3>
+            <p class="resource-card__meta">Watch Now • 2:58 Min</p>
+          </article>
+          
+          <!-- Resource Card 3 -->
+          <article class="resource-card">
+            <div class="resource-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&auto=format" alt="Resource 3" class="resource-card__image">
+              <button class="resource-card__play" aria-label="Play video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </button>
+            </div>
+            <div class="resource-card__tags">
+              <span class="tag">Support</span>
+            </div>
+            <h3 class="resource-card__title">Partners are People, Too.</h3>
+            <p class="resource-card__meta">Watch Now • 1:42 Min</p>
+          </article>
+          
+          <!-- Resource Card 4 -->
+          <article class="resource-card">
+            <div class="resource-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&auto=format" alt="Resource 4" class="resource-card__image">
+              <button class="resource-card__play" aria-label="Play video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </button>
+            </div>
+            <div class="resource-card__tags">
+              <span class="tag tag--primary">Featured</span>
+              <span class="tag">Deep Dive</span>
+            </div>
+            <h3 class="resource-card__title">Understanding the Landscape</h3>
+            <p class="resource-card__meta">Watch Now • 2:37 Min</p>
+          </article>
+        </div>
+        
+        <!-- Carousel Navigation -->
+        <div class="resources__nav">
+          <button class="carousel-btn carousel-btn--prev" aria-label="Previous">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="carousel-btn carousel-btn--next" aria-label="Next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION: COMMUNITY
+         - Featured image with curved overlay
+         - Community/circle info
+         - Customize: image, text, CTA
+         ============================================ -->
+    <section class="community" id="community">
+      <div class="community__image-wrapper">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&auto=format" alt="Community gathering" class="community__image">
+      </div>
+      
+      <div class="community__curve">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="var(--color-cream)" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,165.3C672,171,768,213,864,218.7C960,224,1056,192,1152,165.3C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+      
+      <div class="community__content">
+        <div class="community__text">
+          <h2 class="community__headline">LET'S TALK IT OUT</h2>
+          <h3 class="community__title">Community Circles</h3>
+          <p class="community__description">
+            Our Circles are digital, expert-led community chats to hype up & hang with others. 
+            Come for the learning, stay for the real-deal connections.
+          </p>
+          <a href="#" class="btn btn--dark">Learn More →</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION: TESTIMONIALS
+         - Customer reviews with ratings
+         - Carousel/slider optional
+         - Customize: quotes, names, locations
+         ============================================ -->
+    <section class="testimonials" id="testimonials">
+      <div class="testimonials__container">
+        <div class="testimonials__rating">
+          <span class="testimonials__stars">★★★★★</span>
+        </div>
+        
+        <div class="testimonials__slider">
+          <!-- Testimonial 1 -->
+          <article class="testimonial">
+            <blockquote class="testimonial__quote">
+              "Thanks to this brand, I felt prepared for a lot of the challenges—and empowered by the knowledge that my journey doesn't have to be all or nothing."
+            </blockquote>
+            <footer class="testimonial__author">
+              <strong>Hannah A</strong>
+              <span>Los Angeles</span>
+            </footer>
+          </article>
+          
+          <!-- Testimonial 2 -->
+          <article class="testimonial">
+            <blockquote class="testimonial__quote">
+              "This is the last piece of my puzzle. Everything finally clicked."
+            </blockquote>
+            <footer class="testimonial__author">
+              <strong>Amy S</strong>
+              <span>NYC</span>
+            </footer>
+          </article>
+          
+          <!-- Testimonial 3 -->
+          <article class="testimonial">
+            <blockquote class="testimonial__quote">
+              "It would be easy to become overwhelmed, but the community and educational info has made it all so much easier to handle."
+            </blockquote>
+            <footer class="testimonial__author">
+              <strong>Sarah Z</strong>
+              <span>Los Angeles</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION: PRESS / LOGOS
+         - Featured in / As seen in logos
+         - Customize: logo images, links
+         ============================================ -->
+    <section class="press" id="press">
+      <div class="press__container">
+        <div class="press__grid">
+          <a href="#" class="press__logo">
+            <span class="press__logo-text">Forbes</span>
+          </a>
+          <a href="#" class="press__logo">
+            <span class="press__logo-text">Fast Company</span>
+          </a>
+          <a href="#" class="press__logo">
+            <span class="press__logo-text">Vogue</span>
+          </a>
+          <a href="#" class="press__logo">
+            <span class="press__logo-text">Glamour</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION: NEWSLETTER
+         - Email signup form
+         - Customize: headline, form fields
+         ============================================ -->
+    <section class="newsletter" id="newsletter">
+      <div class="newsletter__container">
+        <div class="newsletter__content">
+          <h2 class="newsletter__title">Get newsletters that are made for you at every step of your journey.</h2>
+          
+          <form class="newsletter__form" action="#" method="POST">
+            <div class="newsletter__field">
+              <label for="email" class="newsletter__label">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required class="newsletter__input">
+            </div>
+            
+            <div class="newsletter__field">
+              <label for="date" class="newsletter__label">Important Date (optional)</label>
+              <input type="date" id="date" name="date" class="newsletter__input">
+            </div>
+            
+            <button type="submit" class="btn btn--dark btn--full newsletter__submit">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ============================================
+       SECTION: FOOTER
+       - Site links, social, copyright
+       - Customize: links, social URLs
+       ============================================ -->
+  <footer class="footer" id="footer">
+    <div class="footer__container">
+      <div class="footer__grid">
+        <!-- Column 1: Shop -->
+        <div class="footer__column">
+          <h4 class="footer__heading">Shop</h4>
+          <ul class="footer__links">
+            <li><a href="#">Kits</a></li>
+            <li><a href="#">Accessories</a></li>
+            <li><a href="#">Merch</a></li>
+            <li><a href="#">Shop All</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 2: Learn -->
+        <div class="footer__column">
+          <h4 class="footer__heading">Learn</h4>
+          <ul class="footer__links">
+            <li><a href="#">Learning Center</a></li>
+            <li><a href="#">Glossary</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 3: Connect -->
+        <div class="footer__column">
+          <h4 class="footer__heading">Connect</h4>
+          <ul class="footer__links">
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Contact & FAQ</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 4: Social -->
+        <div class="footer__column footer__column--social">
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="TikTok">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p class="footer__copyright">Brand © 2025</p>
+        <div class="footer__legal">
+          <a href="#">Terms</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!--
+================================================================================
+SECTION: FOOTER
+================================================================================
+Purpose: Site footer with navigation links and copyright notice
+Dependencies: None - this section is fully self-contained
+To Use: Copy at the very bottom of your page, inside the page wrapper
+CSS: Included inline below - copy to your main stylesheet or keep inline
+================================================================================
+-->
+
+<!-- FOOTER CSS -->
+<style>
+#footer {
+    background: #1a2030;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #6cb4ee;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    margin: 0 6px;
+}
+
+.footer-links a:hover {
+    color: #8eccff;
+    text-decoration: underline;
+}
+
+.footer-links span {
+    color: #8899aa;
+}
+
+.footer-copyright {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10px;
+    color: #8899aa;
+}
+
+.footer-copyright a {
+    color: #6cb4ee;
+    text-decoration: none;
+}
+
+.footer-copyright a:hover {
+    text-decoration: underline;
+}
+</style>
+
+<!-- FOOTER HTML -->
+<footer id="footer">
+    <div class="footer-links">
+        <a href="#">Contact</a> <span>|</span>
+        <a href="#">Forums</a> <span>|</span>
+        <a href="#">Support</a> <span>|</span>
+        <a href="#">Store</a> <span>|</span>
+        <a href="#">Privacy</a> <span>|</span>
+        <a href="#">Site Map</a>
+    </div>
+    <div class="footer-copyright">
+        Copyright © 2025 Stardock Corporation. All Rights Reserved.
+    </div>
+</footer>
+
+<!--
+================================================================================
+CUSTOMIZATION GUIDE:
+================================================================================
+1. LINKS:
+   - Add link: Add <a href="#">Link Text</a> <span>|</span>
+   - Remove link: Delete the <a>...</a> <span>|</span> pair
+   - Update href: Change the href attribute to actual URLs
+   - Note: Remove trailing <span>|</span> from last link
+
+2. COPYRIGHT:
+   - Update year and company name
+   - Add links: <a href="#">Company Name</a>
+
+3. COLORS:
+   - Background: Change #footer background
+   - Link color: Modify .footer-links a color
+   - Separator: Change .footer-links span color
+   - Copyright text: Modify .footer-copyright color
+
+4. ADD ADDITIONAL ROWS:
+   - Copy <div class="footer-links">...</div> and modify
+   - Or add new divs with custom styling
+
+5. ADD LOGO:
+   Add before .footer-links:
+   <div class="footer-logo">
+       <img src="logo.png" alt="Company Logo">
+   </div>
+================================================================================
+-->

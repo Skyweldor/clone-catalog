@@ -1,0 +1,127 @@
+<!--
+================================================================================
+SECTION: MAIN NAVIGATION
+================================================================================
+Purpose: Site-wide navigation bar with tabs and search box
+Dependencies: None - this section is fully self-contained
+To Use: Copy this after the corporate header
+CSS: Included inline below - copy to your main stylesheet or keep inline
+================================================================================
+-->
+
+<!-- MAIN NAVIGATION CSS -->
+<style>
+#main-nav {
+    background: linear-gradient(180deg, #4a5a75 0%, #3a4860 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1a2030;
+}
+
+#main-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#main-nav li {
+    position: relative;
+}
+
+#main-nav a {
+    display: block;
+    padding: 10px 15px;
+    color: #c8d0dc;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-decoration: none;
+    border-right: 1px solid rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+}
+
+#main-nav li:first-child a {
+    border-left: none;
+}
+
+#main-nav a:hover {
+    background: rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+#main-nav a.active {
+    background: linear-gradient(180deg, #3a4860 0%, #2a3648 100%);
+    color: #ffffff;
+}
+
+#main-nav .search-box {
+    padding: 6px 15px;
+    display: flex;
+    gap: 3px;
+}
+
+#main-nav .search-box input {
+    padding: 4px 8px;
+    border: 1px solid #1a2030;
+    border-radius: 3px;
+    font-size: 11px;
+    width: 140px;
+    background: #1a2030;
+    color: #c8d0dc;
+}
+
+#main-nav .search-box input::placeholder {
+    color: #8899aa;
+}
+
+#main-nav .search-box button {
+    padding: 4px 10px;
+    background: linear-gradient(180deg, #5a9edd 0%, #4a8ecc 50%, #3a7ebb 100%);
+    border: 1px solid #1a2030;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+#main-nav .search-box button:hover {
+    background: linear-gradient(180deg, #6aaeee 0%, #5a9edd 50%, #4a8ecc 100%);
+}
+</style>
+
+<!-- MAIN NAVIGATION HTML -->
+<nav id="main-nav">
+    <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Downloads</a></li>
+        <li><a href="#">Coming Soon</a></li>
+        <li><a href="#">Forums</a></li>
+        <li><a href="#">About Us</a></li>
+    </ul>
+    <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <button type="submit">🔍</button>
+    </div>
+</nav>
+
+<!--
+================================================================================
+CUSTOMIZATION GUIDE:
+================================================================================
+1. NAV ITEMS: Modify <li><a href="#">...</a></li> elements
+2. ACTIVE STATE: Move class="active" to current page's link
+3. ADD NAV ITEM: Copy a <li><a href="#">Item</a></li> block
+4. REMOVE NAV ITEM: Delete the entire <li>...</li> element
+5. REMOVE SEARCH: Delete the entire <div class="search-box">...</div>
+6. COLORS:
+   - Background: Change #main-nav background gradient
+   - Link color: Modify #main-nav a color
+   - Active state: Change #main-nav a.active background gradient
+   - Search input: Modify .search-box input background and color
+================================================================================
+-->

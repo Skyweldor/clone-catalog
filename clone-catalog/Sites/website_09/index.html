@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+STARDOCK WINDOWBLINDS 6 - AUTHENTIC ARCHAIC STYLE TEMPLATE
+================================================================================
+Faithful recreation of the late-2000s Stardock product page aesthetic.
+Reference: https://www.stardock.com/products/wb6/index.asp
+
+Author: Claude (Anthropic)
+Style Era: Late 2000s Web 2.0 / Software Product Page
+================================================================================
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stardock WindowBlinds - Skin Your Windows Desktop</title>
+    
+    <style>
+        /* ======================================================================
+           THEME VARIABLES
+           ====================================================================== */
+        :root {
+            /* Primary Colors - Dark blue-gray theme */
+            --color-bg-darkest: #1a2030;
+            --color-bg-dark: #232d3d;
+            --color-bg-medium: #2a3648;
+            --color-bg-panel: #2f3a4d;
+            --color-bg-content: #3a4860;
+            --color-bg-highlight: #4a5a75;
+            
+            /* Accent Colors */
+            --color-accent-orange: #e85d00;
+            --color-accent-orange-light: #ff7722;
+            --color-accent-green: #5a9e2f;
+            --color-accent-green-light: #7bc043;
+            --color-accent-blue: #4a90d9;
+            --color-accent-gold: #c9a227;
+            
+            /* Text Colors */
+            --color-text-white: #ffffff;
+            --color-text-light: #c8d0dc;
+            --color-text-muted: #8899aa;
+            --color-text-link: #6cb4ee;
+            --color-text-link-hover: #8eccff;
+            
+            /* Borders */
+            --color-border-dark: #1a2030;
+            --color-border-light: #4a5a75;
+            --color-border-panel: #3a4860;
+            
+            /* Gradients */
+            --gradient-header: linear-gradient(180deg, #3a4860 0%, #232d3d 100%);
+            --gradient-nav: linear-gradient(180deg, #4a5a75 0%, #3a4860 100%);
+            --gradient-nav-active: linear-gradient(180deg, #3a4860 0%, #2a3648 100%);
+            --gradient-sidebar: linear-gradient(180deg, #3a4860 0%, #2a3648 100%);
+            --gradient-content: linear-gradient(180deg, #4a5a75 0%, #3a4860 50%, #2a3648 100%);
+            --gradient-btn-orange: linear-gradient(180deg, #ff7722 0%, #e85d00 50%, #cc4400 100%);
+            --gradient-btn-green: linear-gradient(180deg, #7bc043 0%, #5a9e2f 50%, #4a8520 100%);
+            --gradient-btn-blue: linear-gradient(180deg, #5a9edd 0%, #4a8ecc 50%, #3a7ebb 100%);
+            
+            /* Typography */
+            --font-heading: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+            --font-body: Verdana, Geneva, Tahoma, sans-serif;
+            --font-logo: "Trebuchet MS", Arial, sans-serif;
+            
+            /* Font Sizes */
+            --font-size-xs: 10px;
+            --font-size-sm: 11px;
+            --font-size-base: 12px;
+            --font-size-md: 13px;
+            --font-size-lg: 14px;
+            --font-size-xl: 18px;
+            --font-size-xxl: 24px;
+            
+            /* Spacing */
+            --spacing-xs: 3px;
+            --spacing-sm: 6px;
+            --spacing-md: 10px;
+            --spacing-lg: 15px;
+            --spacing-xl: 20px;
+            
+            /* Layout */
+            --layout-width: 960px;
+            --sidebar-width: 180px;
+        }
+        
+        /* ======================================================================
+           GLOBAL RESET & BASE STYLES
+           ====================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            line-height: 1.5;
+            color: var(--color-text-light);
+            background: var(--color-bg-darkest);
+            min-height: 100vh;
+        }
+        
+        a {
+            color: var(--color-text-link);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: var(--color-text-link-hover);
+            text-decoration: underline;
+        }
+        
+        img {
+            border: 0;
+            max-width: 100%;
+        }
+        
+        /* Page wrapper */
+        .page-wrapper {
+            width: var(--layout-width);
+            margin: 0 auto;
+            background: var(--color-bg-dark);
+        }
+        
+        /* ======================================================================
+           SECTION: CORPORATE HEADER
+           Purpose: Stardock logo and tagline bar
+           Dependencies: None
+           To Remove: Delete #corp-header and its styles
+           ====================================================================== */
+        #corp-header {
+            background: var(--gradient-header);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--color-border-dark);
+        }
+        
+        #corp-header .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        #corp-header .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #5588cc 0%, #3366aa 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            font-family: var(--font-logo);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        #corp-header .logo-text {
+            font-family: var(--font-logo);
+            font-size: 28px;
+            font-weight: bold;
+            font-style: italic;
+            color: var(--color-text-white);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        #corp-header .tagline {
+            font-family: var(--font-body);
+            font-size: var(--font-size-lg);
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+        
+        /* ======================================================================
+           SECTION: MAIN NAVIGATION
+           Purpose: Top navigation bar with tabs and search
+           Dependencies: None
+           To Remove: Delete #main-nav and its styles
+           ====================================================================== */
+        #main-nav {
+            background: var(--gradient-nav);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--color-border-dark);
+        }
+        
+        #main-nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #main-nav li {
+            position: relative;
+        }
+        
+        #main-nav a {
+            display: block;
+            padding: var(--spacing-md) var(--spacing-lg);
+            color: var(--color-text-light);
+            font-size: var(--font-size-base);
+            font-weight: bold;
+            text-transform: capitalize;
+            border-right: 1px solid rgba(0,0,0,0.2);
+            border-left: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.2s;
+        }
+        
+        #main-nav li:first-child a {
+            border-left: none;
+        }
+        
+        #main-nav a:hover {
+            background: rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+        
+        #main-nav a.active {
+            background: var(--gradient-nav-active);
+            color: var(--color-text-white);
+        }
+        
+        #main-nav .search-box {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+        
+        #main-nav .search-box input {
+            padding: 4px 8px;
+            border: 1px solid var(--color-border-dark);
+            border-radius: 3px;
+            font-size: var(--font-size-sm);
+            width: 140px;
+            background: var(--color-bg-darkest);
+            color: var(--color-text-light);
+        }
+        
+        #main-nav .search-box button {
+            padding: 4px 10px;
+            background: var(--gradient-btn-blue);
+            border: 1px solid var(--color-border-dark);
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            font-size: var(--font-size-sm);
+        }
+        
+        /* ======================================================================
+           SECTION: MAIN LAYOUT (3-column)
+           Purpose: Contains sidebar, content area
+           Dependencies: Contains child sections
+           ====================================================================== */
+        #main-layout {
+            display: flex;
+            background: var(--color-bg-dark);
+        }
+        
+        /* ======================================================================
+           SECTION: LEFT SIDEBAR
+           Purpose: Product navigation and widgets
+           Dependencies: Part of #main-layout
+           To Remove: Delete #sidebar and adjust #content-area width
+           ====================================================================== */
+        #sidebar {
+            width: var(--sidebar-width);
+            background: var(--gradient-sidebar);
+            border-right: 1px solid var(--color-border-dark);
+            padding: var(--spacing-lg);
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar-nav {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .sidebar-nav-header {
+            background: linear-gradient(180deg, #5a6a85 0%, #4a5a75 100%);
+            color: var(--color-text-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-weight: bold;
+            font-size: var(--font-size-base);
+            text-align: center;
+            border-radius: 4px 4px 0 0;
+            border: 1px solid var(--color-border-light);
+            border-bottom: none;
+        }
+        
+        .sidebar-nav ul {
+            list-style: none;
+            background: var(--color-bg-panel);
+            border: 1px solid var(--color-border-panel);
+            border-radius: 0 0 4px 4px;
+        }
+        
+        .sidebar-nav li {
+            border-bottom: 1px solid var(--color-border-panel);
+        }
+        
+        .sidebar-nav li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            color: var(--color-text-link);
+            font-size: var(--font-size-sm);
+            transition: background 0.2s;
+        }
+        
+        .sidebar-nav a:hover {
+            background: var(--color-bg-highlight);
+            text-decoration: none;
+        }
+        
+        /* Sidebar Section Box */
+        .sidebar-box {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .sidebar-box-header {
+            background: linear-gradient(180deg, #4a5a75 0%, #3a4860 100%);
+            color: var(--color-text-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-weight: bold;
+            font-size: var(--font-size-sm);
+            text-align: center;
+            border: 1px solid var(--color-border-panel);
+            border-bottom: none;
+        }
+        
+        .sidebar-box-content {
+            background: var(--color-bg-panel);
+            border: 1px solid var(--color-border-panel);
+            padding: var(--spacing-md);
+        }
+        
+        /* Development Resources */
+        .dev-resource {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border-panel);
+        }
+        
+        .dev-resource:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .dev-resource-logo {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-lg);
+            font-weight: bold;
+            color: var(--color-accent-blue);
+            margin-bottom: 2px;
+        }
+        
+        .dev-resource-logo.orange { color: var(--color-accent-orange); }
+        
+        .dev-resource-tagline {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+        
+        /* Featured Skins */
+        .featured-skin {
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+        
+        .featured-skin-thumb {
+            width: 100%;
+            height: 60px;
+            background: var(--color-bg-medium);
+            border: 1px solid var(--color-border-panel);
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: var(--font-size-xs);
+        }
+        
+        .featured-skin-title {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-link);
+        }
+        
+        .featured-skin-author {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+        
+        /* News List */
+        .news-list {
+            list-style: none;
+        }
+        
+        .news-list li {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-xs);
+            padding-left: var(--spacing-md);
+            position: relative;
+        }
+        
+        .news-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 4px;
+            height: 4px;
+            background: var(--color-text-muted);
+            border-radius: 50%;
+        }
+        
+        .news-list .news-date {
+            color: var(--color-text-muted);
+            margin-right: 3px;
+        }
+        
+        .news-list a {
+            color: var(--color-text-link);
+        }
+        
+        .more-link {
+            text-align: right;
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .more-link a {
+            color: var(--color-text-link);
+        }
+        
+        /* ======================================================================
+           SECTION: CONTENT AREA
+           Purpose: Main content with product info
+           Dependencies: Part of #main-layout
+           ====================================================================== */
+        #content-area {
+            flex: 1;
+            padding: var(--spacing-lg);
+        }
+        
+        /* Product Header */
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border-panel);
+        }
+        
+        .product-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .product-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #7799cc 0%, #5577aa 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        .product-logo-icon span {
+            font-size: 24px;
+        }
+        
+        .product-logo-text {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-xxl);
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        .product-logo-text .highlight {
+            color: var(--color-accent-orange);
+        }
+        
+        .product-badge {
+            background: linear-gradient(135deg, #5a6a85 0%, #4a5a75 100%);
+            border: 1px solid var(--color-border-light);
+            border-radius: 4px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: center;
+            font-size: var(--font-size-xs);
+        }
+        
+        .product-badge-label {
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            font-size: 9px;
+        }
+        
+        .product-badge-title {
+            color: var(--color-accent-gold);
+            font-weight: bold;
+            font-size: var(--font-size-sm);
+        }
+        
+        /* Content Box */
+        .content-box {
+            background: var(--gradient-content);
+            border: 1px solid var(--color-border-panel);
+            border-radius: 6px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .content-box-inner {
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+        
+        .content-text {
+            flex: 1;
+        }
+        
+        .content-text p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            color: var(--color-text-light);
+        }
+        
+        .content-screenshot {
+            width: 280px;
+            flex-shrink: 0;
+        }
+        
+        .screenshot-frame {
+            background: var(--color-bg-darkest);
+            border: 2px solid var(--color-border-light);
+            border-radius: 4px;
+            padding: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        
+        .screenshot-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #4a6a9a 0%, #3a5a8a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+            border-radius: 2px;
+        }
+        
+        .screenshot-thumbs {
+            display: flex;
+            gap: 4px;
+            margin-top: 6px;
+        }
+        
+        .screenshot-thumb {
+            flex: 1;
+            height: 35px;
+            background: var(--color-bg-medium);
+            border: 1px solid var(--color-border-panel);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        
+        .screenshot-thumb:hover,
+        .screenshot-thumb.active {
+            border-color: var(--color-accent-blue);
+        }
+        
+        /* Price and CTA Row */
+        .price-cta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border-panel);
+        }
+        
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+        
+        .price-info {
+            text-align: left;
+        }
+        
+        .price-amount {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--color-text-white);
+        }
+        
+        .price-note {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+        
+        .compatibility-badges {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .compat-badge {
+            text-align: center;
+        }
+        
+        .compat-badge-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2px;
+            font-size: 20px;
+        }
+        
+        .compat-badge-icon.vista {
+            background: linear-gradient(135deg, #00aa44 0%, #008833 100%);
+        }
+        
+        .compat-badge-icon.xp {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+        }
+        
+        .compat-badge-label {
+            font-size: 8px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-family: var(--font-heading);
+            font-size: var(--font-size-lg);
+            font-weight: bold;
+            text-transform: capitalize;
+            border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: var(--color-text-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+        }
+        
+        .btn-green {
+            background: var(--gradient-btn-green);
+        }
+        
+        .btn-green:hover {
+            background: linear-gradient(180deg, #8cd054 0%, #6aae3f 50%, #5a9e2f 100%);
+            text-decoration: none;
+            color: var(--color-text-white);
+        }
+        
+        .btn-orange {
+            background: var(--gradient-btn-orange);
+        }
+        
+        .btn-orange:hover {
+            background: linear-gradient(180deg, #ff8833 0%, #ff6611 50%, #e85d00 100%);
+            text-decoration: none;
+            color: var(--color-text-white);
+        }
+        
+        /* ======================================================================
+           SECTION: CONTENT TABS
+           Purpose: Tab navigation for content sections
+           Dependencies: Part of #content-area
+           ====================================================================== */
+        .content-tabs {
+            background: var(--color-bg-panel);
+            border: 1px solid var(--color-border-panel);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .tabs-nav {
+            display: flex;
+            background: linear-gradient(180deg, #5a6a85 0%, #4a5a75 100%);
+            border-bottom: 1px solid var(--color-border-dark);
+        }
+        
+        .tabs-nav a {
+            padding: var(--spacing-md) var(--spacing-lg);
+            color: var(--color-text-light);
+            font-size: var(--font-size-base);
+            font-weight: bold;
+            border-right: 1px solid rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+        
+        .tabs-nav a:hover {
+            background: rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+        
+        .tabs-nav a.active {
+            background: var(--color-bg-panel);
+            color: var(--color-text-white);
+        }
+        
+        .tab-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .tab-content h3 {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-lg);
+            color: var(--color-text-white);
+            margin: 0 0 var(--spacing-md) 0;
+        }
+        
+        .tab-content h4 {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-md);
+            color: var(--color-accent-gold);
+            margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+        }
+        
+        .tab-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+        }
+        
+        /* ======================================================================
+           SECTION: PARTNER LOGOS BAR
+           Purpose: Display partner/affiliated site logos
+           Dependencies: None
+           To Remove: Delete #partner-bar and its styles
+           ====================================================================== */
+        #partner-bar {
+            background: linear-gradient(180deg, #3a4860 0%, #2a3648 100%);
+            padding: var(--spacing-md) var(--spacing-xl);
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            border-top: 1px solid var(--color-border-panel);
+            border-bottom: 1px solid var(--color-border-dark);
+        }
+        
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        
+        .partner-logo:hover {
+            color: var(--color-text-white);
+            text-decoration: none;
+        }
+        
+        .partner-logo-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--color-bg-highlight);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+        
+        /* ======================================================================
+           SECTION: FOOTER
+           Purpose: Site footer with links and copyright
+           Dependencies: None
+           To Remove: Delete #footer and its styles
+           ====================================================================== */
+        #footer {
+            background: var(--color-bg-darkest);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-links a {
+            color: var(--color-text-link);
+            font-size: var(--font-size-sm);
+            margin: 0 var(--spacing-sm);
+        }
+        
+        .footer-links span {
+            color: var(--color-text-muted);
+        }
+        
+        .footer-copyright {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <!-- ================================================================
+        SECTION: CORPORATE HEADER
+        Purpose: Stardock logo and company tagline
+        Dependencies: None
+        To Remove: Delete this section and #corp-header styles
+        ================================================================ -->
+        <header id="corp-header">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <span class="logo-text">Stardock</span>
+            </div>
+            <span class="tagline">Your Edge in Software ™</span>
+        </header>
+        <!-- END SECTION: CORPORATE HEADER -->
+        
+        <!-- ================================================================
+        SECTION: MAIN NAVIGATION
+        Purpose: Site-wide navigation with search
+        Dependencies: None
+        To Remove: Delete this section and #main-nav styles
+        ================================================================ -->
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Downloads</a></li>
+                <li><a href="#">Coming Soon</a></li>
+                <li><a href="#">Forums</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <button type="submit">🔍</button>
+            </div>
+        </nav>
+        <!-- END SECTION: MAIN NAVIGATION -->
+        
+        <!-- ================================================================
+        SECTION: MAIN LAYOUT
+        Purpose: Container for sidebar and content
+        Dependencies: Contains #sidebar and #content-area
+        ================================================================ -->
+        <div id="main-layout">
+            
+            <!-- ============================================================
+            SECTION: LEFT SIDEBAR
+            Purpose: Product navigation and promotional widgets
+            Dependencies: Part of #main-layout
+            To Remove: Delete #sidebar, adjust #content-area to flex: 1
+            ============================================================ -->
+            <aside id="sidebar">
+                
+                <!-- Product Navigation -->
+                <nav class="sidebar-nav">
+                    <div class="sidebar-nav-header">WindowBlinds</div>
+                    <ul>
+                        <li><a href="#">Information</a></li>
+                        <li><a href="#">Workshop</a></li>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Get More Skins</a></li>
+                        <li><a href="#">Get Premium Suites</a></li>
+                        <li><a href="#">Forums</a></li>
+                        <li><a href="#">Purchase</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Development Resources -->
+                <div class="sidebar-box">
+                    <div class="sidebar-box-header">Development Resources</div>
+                    <div class="sidebar-box-content">
+                        <div class="dev-resource">
+                            <div class="dev-resource-logo">DirectSkin</div>
+                            <div class="dev-resource-tagline">Skin your application</div>
+                        </div>
+                        <div class="dev-resource">
+                            <div class="dev-resource-logo orange">SkinStudio</div>
+                            <div class="dev-resource-tagline">Create your own skins</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Skins -->
+                <div class="sidebar-box">
+                    <div class="sidebar-box-header">Featured Skins</div>
+                    <div class="sidebar-box-content">
+                        <div class="featured-skin">
+                            <div class="featured-skin-thumb">[Skin Preview]</div>
+                            <div class="featured-skin-title"><a href="#">gaiety for xp and vista</a></div>
+                            <div class="featured-skin-author">by mkorashy</div>
+                            <a href="#" style="font-size: 10px;">Download</a>
+                        </div>
+                        <div class="featured-skin">
+                            <div class="featured-skin-thumb">[Skin Preview]</div>
+                            <div class="featured-skin-title"><a href="#">Thundera by Z71</a></div>
+                            <div class="featured-skin-author">Thundera</div>
+                            <a href="#" style="font-size: 10px;">Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- In The News -->
+                <div class="sidebar-box">
+                    <div class="sidebar-box-header">In The News</div>
+                    <div class="sidebar-box-content">
+                        <ul class="news-list">
+                            <li><span class="news-date">5/7</span> <a href="#">WindowBlinds 6.1 Released</a></li>
+                            <li><span class="news-date">3/19</span> <a href="#">SkinStudio 6 released!</a></li>
+                            <li><span class="news-date">3/17</span> <a href="#">IconDeveloper 2.0 released</a></li>
+                            <li><span class="news-date">3/12</span> <a href="#">DeskScapes Preview available</a></li>
+                            <li><span class="news-date">3/11</span> <a href="#">Object Desktop 2008 Guided Tour</a></li>
+                            <li><span class="news-date">2/12</span> <a href="#">TweakVista 1.1 released</a></li>
+                            <li><span class="news-date">2/5</span> <a href="#">CursorFX released</a></li>
+                        </ul>
+                        <div class="more-link"><a href="#">More News ▶</a></div>
+                    </div>
+                </div>
+                
+            </aside>
+            <!-- END SECTION: LEFT SIDEBAR -->
+            
+            <!-- ============================================================
+            SECTION: CONTENT AREA
+            Purpose: Main product content and information
+            Dependencies: Part of #main-layout
+            ============================================================ -->
+            <main id="content-area">
+                
+                <!-- Product Header -->
+                <div class="product-header">
+                    <div class="product-logo">
+                        <div class="product-logo-icon">
+                            <span>🎨</span>
+                        </div>
+                        <span class="product-logo-text">Window<span class="highlight">Blinds</span></span>
+                    </div>
+                    <div class="product-badge">
+                        <div class="product-badge-label">A Component of</div>
+                        <div class="product-badge-title">Object Desktop</div>
+                    </div>
+                </div>
+                
+                <!-- Main Content Box -->
+                <div class="content-box">
+                    <div class="content-box-inner">
+                        <div class="content-text">
+                            <p>
+                                WindowBlinds is a one-of-a-kind utility that allows Windows users to completely 
+                                change the look and feel of the Windows interface by applying a new skin. There 
+                                are thousands of different skins to choose from that are freely downloadable from 
+                                the WindowBlinds website.
+                            </p>
+                            <p>
+                                A WindowBlinds skin can make Windows look like an alternative operating system, 
+                                like their favorite sports or car brand, or something completely new. Because 
+                                WindowBlinds uses the latest hardware acceleration features of modern video 
+                                cards, WindowBlinds won't slow down your computer and uses very little memory.
+                            </p>
+                            <p>
+                                WindowBlinds is safe and easy to use. It doesn't alter any system files and users 
+                                can switch between the default Windows look and feel and a custom WindowBlinds 
+                                skin with the click of a button. In addition, WindowBlinds has been tested to ensure 
+                                it works with Windows Vista, so you know it is compatible, reliable, and more secure.
+                            </p>
+                        </div>
+                        <div class="content-screenshot">
+                            <div class="screenshot-frame">
+                                <div class="screenshot-image">
+                                    [ Main Screenshot ]
+                                </div>
+                                <div class="screenshot-thumbs">
+                                    <div class="screenshot-thumb active">1</div>
+                                    <div class="screenshot-thumb">2</div>
+                                    <div class="screenshot-thumb">3</div>
+                                    <div class="screenshot-thumb">4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Price and CTA Row -->
+                    <div class="price-cta-row">
+                        <div class="price-section">
+                            <div class="price-info">
+                                <div class="price-amount">Price: $19.95</div>
+                                <div class="price-note">A component of<br>Object Desktop ($49.95)</div>
+                            </div>
+                            <div class="compatibility-badges">
+                                <div class="compat-badge">
+                                    <div class="compat-badge-icon vista">🪟</div>
+                                    <div class="compat-badge-label">Vista Ready!</div>
+                                </div>
+                                <div class="compat-badge">
+                                    <div class="compat-badge-icon xp">🪟</div>
+                                    <div class="compat-badge-label">XP Ready!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-buttons">
+                            <a href="#" class="btn btn-green">Buy Now!</a>
+                            <a href="#" class="btn btn-orange">Free Trial!</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Tabs -->
+                <div class="content-tabs">
+                    <div class="tabs-nav">
+                        <a href="#" class="active">Overview</a>
+                        <a href="#">Features</a>
+                        <a href="#">Screenshots</a>
+                        <a href="#">System Requirements</a>
+                    </div>
+                    <div class="tab-content">
+                        <h3>See Windows in a whole new way</h3>
+                        
+                        <h4>Customize the look &amp; feel of Windows</h4>
+                        <p>
+                            Tired of your computer having the same old look as every other computer? Want to give 
+                            your Windows PC its own unique style? Stardock WindowBlinds will let you apply thousands 
+                            of different skins (visual styles) to change the look and feel of your entire desktop. 
+                            WindowBlinds is so flexible that users can create skins that mimic the look and feel of 
+                            other operating systems.
+                        </p>
+                        
+                        <h4>Not Just Eye Candy</h4>
+                        <p>
+                            WindowBlinds doesn't just make Windows look better, it can make it more functional. You 
+                            can create your own skins that add additional buttons to the title bar that provide 
+                            additional functionality such as roll-up buttons, link buttons, program short cuts, even 
+                            media player controls. Moreover, because WindowBlinds uses the latest features of your 
+                            graphics card, it can make Windows even faster than the default Windows XP or "Aero" style.
+                        </p>
+                        
+                        <h4>You are in control</h4>
+                        <p>
+                            Even with thousands of different visual styles to choose from, you can customize those 
+                            visual styles as well. WindowBlinds gives you total control over your graphical user 
+                            interface. WindowBlinds will let you change the color of your Windows GUI, change your 
+                            wallpaper, give different windows their own specific look, choose a new Windows taskbar 
+                            and Start button.
+                        </p>
+                        
+                        <h4>Improve your productivity</h4>
+                        <p>
+                            WindowBlinds has features that significantly enhance a user's productivity when it comes 
+                            to interacting with windows. For example, you set WindowBlinds to minimize windows just 
+                            by right-clicking on the title bar, a great feature for minimizing several windows quickly 
+                            without having to resort to "minimize all".
+                        </p>
+                    </div>
+                </div>
+                
+            </main>
+            <!-- END SECTION: CONTENT AREA -->
+            
+        </div>
+        <!-- END SECTION: MAIN LAYOUT -->
+        
+        <!-- ================================================================
+        SECTION: PARTNER LOGOS BAR
+        Purpose: Links to affiliated Stardock sites
+        Dependencies: None
+        To Remove: Delete this section and #partner-bar styles
+        ================================================================ -->
+        <div id="partner-bar">
+            <a href="#" class="partner-logo">
+                <span class="partner-logo-icon">🌐</span>
+                WinCustomize.com
+            </a>
+            <a href="#" class="partner-logo">
+                <span class="partner-logo-icon">🎮</span>
+                TotalGaming.net
+            </a>
+            <a href="#" class="partner-logo">
+                <span class="partner-logo-icon">🎨</span>
+                StardockDesign.com
+            </a>
+            <a href="#" class="partner-logo">
+                <span class="partner-logo-icon">👤</span>
+                JoeUser.com
+            </a>
+            <a href="#" class="partner-logo">
+                <span class="partner-logo-icon">🎨</span>
+                MyColors
+            </a>
+        </div>
+        <!-- END SECTION: PARTNER LOGOS BAR -->
+        
+        <!-- ================================================================
+        SECTION: FOOTER
+        Purpose: Copyright and legal links
+        Dependencies: None
+        To Remove: Delete this section and #footer styles
+        ================================================================ -->
+        <footer id="footer">
+            <div class="footer-links">
+                <a href="#">Contact</a> <span>|</span>
+                <a href="#">Forums</a> <span>|</span>
+                <a href="#">Support</a> <span>|</span>
+                <a href="#">Store</a> <span>|</span>
+                <a href="#">Privacy</a> <span>|</span>
+                <a href="#">Site Map</a>
+            </div>
+            <div class="footer-copyright">
+                Copyright © 2025 Stardock Corporation. All Rights Reserved.
+            </div>
+        </footer>
+        <!-- END SECTION: FOOTER -->
+        
+    </div>
+</body>
+</html>

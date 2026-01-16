@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperplex Clone - Template</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS CUSTOM PROPERTIES (THEME)
+           Easy to modify for your brand
+        ============================================ */
+        :root {
+            /* Colors */
+            --color-bg-primary: #0a0a0a;
+            --color-bg-secondary: #111111;
+            --color-bg-card: #161616;
+            --color-bg-card-hover: #1a1a1a;
+            --color-accent: #c9a227;
+            --color-accent-dim: rgba(201, 162, 39, 0.15);
+            --color-accent-glow: rgba(201, 162, 39, 0.4);
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #888888;
+            --color-text-muted: #555555;
+            --color-border: #2a2a2a;
+            --color-border-accent: rgba(201, 162, 39, 0.3);
+            
+            /* Typography */
+            --font-primary: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Spacing */
+            --section-padding: 100px 0;
+            --container-max-width: 1200px;
+            --container-padding: 0 24px;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+        }
+
+        /* ============================================
+           RESET & BASE STYLES
+        ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Container utility */
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+
+        /* Section label styling */
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--color-accent);
+            border: 1px solid var(--color-border-accent);
+            padding: 6px 16px;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Large spaced title */
+        .spaced-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           SECTION 1: NAVIGATION / HEADER
+           - Sticky header with logo and CTA
+        ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header__logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .header__logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--color-accent), #e8d066);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header__logo-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .header__badge {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header__badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .header__cta {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+
+        .header__cta:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* ============================================
+           SECTION 2: HERO
+           - Main headline with animated text
+           - Tagline and CTA buttons
+        ============================================ */
+        .hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, var(--color-accent-dim) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero__title-box {
+            display: inline-block;
+            border: 1px solid var(--color-accent);
+            padding: 40px 80px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .hero__title-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--color-accent-dim), transparent);
+            opacity: 0.5;
+        }
+
+        .hero__title {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--color-accent);
+        }
+
+        .hero__subtitle {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero__actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+
+        .hero__btn--primary {
+            background: var(--color-accent);
+            color: var(--color-bg-primary);
+        }
+
+        .hero__btn--primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .hero__btn--secondary {
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+        }
+
+        .hero__btn--secondary:hover {
+            border-color: var(--color-accent);
+        }
+
+        .hero__stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .hero__stat {
+            text-align: center;
+        }
+
+        .hero__stat-value {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--color-accent);
+            font-family: var(--font-mono);
+        }
+
+        .hero__stat-label {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           SECTION 3: MARQUEE / TICKER
+           - Infinite scrolling keywords
+        ============================================ */
+        .marquee {
+            padding: 30px 0;
+            background: var(--color-bg-secondary);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .marquee__track {
+            display: flex;
+            animation: marquee-scroll 30s linear infinite;
+        }
+
+        .marquee__content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-shrink: 0;
+            padding-right: 40px;
+        }
+
+        .marquee__item {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .marquee__item::before {
+            content: '◆';
+            color: var(--color-accent);
+            font-size: 8px;
+        }
+
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ============================================
+           SECTION 4: REHYPOTHECATION EXPLAINER
+           - Visual comparison with chart
+        ============================================ */
+        .explainer {
+            padding: var(--section-padding);
+        }
+
+        .explainer__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .explainer__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .explainer__visual {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+
+        .explainer__chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .explainer__chart-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .explainer__chart-stats {
+            display: flex;
+            gap: 24px;
+        }
+
+        .explainer__chart-stat {
+            text-align: right;
+        }
+
+        .explainer__chart-stat-value {
+            font-family: var(--font-mono);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .explainer__chart-stat-label {
+            font-size: 11px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+        }
+
+        .explainer__chart {
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .explainer__bar {
+            flex: 1;
+            background: var(--color-accent);
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            transition: var(--transition-medium);
+        }
+
+        .explainer__bar:hover {
+            filter: brightness(1.2);
+        }
+
+        .explainer__bar--dim {
+            background: var(--color-border);
+        }
+
+        .explainer__range {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .explainer__content h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .explainer__content p {
+            color: var(--color-text-secondary);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .explainer__comparison {
+            display: grid;
+            gap: 20px;
+        }
+
+        .explainer__compare-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .explainer__compare-card--highlight {
+            border-color: var(--color-accent);
+            background: linear-gradient(135deg, var(--color-accent-dim), transparent);
+        }
+
+        .explainer__compare-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .explainer__compare-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .explainer__compare-badge {
+            font-size: 11px;
+            background: var(--color-accent);
+            color: var(--color-bg-primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .explainer__compare-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .explainer__compare-stat-value {
+            font-family: var(--font-mono);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .explainer__compare-stat-label {
+            font-size: 11px;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SECTION 5: POSITIONS CAROUSEL
+           - Horizontal scrolling LP cards
+        ============================================ */
+        .positions {
+            padding: var(--section-padding);
+            overflow: hidden;
+        }
+
+        .positions__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .positions__count {
+            font-family: var(--font-mono);
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        .positions__track {
+            display: flex;
+            gap: 20px;
+            animation: positions-scroll 40s linear infinite;
+        }
+
+        .positions__track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes positions-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .position-card {
+            flex-shrink: 0;
+            width: 280px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            transition: var(--transition-medium);
+        }
+
+        .position-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+        }
+
+        .position-card__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .position-card__icons {
+            display: flex;
+        }
+
+        .position-card__icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-bg-secondary);
+            border: 2px solid var(--color-bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .position-card__icon:nth-child(2) {
+            margin-left: -10px;
+        }
+
+        .position-card__pair {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .position-card__chain {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .position-card__stats {
+            display: grid;
+            gap: 12px;
+        }
+
+        .position-card__stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .position-card__stat-label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .position-card__stat-value {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .position-card__stat-value--highlight {
+            color: var(--color-accent);
+        }
+
+        .position-card__rating {
+            display: flex;
+            gap: 4px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .position-card__star {
+            width: 16px;
+            height: 16px;
+            background: var(--color-border);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .position-card__star--filled {
+            background: var(--color-accent);
+        }
+
+        .position-card__star--half {
+            background: linear-gradient(90deg, var(--color-accent) 50%, var(--color-border) 50%);
+        }
+
+        /* ============================================
+           SECTION 6: FEATURES
+           - Three feature cards with images
+        ============================================ */
+        .features {
+            padding: var(--section-padding);
+            background: var(--color-bg-secondary);
+        }
+
+        .features__header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .features__grid {
+            display: grid;
+            gap: 60px;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .feature-row:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-row:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        @media (max-width: 900px) {
+            .feature-row,
+            .feature-row:nth-child(even) {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+        }
+
+        .feature__content {
+            max-width: 480px;
+        }
+
+        .feature__title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .feature__title span {
+            color: var(--color-accent);
+        }
+
+        .feature__description {
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .feature__visual {
+            aspect-ratio: 4/3;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feature__visual-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-accent-dim), transparent);
+        }
+
+        .feature__visual-placeholder {
+            width: 80%;
+            height: 60%;
+            background: var(--color-bg-secondary);
+            border: 1px dashed var(--color-border);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+
+        /* ============================================
+           SECTION 7: SECURITY
+           - Three layers with expandable cards
+        ============================================ */
+        .security {
+            padding: var(--section-padding);
+        }
+
+        .security__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .security__cards {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: 16px;
+        }
+
+        .security-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .security-card__header {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .security-card__header:hover {
+            background: var(--color-bg-card-hover);
+        }
+
+        .security-card__left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .security-card__number {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--color-accent);
+        }
+
+        .security-card__title {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .security-card__toggle {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--color-text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        .security-card.active .security-card__toggle {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: var(--color-bg-primary);
+            transform: rotate(45deg);
+        }
+
+        .security-card__body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .security-card.active .security-card__body {
+            max-height: 300px;
+        }
+
+        .security-card__content {
+            padding: 0 24px 24px 24px;
+            padding-left: 80px;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .security-card__pagination {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            padding-top: 20px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SECTION 8: FAQ
+           - Accordion-style questions
+        ============================================ */
+        .faq {
+            padding: var(--section-padding);
+            background: var(--color-bg-secondary);
+        }
+
+        .faq__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq__list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .faq-item__question {
+            width: 100%;
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            text-align: left;
+            transition: var(--transition-fast);
+        }
+
+        .faq-item__question:hover {
+            color: var(--color-accent);
+        }
+
+        .faq-item__icon {
+            font-size: 24px;
+            color: var(--color-text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .faq-item.active .faq-item__icon {
+            transform: rotate(45deg);
+            color: var(--color-accent);
+        }
+
+        .faq-item__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-item__answer {
+            max-height: 500px;
+        }
+
+        .faq-item__answer-inner {
+            padding-bottom: 24px;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECTION 9: CTA / GET STARTED
+           - Two action cards
+        ============================================ */
+        .cta {
+            padding: var(--section-padding);
+        }
+
+        .cta__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .cta__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .cta__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cta-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            transition: var(--transition-medium);
+        }
+
+        .cta-card:hover {
+            border-color: var(--color-accent);
+        }
+
+        .cta-card__title {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .cta-card__description {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .cta-card__btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+
+        .cta-card__btn--primary {
+            background: var(--color-accent);
+            color: var(--color-bg-primary);
+        }
+
+        .cta-card__btn--primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .cta-card__btn--secondary {
+            border: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+        }
+
+        /* ============================================
+           SECTION 10: FOOTER
+           - Links, social, copyright
+        ============================================ */
+        .footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer__logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .footer__logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--color-accent), #e8d066);
+            border-radius: var(--radius-sm);
+        }
+
+        .footer__links {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer__column h4 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+
+        .footer__column ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .footer__column a {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        .footer__column a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .footer__banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--color-border-accent);
+            padding: 8px 16px;
+            font-size: 11px;
+            font-family: var(--font-mono);
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         SECTION 1: HEADER / NAVIGATION
+         Remove: Delete entire <header> element
+    ============================================ -->
+    <header class="header">
+        <div class="container header__inner">
+            <div class="header__logo">
+                <div class="header__logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                        <line x1="12" y1="22" x2="12" y2="15.5"/>
+                        <polyline points="22 8.5 12 15.5 2 8.5"/>
+                    </svg>
+                </div>
+                <span>HYPERPLEX</span>
+            </div>
+            
+            <div class="header__badge">
+                <span class="header__badge-dot"></span>
+                Coming soon to Berachain
+            </div>
+            
+            <a href="#get-started" class="header__cta">Launch App</a>
+        </div>
+    </header>
+
+    <!-- ============================================
+         SECTION 2: HERO
+         Remove: Delete entire <section class="hero"> element
+    ============================================ -->
+    <section class="hero">
+        <div class="hero__bg-glow"></div>
+        <div class="container hero__content">
+            <div class="hero__title-box">
+                <h1 class="hero__title">Hyperactive Liquidity</h1>
+            </div>
+            
+            <p class="hero__subtitle">
+                The first LP amplifier. Maximize your AMM experience. Minimize your risk.
+            </p>
+            
+            <div class="hero__actions">
+                <a href="#" class="hero__btn hero__btn--secondary">
+                    <span>◈</span> Market Making Liquidity
+                </a>
+                <a href="#" class="hero__btn hero__btn--primary">
+                    Upgrade Your Position
+                </a>
+            </div>
+            
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <div class="hero__stat-value">$12.4M</div>
+                    <div class="hero__stat-label">Total Value Locked</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="hero__stat-value">2,847</div>
+                    <div class="hero__stat-label">Active Positions</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="hero__stat-value">+127%</div>
+                    <div class="hero__stat-label">Avg. Yield Boost</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: MARQUEE / TICKER
+         Remove: Delete entire <section class="marquee"> element
+    ============================================ -->
+    <section class="marquee">
+        <div class="marquee__track">
+            <div class="marquee__content">
+                <span class="marquee__item">Market Making</span>
+                <span class="marquee__item">Rehypothecated</span>
+                <span class="marquee__item">Bribed</span>
+                <span class="marquee__item">Depeg Protected</span>
+                <span class="marquee__item">Compounding</span>
+                <span class="marquee__item">Fairly Priced</span>
+                <span class="marquee__item">LVR Capturing</span>
+                <span class="marquee__item">Hedged</span>
+                <span class="marquee__item">Hyperactive</span>
+            </div>
+            <div class="marquee__content">
+                <span class="marquee__item">Market Making</span>
+                <span class="marquee__item">Rehypothecated</span>
+                <span class="marquee__item">Bribed</span>
+                <span class="marquee__item">Depeg Protected</span>
+                <span class="marquee__item">Compounding</span>
+                <span class="marquee__item">Fairly Priced</span>
+                <span class="marquee__item">LVR Capturing</span>
+                <span class="marquee__item">Hedged</span>
+                <span class="marquee__item">Hyperactive</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: EXPLAINER / REHYPOTHECATION
+         Remove: Delete entire <section class="explainer"> element
+    ============================================ -->
+    <section class="explainer">
+        <div class="container">
+            <span class="section-label">Rehypothecation</span>
+            
+            <div class="explainer__grid">
+                <div class="explainer__visual">
+                    <div class="explainer__chart-header">
+                        <div>
+                            <div class="explainer__chart-title">WITH HPX</div>
+                            <div style="display: flex; gap: 20px; margin-top: 8px;">
+                                <span style="font-size: 12px; color: var(--color-text-muted);">
+                                    <span style="color: var(--color-accent);">●</span> Actively Earning
+                                </span>
+                                <span style="font-size: 12px; color: var(--color-text-muted);">
+                                    <span style="color: var(--color-border);">●</span> Idle Liquidity
+                                </span>
+                            </div>
+                        </div>
+                        <div class="explainer__chart-stats">
+                            <div class="explainer__chart-stat">
+                                <div class="explainer__chart-stat-value">33%</div>
+                                <div class="explainer__chart-stat-label">Yield</div>
+                            </div>
+                            <div class="explainer__chart-stat">
+                                <div class="explainer__chart-stat-value">96%</div>
+                                <div class="explainer__chart-stat-label">Utilization</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="explainer__chart">
+                        <div class="explainer__bar" style="height: 20%;"></div>
+                        <div class="explainer__bar" style="height: 35%;"></div>
+                        <div class="explainer__bar" style="height: 50%;"></div>
+                        <div class="explainer__bar" style="height: 80%;"></div>
+                        <div class="explainer__bar" style="height: 100%;"></div>
+                        <div class="explainer__bar" style="height: 95%;"></div>
+                        <div class="explainer__bar" style="height: 75%;"></div>
+                        <div class="explainer__bar" style="height: 55%;"></div>
+                        <div class="explainer__bar" style="height: 40%;"></div>
+                        <div class="explainer__bar" style="height: 25%;"></div>
+                    </div>
+                    
+                    <div class="explainer__range">
+                        <span>MIN PRICE</span>
+                        <span>SWAP RANGE</span>
+                        <span>MAX PRICE</span>
+                    </div>
+                </div>
+                
+                <div class="explainer__content">
+                    <h3>Idle liquidity now earns</h3>
+                    <p>
+                        We put the idle portions of your AMM LP into safe yield sources to earn while they wait to market make. This dramatically improves capital efficiency and earns IL-free yield.
+                    </p>
+                    
+                    <div class="explainer__comparison">
+                        <div class="explainer__compare-card explainer__compare-card--highlight">
+                            <div class="explainer__compare-header">
+                                <span class="explainer__compare-label">With HPX</span>
+                                <span class="explainer__compare-badge">Recommended</span>
+                            </div>
+                            <div class="explainer__compare-stats">
+                                <div>
+                                    <div class="explainer__compare-stat-value" style="color: var(--color-accent);">33%</div>
+                                    <div class="explainer__compare-stat-label">Yield</div>
+                                </div>
+                                <div>
+                                    <div class="explainer__compare-stat-value" style="color: var(--color-accent);">96%</div>
+                                    <div class="explainer__compare-stat-label">Utilization</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="explainer__compare-card">
+                            <div class="explainer__compare-header">
+                                <span class="explainer__compare-label">Without HPX</span>
+                            </div>
+                            <div class="explainer__compare-stats">
+                                <div>
+                                    <div class="explainer__compare-stat-value">24%</div>
+                                    <div class="explainer__compare-stat-label">Yield</div>
+                                </div>
+                                <div>
+                                    <div class="explainer__compare-stat-value">2%</div>
+                                    <div class="explainer__compare-stat-label">Utilization</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: POSITIONS CAROUSEL
+         Remove: Delete entire <section class="positions"> element
+    ============================================ -->
+    <section class="positions">
+        <div class="container">
+            <div class="positions__header">
+                <div>
+                    <span class="section-label">Hyperplex Positions</span>
+                </div>
+                <div class="positions__count">100+ Combinations</div>
+            </div>
+        </div>
+        
+        <div class="positions__track">
+            <!-- Position Card 1 -->
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">E</div>
+                        <div class="position-card__icon">U</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">ETH / USDC</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+76.51%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+53.91%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <!-- Position Card 2 -->
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">A</div>
+                        <div class="position-card__icon">U</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">AVAX / USDC</div>
+                        <div class="position-card__chain">Avalanche</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+520.37%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+182.00%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <!-- Position Card 3 -->
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">U</div>
+                        <div class="position-card__icon">U</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">USDT / USDC</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+13.65%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+6.05%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <!-- Position Card 4 -->
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">B</div>
+                        <div class="position-card__icon">E</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">BTC / ETH</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+37.18%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+28.67%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <!-- Position Card 5 -->
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">P</div>
+                        <div class="position-card__icon">E</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">PENDLE / ETH</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+1208.00%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+258.00%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <!-- Position Card 6 -->
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">E</div>
+                        <div class="position-card__icon">A</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">ETH / ARB</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+91.91%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+63.60%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <!-- Duplicate cards for seamless loop -->
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">E</div>
+                        <div class="position-card__icon">U</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">ETH / USDC</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+76.51%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+53.91%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">A</div>
+                        <div class="position-card__icon">U</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">AVAX / USDC</div>
+                        <div class="position-card__chain">Avalanche</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+520.37%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+182.00%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">U</div>
+                        <div class="position-card__icon">U</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">USDT / USDC</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+13.65%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+6.05%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">B</div>
+                        <div class="position-card__icon">E</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">BTC / ETH</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+37.18%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+28.67%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--half"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">P</div>
+                        <div class="position-card__icon">E</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">PENDLE / ETH</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+1208.00%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+258.00%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+            
+            <div class="position-card">
+                <div class="position-card__header">
+                    <div class="position-card__icons">
+                        <div class="position-card__icon">E</div>
+                        <div class="position-card__icon">A</div>
+                    </div>
+                    <div>
+                        <div class="position-card__pair">ETH / ARB</div>
+                        <div class="position-card__chain">Arbitrum</div>
+                    </div>
+                </div>
+                <div class="position-card__stats">
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Total Yield</span>
+                        <span class="position-card__stat-value position-card__stat-value--highlight">+91.91%</span>
+                    </div>
+                    <div class="position-card__stat">
+                        <span class="position-card__stat-label">Base Yield</span>
+                        <span class="position-card__stat-value">+63.60%</span>
+                    </div>
+                </div>
+                <div class="position-card__rating">
+                    <div class="position-card__star position-card__star--filled"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                    <div class="position-card__star"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: FEATURES
+         Remove: Delete entire <section class="features"> element
+    ============================================ -->
+    <section class="features">
+        <div class="container">
+            <div class="features__header">
+                <span class="section-label">Features</span>
+                <h2 class="spaced-title">HYPERPLEX MAKES THE<br>MOST OUT OF YOUR LPS</h2>
+            </div>
+            
+            <div class="features__grid">
+                <!-- Feature 1 -->
+                <div class="feature-row">
+                    <div class="feature__content">
+                        <h3 class="feature__title">FREE AUTO <span>COMPOUNDING</span></h3>
+                        <p class="feature__description">
+                            HPX can automatically put earned swap fees back into their concentrated LPs to maximize the compounded yield at no charge.
+                        </p>
+                    </div>
+                    <div class="feature__visual">
+                        <div class="feature__visual-inner">
+                            <div class="feature__visual-placeholder">Feature Visual 1</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-row">
+                    <div class="feature__content">
+                        <h3 class="feature__title">HYPERACTIVE <span>REHYPOTHECATION</span></h3>
+                        <p class="feature__description">
+                            You can choose the source of your rehypothecation yield boost, or let us actively chase the highest reliable IL-free yields for you.
+                        </p>
+                    </div>
+                    <div class="feature__visual">
+                        <div class="feature__visual-inner">
+                            <div class="feature__visual-placeholder">Feature Visual 2</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-row">
+                    <div class="feature__content">
+                        <h3 class="feature__title">MULTIPLEXED <span>YIELD BIDDING</span></h3>
+                        <p class="feature__description">
+                            Multiple protocols bid above your base AMM's APR in real-time thus guaranteeing you higher yields for the same risk.
+                        </p>
+                    </div>
+                    <div class="feature__visual">
+                        <div class="feature__visual-inner">
+                            <div class="feature__visual-placeholder">Feature Visual 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 7: SECURITY
+         Remove: Delete entire <section class="security"> element
+    ============================================ -->
+    <section class="security">
+        <div class="container">
+            <div class="security__header">
+                <span class="section-label">Security</span>
+                <h2 class="spaced-title">THREE LAYERS OF<br>PROTECTION</h2>
+            </div>
+            
+            <div class="security__cards">
+                <!-- Security Card 1 -->
+                <div class="security-card active">
+                    <div class="security-card__header" onclick="toggleSecurityCard(this)">
+                        <div class="security-card__left">
+                            <span class="security-card__number">01</span>
+                            <span class="security-card__title">Audited</span>
+                        </div>
+                        <span class="security-card__toggle">+</span>
+                    </div>
+                    <div class="security-card__body">
+                        <div class="security-card__content">
+                            We begin with thorough audits by some of the most trusted minds in DeFi. We interview all of our auditors and only choose those we trust to secure our own assets.
+                            <br><br>
+                            Even after multiple audits by Pranav, Zokyo, Sherlock, and Zellic, live white-hack competitions and Sherlock insurance makes sure our users stay safe.
+                            <div class="security-card__pagination">01 / 03</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Security Card 2 -->
+                <div class="security-card">
+                    <div class="security-card__header" onclick="toggleSecurityCard(this)">
+                        <div class="security-card__left">
+                            <span class="security-card__number">02</span>
+                            <span class="security-card__title">Monitoring</span>
+                        </div>
+                        <span class="security-card__toggle">+</span>
+                    </div>
+                    <div class="security-card__body">
+                        <div class="security-card__content">
+                            Hyperplex is constantly monitored for suspicious activities by both internal and external teams. This helps us both optimize yields and pull circuit breakers even if a single dollar is misplaced.
+                            <div class="security-card__pagination">02 / 03</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Security Card 3 -->
+                <div class="security-card">
+                    <div class="security-card__header" onclick="toggleSecurityCard(this)">
+                        <div class="security-card__left">
+                            <span class="security-card__number">03</span>
+                            <span class="security-card__title">Circuit Breakers</span>
+                        </div>
+                        <span class="security-card__toggle">+</span>
+                    </div>
+                    <div class="security-card__body">
+                        <div class="security-card__content">
+                            Though it's unlikely to be used, we improve upon the industry standard by adding circuit breakers that automatically reject suspicious transactions. A combination of emergency fail-safes, permissioned roles, and time-gating ensure smooth and safe operations even in our early days.
+                            <div class="security-card__pagination">03 / 03</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 8: FAQ
+         Remove: Delete entire <section class="faq"> element
+    ============================================ -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq__header">
+                <span class="section-label">FAQ</span>
+                <h2 class="spaced-title">FREQUENTLY ASKED<br>QUESTIONS</h2>
+            </div>
+            
+            <div class="faq__list">
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFaq(this)">
+                        <span>How do I use Hyperplex?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            Simply by depositing an LP position, you are using Hyperplex. Choose any of your existing LPs along with a collection of perks to add. You won't see your position on the original AMM anymore but you'll be able to see it on Hyperplex along with the original yield and your new yield.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFaq(this)">
+                        <span>Which AMMs do you support?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            On Berachain we're focusing on Kodiak at the moment. Soon we'll add support for Uniswap and eventually other AMMS like Trader Joe, Ambient, Algebra, Camelot, Aerodrome and more.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFaq(this)">
+                        <span>Why is regular AMM liquidity inefficient?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            AMMs are designed to efficiently support swaps over everything else. This means they don't maximize yield. This is by design because in the early days of AMMs gas was extremely expensive and they could only prioritize one function. However, since then gas prices have plummeted thus allowing for a plethora of optimizations.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFaq(this)">
+                        <span>What are the risks of using Hyperplex?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            The main risk is smart contract risk, just like other defi protocols. Depending on the perks you choose though, it'll be mix of those protocols' risks so make sure to pick them according to your risk appetite. Each perk has a description of their respective risks. Ultimately though, you are not at risk for more IL.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFaq(this)">
+                        <span>Why hasn't this been built before?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            Two reasons: gas and complexity. Building this wasn't easy. There was nothing to fork from, no research paper to spell out what to do. It took us two years of experimenting with different designs to find one that balances function with usability. However, our solution was far too gas intensive to implement until now that ultra-low cost chains are available.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFaq(this)">
+                        <span>What actually happens when I re-deposit an LP position?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            A re-deposited LP is immediately broken down into a specifically chosen set of pieces. Some of these pieces are put back into the AMM, and some are placed into the rehypothecators of your choosing. These pieces are bucketed with the pieces of other AMM LPs from other users and then we make bulk optimizations over these buckets.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFaq(this)">
+                        <span>Do you have stable swaps?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            Coming soon! We replicate the stable swap curve using Kodiak's regular concentrated curve. This lets users access Kodiak's order flow but keep the utility of a stable swap. Furthermore, our optimizations actually work even better for stable pairs!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 9: CTA / GET STARTED
+         Remove: Delete entire <section class="cta"> element
+    ============================================ -->
+    <section class="cta" id="get-started">
+        <div class="container">
+            <div class="cta__header">
+                <span class="section-label">Get Started</span>
+                <h2 class="spaced-title">START AMPLIFYING<br>YOUR LIQUIDITY</h2>
+            </div>
+            
+            <div class="cta__grid">
+                <div class="cta-card">
+                    <h3 class="cta-card__title">Upgrade Existing LPs</h3>
+                    <p class="cta-card__description">
+                        Choose one of your existing LP positions and start generating additional yield.
+                    </p>
+                    <a href="#" class="cta-card__btn cta-card__btn--primary">Connect Wallet</a>
+                </div>
+                
+                <div class="cta-card">
+                    <h3 class="cta-card__title">Create a New Position</h3>
+                    <p class="cta-card__description">
+                        Pick from one of our 100+ different position combinations and create a new Amplified LP tailored to your liking.
+                    </p>
+                    <span class="cta-card__btn cta-card__btn--secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 10: FOOTER
+         Remove: Delete entire <footer> element
+    ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__logo">
+                    <div class="footer__logo-icon"></div>
+                    <span>HYPERPLEX</span>
+                </div>
+                
+                <div class="footer__links">
+                    <div class="footer__column">
+                        <h4>Docs</h4>
+                        <ul>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Positions</a></li>
+                            <li><a href="#">App</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__column">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Telegram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <span>COPYRIGHT HYPERPLEX © 2023</span>
+                <span class="footer__banner">◈ UNLOCK ADVANCED YIELD</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         Interactive functionality
+    ============================================ -->
+    <script>
+        // Security card toggle
+        function toggleSecurityCard(header) {
+            const card = header.parentElement;
+            const allCards = document.querySelectorAll('.security-card');
+            
+            allCards.forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+            
+            card.classList.toggle('active');
+        }
+        
+        // FAQ toggle
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+            
+            allItems.forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+            
+            item.classList.toggle('active');
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

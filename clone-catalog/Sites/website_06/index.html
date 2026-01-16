@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browserbase Clone - Modular Template</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Easy customization hub
+           ============================================ */
+        :root {
+            /* Primary Colors */
+            --color-primary: #FF4D4D;
+            --color-primary-hover: #E63E3E;
+            --color-secondary: #1A1A1A;
+            
+            /* Background Colors */
+            --bg-white: #FFFFFF;
+            --bg-light: #FAFAFA;
+            --bg-dark: #0D0D0D;
+            --bg-cream: #FFF8F0;
+            
+            /* Text Colors */
+            --text-primary: #1A1A1A;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --text-white: #FFFFFF;
+            
+            /* Accent Colors for Features */
+            --accent-red: #FF4D4D;
+            --accent-yellow: #FFD93D;
+            --accent-blue: #4D9FFF;
+            --accent-green: #4DFF88;
+            --accent-purple: #9F4DFF;
+            --accent-orange: #FF9F4D;
+            
+            /* Spacing */
+            --section-padding: 100px;
+            --container-width: 1200px;
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            
+            /* Typography */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--text-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-white);
+            color: var(--text-primary);
+            border: 1px solid #E5E5E5;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+        }
+
+        .btn-dark {
+            background: var(--color-secondary);
+            color: var(--text-white);
+        }
+
+        .btn-dark:hover {
+            background: #333;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* ============================================
+           SECTION 1: HEADER / NAVIGATION
+           To remove: Delete #header-section
+           ============================================ */
+        #header-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon span {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-actions .btn {
+            padding: 10px 20px;
+        }
+
+        /* ============================================
+           SECTION 2: HERO SECTION
+           To remove: Delete #hero-section
+           ============================================ */
+        #hero-section {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: var(--bg-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-light);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            border: 1px solid #eee;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+        }
+
+        .hero-graphic {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .hero-cubes {
+            display: flex;
+            gap: 8px;
+            perspective: 500px;
+        }
+
+        .cube {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            transform: rotateX(15deg) rotateY(-15deg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cube-red { background: linear-gradient(135deg, #FF6B6B, #FF4D4D); }
+        .cube-yellow { background: linear-gradient(135deg, #FFE066, #FFD93D); }
+        .cube-blue { background: linear-gradient(135deg, #74B9FF, #4D9FFF); }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .hero-note {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           SECTION 3: TRUSTED BY / LOGO STRIP
+           To remove: Delete #trusted-section
+           ============================================ */
+        #trusted-section {
+            padding: 60px 0;
+            border-top: 1px solid #F0F0F0;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .trusted-label {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 48px;
+        }
+
+        .logo-item {
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .logo-item:hover {
+            opacity: 1;
+        }
+
+        /* ============================================
+           SECTION 4: FEATURES SECTION
+           To remove: Delete #features-section
+           ============================================ */
+        #features-section {
+            padding: var(--section-padding) 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: var(--bg-white);
+            border: 1px solid #F0F0F0;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #E0E0E0;
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .feature-icon.red { background: linear-gradient(135deg, #FFE5E5, #FFD0D0); }
+        .feature-icon.yellow { background: linear-gradient(135deg, #FFF5D0, #FFE9A0); }
+        .feature-icon.blue { background: linear-gradient(135deg, #E5F0FF, #D0E5FF); }
+        .feature-icon.green { background: linear-gradient(135deg, #E5FFE9, #D0FFD8); }
+        .feature-icon.purple { background: linear-gradient(135deg, #F0E5FF, #E5D0FF); }
+        .feature-icon.orange { background: linear-gradient(135deg, #FFF0E5, #FFE5D0); }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .feature-card ul {
+            list-style: none;
+        }
+
+        .feature-card li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .feature-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           SECTION 5: HOW IT WORKS
+           To remove: Delete #how-it-works-section
+           ============================================ */
+        #how-it-works-section {
+            padding: var(--section-padding) 0;
+            background: var(--bg-light);
+        }
+
+        .how-it-works-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .how-it-works-text h2 {
+            font-size: 42px;
+            margin-bottom: 24px;
+        }
+
+        .how-it-works-text p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .how-it-works-text p strong {
+            color: var(--text-primary);
+        }
+
+        .how-it-works-diagram {
+            background: var(--bg-white);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .diagram-placeholder {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, #F8F8F8, #F0F0F0);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #E0E0E0;
+        }
+
+        .diagram-placeholder span {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* ============================================
+           SECTION 6: USE CASES
+           To remove: Delete #use-cases-section
+           ============================================ */
+        #use-cases-section {
+            padding: var(--section-padding) 0;
+        }
+
+        .use-cases-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 48px;
+        }
+
+        .use-case-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid #E5E5E5;
+            border-radius: 100px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-body);
+        }
+
+        .use-case-tab.active,
+        .use-case-tab:hover {
+            background: var(--color-secondary);
+            color: var(--text-white);
+            border-color: var(--color-secondary);
+        }
+
+        .use-cases-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .use-case-info {
+            padding: 40px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius-lg);
+        }
+
+        .use-case-info h3 {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .use-case-info ul {
+            list-style: none;
+        }
+
+        .use-case-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .use-case-info li::before {
+            content: '→';
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .use-case-visual {
+            position: relative;
+        }
+
+        .use-case-visual img {
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .use-case-image-placeholder {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #FFF5F5, #FFE5E5);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .use-case-image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23FF4D4D'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+            opacity: 0.5;
+        }
+
+        /* ============================================
+           SECTION 7: PRICING
+           To remove: Delete #pricing-section
+           ============================================ */
+        #pricing-section {
+            padding: var(--section-padding) 0;
+            background: var(--bg-light);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .pricing-toggle-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius-lg);
+            padding: 40px 32px;
+            border: 1px solid #F0F0F0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 1px var(--color-primary);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .pricing-tier {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* ============================================
+           SECTION 8: TESTIMONIALS / DEVELOPER LOVE
+           To remove: Delete #testimonials-section
+           ============================================ */
+        #testimonials-section {
+            padding: var(--section-padding) 0;
+            background: var(--bg-cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #E0E0E0, #F0F0F0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-author {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .testimonial-handle {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .testimonial-platform {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .testimonial-content {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .testimonial-content a {
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           SECTION 9: CTA SECTION
+           To remove: Delete #cta-section
+           ============================================ */
+        #cta-section {
+            padding: 80px 0;
+            background: var(--color-primary);
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 42px;
+            color: var(--text-white);
+            margin-bottom: 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .cta-buttons .btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ============================================
+           SECTION 10: FOOTER
+           To remove: Delete #footer-section
+           ============================================ */
+        #footer-section {
+            padding: 80px 0 40px;
+            background: var(--bg-dark);
+            color: var(--text-white);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo-icon {
+            background: var(--bg-white);
+        }
+
+        .footer-brand .logo-icon span {
+            color: var(--color-secondary);
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-column a:hover {
+            color: var(--text-white);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-legal a:hover {
+            color: var(--text-white);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-social a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-white);
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .how-it-works-content,
+            .use-cases-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        .mt-1 { margin-top: 8px; }
+        .mt-2 { margin-top: 16px; }
+        .mt-3 { margin-top: 24px; }
+        .mb-1 { margin-bottom: 8px; }
+        .mb-2 { margin-bottom: 16px; }
+        .mb-3 { margin-bottom: 24px; }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         SECTION 1: HEADER / NAVIGATION
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <header id="header-section">
+        <div class="container">
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <span>B</span>
+                    </div>
+                    Browserbase
+                </a>
+                
+                <nav class="nav-links">
+                    <a href="#features-section">Features</a>
+                    <a href="#use-cases-section">Use Cases</a>
+                    <a href="#pricing-section">Pricing</a>
+                    <a href="#">Docs</a>
+                </nav>
+                
+                <div class="header-actions">
+                    <a href="#" class="btn btn-secondary">Log in</a>
+                    <a href="#" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         SECTION 2: HERO SECTION
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="hero-section">
+        <div class="container">
+            <div class="hero-badge">
+                New: Check out our latest features
+            </div>
+            
+            <div class="hero-graphic">
+                <div class="hero-cubes">
+                    <div class="cube cube-red"></div>
+                    <div class="cube cube-yellow"></div>
+                    <div class="cube cube-blue"></div>
+                </div>
+            </div>
+            
+            <h1 class="hero-title">A web browser for your AI</h1>
+            
+            <p class="hero-subtitle">
+                Autonomously read, write, and perform tasks on the web with a serverless browser infrastructure.
+            </p>
+            
+            <div class="hero-cta">
+                <a href="#" class="btn btn-primary">Run now</a>
+                <a href="#" class="btn btn-secondary">Get a demo</a>
+            </div>
+            
+            <p class="hero-note">No credit card required.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: TRUSTED BY / LOGO STRIP
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="trusted-section">
+        <div class="container">
+            <p class="trusted-label">Trusted by engineers & backed by operators</p>
+            
+            <div class="logo-strip">
+                <div class="logo-item">AI Grant</div>
+                <div class="logo-item">Y Combinator</div>
+                <div class="logo-item">Kleiner Perkins</div>
+                <div class="logo-item">a16z</div>
+                <div class="logo-item">Index Ventures</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: FEATURES SECTION
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="features-section">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            
+            <div class="features-grid">
+                <!-- Feature Card 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon red">🔗</div>
+                    <h3>Seamless Integration</h3>
+                    <ul>
+                        <li>Compatible with Playwright, Puppeteer, Selenium</li>
+                        <li>Integrate without changing your existing code</li>
+                        <li>Connect natively using Chrome DevTools Protocol</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon yellow">📈</div>
+                    <h3>Scalable</h3>
+                    <ul>
+                        <li>Spin up 1000s of browsers in milliseconds</li>
+                        <li>Serverless infrastructure means no waiting</li>
+                        <li>Run your code anywhere with our infrastructure</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature Card 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon blue">⚡</div>
+                    <h3>Fast</h3>
+                    <ul>
+                        <li>Globally distributed browsers for minimal latency</li>
+                        <li>4 vCPUs per browser for lightning fast loads</li>
+                        <li>Optimized network routing worldwide</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature Card 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon green">🔒</div>
+                    <h3>Secure</h3>
+                    <ul>
+                        <li>Isolated browser instances for data privacy</li>
+                        <li>SOC-2 Type 1 and HIPAA compliant</li>
+                        <li>Configurable logging for sensitive data control</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature Card 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon purple">👁️</div>
+                    <h3>Observable</h3>
+                    <ul>
+                        <li>Live View iFrame for real-time monitoring</li>
+                        <li>Session recording and source capture</li>
+                        <li>Command logging for easy debugging</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature Card 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon orange">🥷</div>
+                    <h3>Stealth</h3>
+                    <ul>
+                        <li>Managed captcha solving and proxies</li>
+                        <li>Intelligent proxy network selection</li>
+                        <li>Configurable fingerprints and geolocation</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature Card 7 -->
+                <div class="feature-card">
+                    <div class="feature-icon blue">🧩</div>
+                    <h3>Extensible</h3>
+                    <ul>
+                        <li>API for file uploads, downloads, extensions</li>
+                        <li>Contexts API for persistent cookies/state</li>
+                        <li>First class SDKs for Node.js and Python</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature Card 8 -->
+                <div class="feature-card">
+                    <div class="feature-icon green">👨‍💻</div>
+                    <h3>Developer First</h3>
+                    <ul>
+                        <li>Browser Playground and AI Codegen</li>
+                        <li>Comprehensive documentation and guides</li>
+                        <li>Quick start in Node.js and Python</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: HOW IT WORKS
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="how-it-works-section">
+        <div class="container">
+            <div class="how-it-works-content">
+                <div class="how-it-works-text">
+                    <h2>How it works</h2>
+                    <p>
+                        Let's face it, managing infrastructure is the last thing you need on your plate. 
+                        <strong>That's our job.</strong> Browserbase offers serverless browsers that are 
+                        reliable, fast, and scalable. We manage the infrastructure so you can focus on 
+                        building products. Ship things and let us handle the rest. <strong>One less thing 
+                        to worry about.</strong>
+                    </p>
+                </div>
+                
+                <div class="how-it-works-diagram">
+                    <div class="diagram-placeholder">
+                        <span>Architecture diagram placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: USE CASES
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="use-cases-section">
+        <div class="container">
+            <h2 class="section-title">Use Cases</h2>
+            
+            <div class="use-cases-tabs">
+                <button class="use-case-tab active">Browser tool for agents</button>
+                <button class="use-case-tab">Workflow automation</button>
+                <button class="use-case-tab">Web scraping</button>
+            </div>
+            
+            <div class="use-cases-content">
+                <div class="use-case-info">
+                    <h3>Browser Tool for AI Agents</h3>
+                    <ul>
+                        <li>Meet Stagehand, our open-source framework for building robust web agents</li>
+                        <li>Real-time human-in-the-loop controls using our Live View feature</li>
+                        <li>Integrations with all major AI SDKs that work right out of the box</li>
+                    </ul>
+                    
+                    <div class="mt-3">
+                        <a href="#" class="btn btn-primary">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="use-case-visual">
+                    <div class="use-case-image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: PRICING
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="pricing-section">
+        <div class="container">
+            <div class="pricing-header">
+                <h2 class="section-title">Transparent pricing</h2>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Free Tier -->
+                <div class="pricing-card">
+                    <p class="pricing-tier">Hobby</p>
+                    <p class="pricing-price">$0</p>
+                    <p class="pricing-period">Free forever</p>
+                    <ul class="pricing-features">
+                        <li>100 browser hours/month</li>
+                        <li>Basic support</li>
+                        <li>Community access</li>
+                        <li>Standard browsers</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Get started</a>
+                </div>
+                
+                <!-- Pro Tier -->
+                <div class="pricing-card featured">
+                    <p class="pricing-tier">Startup</p>
+                    <p class="pricing-price">$39</p>
+                    <p class="pricing-period">Per month + usage</p>
+                    <ul class="pricing-features">
+                        <li>2,000 browser hours/month</li>
+                        <li>Priority support</li>
+                        <li>Advanced debugging tools</li>
+                        <li>Custom browser profiles</li>
+                        <li>Session recordings</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Start free trial</a>
+                </div>
+                
+                <!-- Enterprise Tier -->
+                <div class="pricing-card">
+                    <p class="pricing-tier">Scale</p>
+                    <p class="pricing-price">$99</p>
+                    <p class="pricing-period">Per month + usage</p>
+                    <ul class="pricing-features">
+                        <li>10,000 browser hours/month</li>
+                        <li>Dedicated support</li>
+                        <li>SSO & advanced security</li>
+                        <li>SLA guarantee</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <a href="#" class="btn btn-dark">Contact sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 8: TESTIMONIALS / DEVELOPER LOVE
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Developer love</h2>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JC</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">Jacob Colling</div>
+                            <div class="testimonial-handle">@JacobColling</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        Loving 🅱️ so far. Awesome product!
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MS</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">Mykhailo Sorochuk</div>
+                            <div class="testimonial-handle">@sir4K_zen</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        Looks solid! Love the flexibility of <a href="#">@stagehanddev</a>. Makes automation so much easier.
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">L</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">Lyes</div>
+                            <div class="testimonial-handle">@Chikor_Zi</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        <a href="#">@browserbase</a> has a goated UI ngl. their team cooks
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">VD</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">Vinicius Dallacqua</div>
+                            <div class="testimonial-handle">@viniciusdallacq</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        <a href="#">@browserbase</a> and <a href="#">@stagehanddev</a> are really good. Natural integration with Playwright is just 🔥
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">YB</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">yahiabakour</div>
+                            <div class="testimonial-handle">@mynameisyahia</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        So happy to finally move to <a href="#">@browserbase</a>. Saved $160 monthly just like that!
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JC</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">James Cham</div>
+                            <div class="testimonial-handle">@jamescham</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        Not an investor but the right answer to your question is often <a href="#">@browserbase</a>.
+                    </div>
+                </div>
+                
+                <!-- Testimonial 7 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MP</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">Marcus for Peace</div>
+                            <div class="testimonial-handle">@MarcusForPeace</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        If you are building in consumer AI, you better be using <a href="#">@browserbase</a>.
+                    </div>
+                </div>
+                
+                <!-- Testimonial 8 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">TK</div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-name">Tejas Kumar</div>
+                            <div class="testimonial-handle">@TejasKumar_</div>
+                        </div>
+                        <span class="testimonial-platform">𝕏</span>
+                    </div>
+                    <div class="testimonial-content">
+                        I am very bullish on <a href="#">@browserbase</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 9: CTA SECTION
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <section id="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>What will you build?</h2>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-dark">Get Started</a>
+                    <a href="#" class="btn btn-secondary">Get a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 10: FOOTER
+         To remove this section: Delete this entire block
+         ========================================== -->
+    <footer id="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <span>B</span>
+                        </div>
+                        Browserbase
+                    </a>
+                    <p>The serverless browser infrastructure for AI agents and automation.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">APIs & SDKs</a></li>
+                        <li><a href="#">Changelog</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Partner with Us</a></li>
+                        <li><a href="#">Trust & Security</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Developers</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Github</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT - Tab functionality
+         ========================================== -->
+    <script>
+        // Use Case Tabs
+        document.querySelectorAll('.use-case-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.use-case-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

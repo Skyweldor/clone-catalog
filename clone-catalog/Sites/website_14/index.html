@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cool Club. - Illustrated Products</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Edit these to customize theme
+           ============================================ */
+        :root {
+            /* Brand Colors */
+            --color-primary: #1a1a1a;
+            --color-secondary: #666666;
+            --color-accent: #ff6b6b;
+            
+            /* Section Background Colors - Easy to customize */
+            --bg-hero: #f8d7e8;
+            --bg-card-games: #e8e4f0;
+            --bg-cars: #f5f5f5;
+            --bg-animals: #d4e8f0;
+            --bg-people: #e0d8e8;
+            --bg-random: #d8e8d4;
+            --bg-footer: #f0ede8;
+            
+            /* Typography */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            
+            /* Spacing */
+            --section-padding: 60px;
+            --container-max: 1200px;
+            --card-gap: 24px;
+            
+            /* Transitions */
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary);
+            line-height: 1.6;
+            background: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================
+           SECTION: HEADER / NAVIGATION
+           - Sticky header with logo and nav links
+           - Remove: Delete entire header section
+           ============================================ */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .header__logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .header__nav-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .header__nav-link {
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+            transition: color var(--transition-smooth);
+            position: relative;
+        }
+
+        .header__nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .header__nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-primary);
+            transition: width var(--transition-smooth);
+        }
+
+        .header__nav-link:hover::after {
+            width: 100%;
+        }
+
+        .header__nav-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(0,0,0,0.1);
+        }
+
+        /* Mobile menu toggle */
+        .header__mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .header__mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-primary);
+            margin: 5px 0;
+            transition: var(--transition-smooth);
+        }
+
+        /* ============================================
+           SECTION: HERO
+           - Featured product showcase
+           - Remove: Delete .hero section entirely
+           ============================================ */
+        .hero {
+            background: var(--bg-hero);
+            padding: var(--section-padding) 0;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero__content {
+            max-width: 480px;
+        }
+
+        .hero__greeting {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero__description {
+            font-size: 1rem;
+            color: var(--color-secondary);
+            margin-bottom: 32px;
+        }
+
+        .hero__actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero__price {
+            font-size: 0.875rem;
+            padding: 12px 20px;
+            border: 1px solid rgba(0,0,0,0.2);
+            border-radius: 4px;
+            background: transparent;
+        }
+
+        .hero__cta {
+            font-size: 0.875rem;
+            padding: 12px 24px;
+            background: var(--color-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .hero__cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .hero__image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero__product-image {
+            max-width: 400px;
+            width: 100%;
+            transform: rotate(-5deg);
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+            transition: transform var(--transition-smooth);
+        }
+
+        .hero__product-image:hover {
+            transform: rotate(-2deg) scale(1.02);
+        }
+
+        /* ============================================
+           SHARED: PRODUCT SECTION STYLES
+           - Reusable styles for all product sections
+           ============================================ */
+        .product-section {
+            padding: var(--section-padding) 0;
+        }
+
+        .product-section__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .product-section__title {
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: capitalize;
+            letter-spacing: 0.02em;
+        }
+
+        .product-section__nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-section__nav-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-secondary);
+            transition: color var(--transition-smooth);
+        }
+
+        .product-section__nav-btn:hover {
+            color: var(--color-primary);
+        }
+
+        .product-section__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--card-gap);
+        }
+
+        /* ============================================
+           COMPONENT: PRODUCT CARD
+           - Reusable card component
+           ============================================ */
+        .product-card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+        }
+
+        .product-card__image-wrapper {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .product-card__image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform var(--transition-smooth);
+        }
+
+        .product-card:hover .product-card__image {
+            transform: scale(1.05);
+        }
+
+        .product-card__info {
+            padding: 16px;
+            text-align: center;
+        }
+
+        .product-card__title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .product-card__price {
+            font-size: 0.75rem;
+            color: var(--color-secondary);
+        }
+
+        /* ============================================
+           COMPONENT: ILLUSTRATION CARD (Poster Style)
+           - For illustration-focused products
+           ============================================ */
+        .illustration-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .illustration-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .illustration-card__frame {
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            position: relative;
+        }
+
+        .illustration-card__image {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain;
+            transition: transform var(--transition-smooth);
+        }
+
+        .illustration-card:hover .illustration-card__image {
+            transform: scale(1.08);
+        }
+
+        /* Frame color variants */
+        .illustration-card--cream .illustration-card__frame { background: #faf8f0; }
+        .illustration-card--white .illustration-card__frame { background: #ffffff; }
+        .illustration-card--peach .illustration-card__frame { background: #f8d8c8; }
+        .illustration-card--pink .illustration-card__frame { background: #f0d8e0; }
+        .illustration-card--mint .illustration-card__frame { background: #d8f0e8; }
+        .illustration-card--lavender .illustration-card__frame { background: #e0d8f0; }
+        .illustration-card--sky .illustration-card__frame { background: #d8e8f8; }
+        .illustration-card--sage .illustration-card__frame { background: #e0e8d8; }
+        .illustration-card--yellow .illustration-card__frame { background: #f8f0d8; }
+
+        /* ============================================
+           SECTION: CARD GAMES
+           - Purple/lavender background
+           - Remove: Delete .section-card-games entirely
+           ============================================ */
+        .section-card-games {
+            background: var(--bg-card-games);
+        }
+
+        /* ============================================
+           SECTION: CARS
+           - Light gray/white background
+           - Remove: Delete .section-cars entirely
+           ============================================ */
+        .section-cars {
+            background: var(--bg-cars);
+        }
+
+        /* ============================================
+           SECTION: ANIMALS
+           - Light blue background
+           - Remove: Delete .section-animals entirely
+           ============================================ */
+        .section-animals {
+            background: var(--bg-animals);
+        }
+
+        /* ============================================
+           SECTION: PEOPLE
+           - Purple/mauve background
+           - Remove: Delete .section-people entirely
+           ============================================ */
+        .section-people {
+            background: var(--bg-people);
+        }
+
+        /* ============================================
+           SECTION: RANDOM
+           - Sage/green background
+           - Remove: Delete .section-random entirely
+           ============================================ */
+        .section-random {
+            background: var(--bg-random);
+        }
+
+        /* ============================================
+           SECTION: FOOTER
+           - Site footer with info columns
+           - Remove: Delete .footer entirely
+           ============================================ */
+        .footer {
+            background: var(--bg-footer);
+            padding: 48px 0 24px;
+        }
+
+        .footer__inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .footer__column-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            color: var(--color-secondary);
+        }
+
+        .footer__column-content {
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: var(--color-primary);
+        }
+
+        .footer__column-content a {
+            transition: opacity var(--transition-smooth);
+        }
+
+        .footer__column-content a:hover {
+            opacity: 0.7;
+        }
+
+        .footer__icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .footer__icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.05);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .footer__bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.75rem;
+            color: var(--color-secondary);
+            gap: 16px;
+        }
+
+        .footer__links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__credit {
+            font-size: 0.75rem;
+        }
+
+        .footer__credit a {
+            font-weight: 500;
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 40px;
+            }
+
+            .header__nav {
+                display: none;
+            }
+
+            .header__mobile-toggle {
+                display: block;
+            }
+
+            .hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero__content {
+                max-width: 100%;
+            }
+
+            .hero__actions {
+                justify-content: center;
+            }
+
+            .hero__image {
+                order: -1;
+            }
+
+            .hero__product-image {
+                max-width: 280px;
+            }
+
+            .product-section__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-section__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Animation utilities */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animation-delay-1 { animation-delay: 0.1s; }
+        .animation-delay-2 { animation-delay: 0.2s; }
+        .animation-delay-3 { animation-delay: 0.3s; }
+        .animation-delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         SECTION: HEADER
+         Purpose: Site navigation and branding
+         To Remove: Delete from here to END HEADER
+         ============================================ -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="/" class="header__logo">The Cool Club.</a>
+            
+            <nav class="header__nav">
+                <!-- Primary Navigation - Product Categories -->
+                <ul class="header__nav-group">
+                    <li><a href="#card-games" class="header__nav-link">card games</a></li>
+                    <li><a href="#cars" class="header__nav-link">cars</a></li>
+                    <li><a href="#animals" class="header__nav-link">animals</a></li>
+                    <li><a href="#people" class="header__nav-link">people</a></li>
+                    <li><a href="#random" class="header__nav-link">random</a></li>
+                </ul>
+                
+                <div class="header__nav-divider"></div>
+                
+                <!-- Secondary Navigation - User Actions -->
+                <ul class="header__nav-group">
+                    <li><a href="#" class="header__nav-link">my likes</a></li>
+                    <li><a href="#" class="header__nav-link">about</a></li>
+                    <li><a href="#" class="header__nav-link">contact</a></li>
+                    <li><a href="#" class="header__nav-link">shop 🛒</a></li>
+                </ul>
+            </nav>
+
+            <button class="header__mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    <!-- END HEADER -->
+
+
+    <!-- ============================================
+         SECTION: HERO
+         Purpose: Featured product showcase
+         To Remove: Delete from here to END HERO
+         To Customize: Change bg color via --bg-hero
+         ============================================ -->
+    <section class="hero">
+        <div class="hero__inner">
+            <div class="hero__content">
+                <h1 class="hero__greeting">Hello Handsome 👋</h1>
+                <p class="hero__description">We released a new card game, check it out.</p>
+                <div class="hero__actions">
+                    <span class="hero__price">€6.00</span>
+                    <button class="hero__cta">Add to your bag</button>
+                </div>
+            </div>
+            <div class="hero__image">
+                <!-- Replace src with your product image -->
+                <img 
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%2398d8c8' width='300' height='200' rx='8'/%3E%3Ctext x='150' y='90' text-anchor='middle' fill='%23fff' font-family='Georgia' font-size='14'%3EThe Cool Club.%3C/text%3E%3Ctext x='150' y='115' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-size='10'%3EANIMALS%3C/text%3E%3C/svg%3E" 
+                    alt="The Cool Club Animals Card Game" 
+                    class="hero__product-image"
+                >
+            </div>
+        </div>
+    </section>
+    <!-- END HERO -->
+
+
+    <!-- ============================================
+         SECTION: CARD GAMES
+         Purpose: Card game products showcase
+         To Remove: Delete from here to END CARD GAMES
+         To Customize: Change bg via --bg-card-games
+         ============================================ -->
+    <section id="card-games" class="product-section section-card-games">
+        <div class="container">
+            <header class="product-section__header">
+                <h2 class="product-section__title">Card Games</h2>
+                <nav class="product-section__nav">
+                    <button class="product-section__nav-btn" aria-label="Previous">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="product-section__nav-btn" aria-label="Next">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </nav>
+            </header>
+            
+            <div class="product-section__grid">
+                <!-- Product Card Template - Copy for more items -->
+                <article class="product-card">
+                    <div class="product-card__image-wrapper" style="background: #f8f0d8;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160'%3E%3Crect fill='%23fff' width='120' height='160' rx='4'/%3E%3Ctext x='60' y='70' text-anchor='middle' fill='%23333' font-family='Georgia' font-size='8'%3EThe Cool Club.%3C/text%3E%3Ctext x='60' y='90' text-anchor='middle' fill='%23666' font-size='6'%3ECARS%3C/text%3E%3C/svg%3E" alt="Cars Card Game" class="product-card__image">
+                    </div>
+                    <div class="product-card__info">
+                        <h3 class="product-card__title">The Cool Club Cards Cars</h3>
+                        <p class="product-card__price">€6.00</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-card__image-wrapper" style="background: #d8f0e8;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160'%3E%3Crect fill='%23fff' width='120' height='160' rx='4'/%3E%3Ctext x='60' y='70' text-anchor='middle' fill='%23333' font-family='Georgia' font-size='8'%3EThe Cool Club.%3C/text%3E%3Ctext x='60' y='90' text-anchor='middle' fill='%23666' font-size='6'%3EANIMALS%3C/text%3E%3C/svg%3E" alt="Animals Card Game" class="product-card__image">
+                    </div>
+                    <div class="product-card__info">
+                        <h3 class="product-card__title">The Cool Club Cards Animals</h3>
+                        <p class="product-card__price">€6.00</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-card__image-wrapper" style="background: #f0e8e0;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160'%3E%3Crect fill='%23fff' width='120' height='160' rx='4'/%3E%3Ctext x='60' y='70' text-anchor='middle' fill='%23333' font-family='Georgia' font-size='8'%3EThe Cool Club.%3C/text%3E%3Ctext x='60' y='90' text-anchor='middle' fill='%23666' font-size='6'%3EHUMANS%3C/text%3E%3C/svg%3E" alt="Humans Card Game" class="product-card__image">
+                    </div>
+                    <div class="product-card__info">
+                        <h3 class="product-card__title">The Cool Club Cards Humans</h3>
+                        <p class="product-card__price">€6.00</p>
+                    </div>
+                </article>
+                <!-- End Product Card Template -->
+            </div>
+        </div>
+    </section>
+    <!-- END CARD GAMES -->
+
+
+    <!-- ============================================
+         SECTION: CARS
+         Purpose: Car illustration prints
+         To Remove: Delete from here to END CARS
+         To Customize: Change bg via --bg-cars
+         ============================================ -->
+    <section id="cars" class="product-section section-cars">
+        <div class="container">
+            <header class="product-section__header">
+                <h2 class="product-section__title">Cars</h2>
+                <nav class="product-section__nav">
+                    <button class="product-section__nav-btn" aria-label="Previous">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="product-section__nav-btn" aria-label="Next">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </nav>
+            </header>
+            
+            <div class="product-section__grid">
+                <!-- Illustration Card Template - Copy for more items -->
+                <article class="illustration-card illustration-card--cream">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Crect x='10' y='25' width='130' height='25' rx='8' fill='%23e8e8e8'/%3E%3Ccircle cx='40' cy='50' r='10' fill='%23333'/%3E%3Ccircle cx='110' cy='50' r='10' fill='%23333'/%3E%3Crect x='30' y='15' width='60' height='15' rx='4' fill='%23d8d8d8'/%3E%3C/svg%3E" alt="Classic Car Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--white">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Crect x='10' y='25' width='130' height='25' rx='6' fill='%234a90d9'/%3E%3Ccircle cx='35' cy='50' r='10' fill='%23333'/%3E%3Ccircle cx='115' cy='50' r='10' fill='%23333'/%3E%3Crect x='60' y='12' width='50' height='18' rx='4' fill='%234a90d9'/%3E%3C/svg%3E" alt="Sports Car Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--peach">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Crect x='10' y='28' width='130' height='22' rx='4' fill='%236b8e4e'/%3E%3Ccircle cx='35' cy='50' r='10' fill='%23333'/%3E%3Ccircle cx='115' cy='50' r='10' fill='%23333'/%3E%3Crect x='25' y='18' width='40' height='15' rx='2' fill='%236b8e4e'/%3E%3C/svg%3E" alt="Jeep Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--pink">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Crect x='20' y='30' width='110' height='18' rx='4' fill='%23c0c0c0'/%3E%3Ccircle cx='45' cy='48' r='8' fill='%23333'/%3E%3Ccircle cx='105' cy='48' r='8' fill='%23333'/%3E%3Crect x='35' y='18' width='80' height='16' rx='4' fill='%23c0c0c0'/%3E%3C/svg%3E" alt="Vintage Car Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+                <!-- End Illustration Card Template -->
+            </div>
+        </div>
+    </section>
+    <!-- END CARS -->
+
+
+    <!-- ============================================
+         SECTION: ANIMALS
+         Purpose: Animal illustration prints
+         To Remove: Delete from here to END ANIMALS
+         To Customize: Change bg via --bg-animals
+         ============================================ -->
+    <section id="animals" class="product-section section-animals">
+        <div class="container">
+            <header class="product-section__header">
+                <h2 class="product-section__title">Animals</h2>
+                <nav class="product-section__nav">
+                    <button class="product-section__nav-btn" aria-label="Previous">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="product-section__nav-btn" aria-label="Next">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </nav>
+            </header>
+            
+            <div class="product-section__grid">
+                <article class="illustration-card illustration-card--cream">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cellipse cx='50' cy='80' rx='30' ry='35' fill='%23f5f5f5'/%3E%3Cellipse cx='50' cy='80' rx='30' ry='35' fill='url(%23zebra)'/%3E%3Cellipse cx='50' cy='40' rx='15' ry='20' fill='%23f5f5f5'/%3E%3Ccircle cx='43' cy='35' r='3' fill='%23333'/%3E%3Ccircle cx='57' cy='35' r='3' fill='%23333'/%3E%3Cdefs%3E%3ClinearGradient id='zebra'%3E%3Cstop offset='0%25' stop-color='%23333'/%3E%3Cstop offset='15%25' stop-color='%23333'/%3E%3Cstop offset='15%25' stop-color='%23f5f5f5'/%3E%3Cstop offset='30%25' stop-color='%23f5f5f5'/%3E%3Cstop offset='30%25' stop-color='%23333'/%3E%3Cstop offset='45%25' stop-color='%23333'/%3E%3Cstop offset='45%25' stop-color='%23f5f5f5'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E" alt="Zebra Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--white">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80'%3E%3Cellipse cx='50' cy='50' rx='40' ry='25' fill='%23333'/%3E%3Cellipse cx='50' cy='50' rx='35' ry='20' fill='%23f5f5f5'/%3E%3Cellipse cx='30' cy='40' rx='8' ry='5' fill='%23333'/%3E%3Cellipse cx='70' cy='40' rx='8' ry='5' fill='%23333'/%3E%3C/svg%3E" alt="Orca Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--mint">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='30' fill='%23f5a623'/%3E%3Ccircle cx='50' cy='35' r='20' fill='%23f5a623'/%3E%3Ccircle cx='43' cy='32' r='3' fill='%23333'/%3E%3Ccircle cx='57' cy='32' r='3' fill='%23333'/%3E%3Crect x='47' y='38' width='6' height='4' rx='2' fill='%23333'/%3E%3C/svg%3E" alt="Lion Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--sky">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='60' rx='25' ry='30' fill='%23333'/%3E%3Cellipse cx='50' cy='60' rx='20' ry='25' fill='%23f5f5f5'/%3E%3Ccircle cx='50' cy='30' r='18' fill='%23f5f5f5'/%3E%3Ccircle cx='45' cy='28' r='2' fill='%23333'/%3E%3Ccircle cx='55' cy='28' r='2' fill='%23333'/%3E%3Cellipse cx='50' cy='34' rx='4' ry='2' fill='%23f5a623'/%3E%3C/svg%3E" alt="Penguin Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- END ANIMALS -->
+
+
+    <!-- ============================================
+         SECTION: PEOPLE
+         Purpose: People/portrait illustration prints
+         To Remove: Delete from here to END PEOPLE
+         To Customize: Change bg via --bg-people
+         ============================================ -->
+    <section id="people" class="product-section section-people">
+        <div class="container">
+            <header class="product-section__header">
+                <h2 class="product-section__title">People</h2>
+                <nav class="product-section__nav">
+                    <button class="product-section__nav-btn" aria-label="Previous">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="product-section__nav-btn" aria-label="Next">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </nav>
+            </header>
+            
+            <div class="product-section__grid">
+                <article class="illustration-card illustration-card--peach">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Ccircle cx='40' cy='35' r='20' fill='%23d4a574'/%3E%3Crect x='20' y='55' width='40' height='40' rx='4' fill='%23e74c3c'/%3E%3Ccircle cx='40' cy='10' r='8' fill='%23f1c40f'/%3E%3Ccircle cx='35' cy='32' r='2' fill='%23333'/%3E%3Ccircle cx='45' cy='32' r='2' fill='%23333'/%3E%3C/svg%3E" alt="Portrait 1" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--sage">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Ccircle cx='40' cy='35' r='18' fill='%23f5deb3'/%3E%3Crect x='22' y='53' width='36' height='42' rx='2' fill='%23333'/%3E%3Crect x='25' y='15' width='30' height='25' fill='%23333'/%3E%3Ccircle cx='35' cy='32' r='2' fill='%23333'/%3E%3Ccircle cx='45' cy='32' r='2' fill='%23333'/%3E%3Crect x='30' cy='20' width='20' height='3' fill='%23333'/%3E%3C/svg%3E" alt="Portrait 2" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--lavender">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Ccircle cx='40' cy='35' r='18' fill='%23f5deb3'/%3E%3Crect x='22' y='53' width='36' height='42' rx='2' fill='%23fff'/%3E%3Cellipse cx='40' cy='18' rx='20' ry='8' fill='%23f5deb3'/%3E%3Ccircle cx='35' cy='32' r='2' fill='%23333'/%3E%3Ccircle cx='45' cy='32' r='2' fill='%23333'/%3E%3Cellipse cx='40' cy='42' rx='4' ry='2' fill='%23e74c3c'/%3E%3C/svg%3E" alt="Portrait 3" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--pink">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Ccircle cx='40' cy='35' r='18' fill='%23f5deb3'/%3E%3Crect x='22' y='53' width='36' height='42' rx='2' fill='%232ecc71'/%3E%3Crect x='28' y='8' width='24' height='30' rx='12' fill='%23333'/%3E%3Ccircle cx='35' cy='32' r='2' fill='%23333'/%3E%3Ccircle cx='45' cy='32' r='2' fill='%23333'/%3E%3C/svg%3E" alt="Portrait 4" class="illustration-card__image">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- END PEOPLE -->
+
+
+    <!-- ============================================
+         SECTION: RANDOM
+         Purpose: Miscellaneous illustration prints
+         To Remove: Delete from here to END RANDOM
+         To Customize: Change bg via --bg-random
+         ============================================ -->
+    <section id="random" class="product-section section-random">
+        <div class="container">
+            <header class="product-section__header">
+                <h2 class="product-section__title">Random</h2>
+                <nav class="product-section__nav">
+                    <button class="product-section__nav-btn" aria-label="Previous">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="product-section__nav-btn" aria-label="Next">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </nav>
+            </header>
+            
+            <div class="product-section__grid">
+                <article class="illustration-card illustration-card--cream">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Crect x='20' y='20' width='40' height='60' rx='20' fill='%23e74c3c'/%3E%3Crect x='25' y='25' width='30' height='20' rx='4' fill='%23fff' opacity='0.3'/%3E%3Ctext x='40' y='65' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-size='8' font-weight='bold'%3ECAPSULE%3C/text%3E%3C/svg%3E" alt="Capsule Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--sky">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Crect x='35' y='50' width='10' height='40' fill='%23999'/%3E%3Crect x='30' y='70' width='20' height='20' fill='%23777'/%3E%3Ccircle cx='40' cy='35' r='20' fill='%23c0c0c0'/%3E%3Ccircle cx='40' cy='35' r='15' fill='%23a0a0a0'/%3E%3Ccircle cx='40' cy='35' r='8' fill='%23888'/%3E%3C/svg%3E" alt="Trophy Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--yellow">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Cpolygon points='40,10 50,80 40,75 30,80' fill='%23e74c3c'/%3E%3Cpolygon points='40,10 45,70 40,65 35,70' fill='%23c0392b'/%3E%3Crect x='30' y='80' width='20' height='10' fill='%23f39c12'/%3E%3Cellipse cx='40' cy='90' rx='15' ry='5' fill='%23d35400'/%3E%3C/svg%3E" alt="Rocket Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+
+                <article class="illustration-card illustration-card--mint">
+                    <div class="illustration-card__frame">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Ccircle cx='40' cy='40' r='25' fill='%23e74c3c'/%3E%3Crect x='35' y='30' width='10' height='25' fill='%23fff'/%3E%3Crect x='30' y='42' width='20' height='8' fill='%23fff'/%3E%3Crect x='37' y='65' width='6' height='20' fill='%23c0392b'/%3E%3C/svg%3E" alt="First Aid Illustration" class="illustration-card__image">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- END RANDOM -->
+
+
+    <!-- ============================================
+         SECTION: FOOTER
+         Purpose: Site information and links
+         To Remove: Delete from here to END FOOTER
+         To Customize: Change bg via --bg-footer
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__grid">
+                <!-- Footer Column - About -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">About</h4>
+                    <div class="footer__column-content">
+                        <p>The Cool Club was born from the desire to make well designed products available for everyone. Be part of The Cool Club, a collection of designs with timeless class.</p>
+                    </div>
+                </div>
+
+                <!-- Footer Column - Address -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Address</h4>
+                    <div class="footer__column-content">
+                        <p>Zeeburgerstraat 58<br>
+                        1018AG Amsterdam<br>
+                        The Netherlands</p>
+                    </div>
+                </div>
+
+                <!-- Footer Column - Delivery -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Fast Delivery</h4>
+                    <div class="footer__column-content">
+                        <div class="footer__icons">
+                            <span class="footer__icon">DPD</span>
+                            <span class="footer__icon">DHL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Column - Trust -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Trustmark</h4>
+                    <div class="footer__column-content">
+                        <div class="footer__icons">
+                            <span class="footer__icon">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Column - Payments -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Payments</h4>
+                    <div class="footer__column-content">
+                        <div class="footer__icons">
+                            <span class="footer__icon">💳</span>
+                            <span class="footer__icon">PP</span>
+                            <span class="footer__icon">iD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>© 2024 The Cool Club.</p>
+                <nav class="footer__links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Return Policy</a>
+                    <a href="#">Shop Rules</a>
+                </nav>
+                <p class="footer__credit">Design by <a href="#">Wonderland</a></p>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+
+    <!-- ============================================
+         JAVASCRIPT
+         - Smooth scroll for navigation
+         - Basic carousel functionality (placeholder)
+         ============================================ -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.header__mobile-toggle');
+        const headerNav = document.querySelector('.header__nav');
+        
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                headerNav.classList.toggle('is-open');
+                mobileToggle.classList.toggle('is-active');
+            });
+        }
+
+        // Placeholder for carousel functionality
+        // You can implement with Swiper.js, Splide, or custom JS
+        document.querySelectorAll('.product-section__nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Add carousel navigation logic here
+                console.log('Carousel navigation clicked');
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.product-card, .illustration-card').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+    </script>
+
+</body>
+</html>

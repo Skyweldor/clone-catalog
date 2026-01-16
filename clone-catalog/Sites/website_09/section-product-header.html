@@ -1,0 +1,124 @@
+<!--
+================================================================================
+SECTION: PRODUCT HEADER
+================================================================================
+Purpose: Product logo/name and "Component of" badge
+Dependencies: Should be inside the content area
+To Use: Copy at the top of your content area
+CSS: Included inline below - copy to your main stylesheet or keep inline
+================================================================================
+-->
+
+<!-- PRODUCT HEADER CSS -->
+<style>
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3a4860;
+}
+
+.product-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-logo-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #7799cc 0%, #5577aa 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.product-logo-icon span {
+    font-size: 24px;
+}
+
+.product-logo-icon img {
+    width: 32px;
+    height: 32px;
+}
+
+.product-logo-text {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+    color: #c8d0dc;
+}
+
+.product-logo-text .highlight {
+    color: #e85d00;
+}
+
+.product-badge {
+    background: linear-gradient(135deg, #5a6a85 0%, #4a5a75 100%);
+    border: 1px solid #4a5a75;
+    border-radius: 4px;
+    padding: 6px 10px;
+    text-align: center;
+}
+
+.product-badge-label {
+    color: #8899aa;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 9px;
+}
+
+.product-badge-title {
+    color: #c9a227;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+}
+</style>
+
+<!-- PRODUCT HEADER HTML -->
+<div class="product-header">
+    <div class="product-logo">
+        <div class="product-logo-icon">
+            <!-- Replace with actual product icon: <img src="icon.png" alt="Icon"> -->
+            <span>🎨</span>
+        </div>
+        <span class="product-logo-text">Window<span class="highlight">Blinds</span></span>
+    </div>
+    <div class="product-badge">
+        <div class="product-badge-label">A Component of</div>
+        <div class="product-badge-title">Object Desktop</div>
+    </div>
+</div>
+
+<!--
+================================================================================
+CUSTOMIZATION GUIDE:
+================================================================================
+1. PRODUCT ICON:
+   - Replace emoji with: <img src="your-icon.png" alt="Product Icon">
+   - Or change the emoji character
+
+2. PRODUCT NAME:
+   - Change text in .product-logo-text
+   - Use <span class="highlight">...</span> for orange highlighted text
+   - Remove highlight span if not needed
+
+3. BADGE:
+   - Change label: Modify .product-badge-label text
+   - Change title: Modify .product-badge-title text
+   - Remove badge: Delete entire <div class="product-badge">...</div>
+
+4. COLORS:
+   - Icon background: Change .product-logo-icon background gradient
+   - Product name: Modify .product-logo-text color
+   - Highlight color: Change .product-logo-text .highlight color
+   - Badge background: Modify .product-badge background gradient
+   - Badge title color: Change .product-badge-title color
+================================================================================
+-->

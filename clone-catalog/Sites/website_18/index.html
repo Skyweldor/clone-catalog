@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanetScale Template - The World's Fastest Database</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Easy customization
+           ============================================ */
+        :root {
+            /* Colors */
+            --color-bg-primary: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-bg-card: #16161f;
+            --color-bg-card-hover: #1a1a24;
+            
+            --color-text-primary: #f0f0f5;
+            --color-text-secondary: #9090a0;
+            --color-text-muted: #606070;
+            
+            --color-accent-primary: #00d4aa;
+            --color-accent-secondary: #00b894;
+            --color-accent-glow: rgba(0, 212, 170, 0.15);
+            
+            --color-border: #2a2a35;
+            --color-border-light: #3a3a45;
+            
+            /* Graph colors */
+            --color-graph-green: #00d4aa;
+            --color-graph-blue: #4da6ff;
+            --color-graph-purple: #a855f7;
+            
+            /* Typography */
+            --font-display: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Spacing */
+            --section-padding: 100px 0;
+            --container-width: 1200px;
+            --container-padding: 0 24px;
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.25s ease;
+            --transition-slow: 0.4s ease;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+
+        a {
+            color: var(--color-accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--color-text-primary);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* ============================================
+           SECTION: ANNOUNCEMENT BAR
+           Removable: Yes
+           Dependencies: None
+           ============================================ */
+        .announcement-bar {
+            background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .announcement-bar p {
+            color: var(--color-bg-primary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .announcement-bar a {
+            color: var(--color-bg-primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .announcement-bar a:hover {
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           SECTION: HEADER / NAVIGATION
+           Removable: No (core component)
+           Dependencies: None
+           ============================================ */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--color-text-primary);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-accent-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-bg-primary);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-ghost:hover {
+            color: var(--color-text-primary);
+        }
+
+        .btn-primary {
+            background: var(--color-accent-primary);
+            color: var(--color-bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-secondary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--color-accent-glow);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text-primary);
+            cursor: pointer;
+        }
+
+        /* ============================================
+           SECTION: HERO
+           Removable: No (main landing section)
+           Dependencies: None
+           ============================================ */
+        .hero {
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent-primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(180deg, var(--color-text-primary) 0%, var(--color-text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .hero-feature {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .hero-feature svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-accent-primary);
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-secondary {
+            background: var(--color-bg-card);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-bg-card-hover);
+            border-color: var(--color-border-light);
+        }
+
+        /* ============================================
+           SECTION: LOGO CLOUD
+           Removable: Yes
+           Dependencies: None
+           ============================================ */
+        .logo-cloud {
+            padding: 60px 0;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .logo-cloud-label {
+            text-align: center;
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-bottom: 32px;
+        }
+
+        .logo-cloud-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px 60px;
+        }
+
+        .logo-cloud-item {
+            opacity: 0.6;
+            transition: opacity var(--transition-fast);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-cloud-item:hover {
+            opacity: 1;
+        }
+
+        /* ============================================
+           SECTION: TESTIMONIAL
+           Removable: Yes
+           Dependencies: None
+           ============================================ */
+        .testimonial {
+            padding: var(--section-padding);
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 80px;
+            color: var(--color-accent-primary);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial blockquote {
+            font-size: 20px;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--color-bg-primary);
+        }
+
+        .testimonial-info strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-info span {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        /* ============================================
+           SECTION: ARCHITECTURE DIAGRAM
+           Removable: Yes
+           Dependencies: None
+           ============================================ */
+        .architecture {
+            padding: var(--section-padding);
+            background: var(--color-bg-secondary);
+        }
+
+        .architecture-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .architecture-header h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .architecture-header p {
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .architecture-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .architecture-tab {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .architecture-tab.active,
+        .architecture-tab:hover {
+            background: var(--color-bg-card);
+            border-color: var(--color-accent-primary);
+            color: var(--color-accent-primary);
+        }
+
+        .architecture-diagram {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 40px;
+            overflow-x: auto;
+        }
+
+        .architecture-diagram pre {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--color-accent-primary);
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           SECTION: PERFORMANCE METRICS
+           Removable: Yes
+           Dependencies: None
+           ============================================ */
+        .performance {
+            padding: var(--section-padding);
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--color-accent-primary);
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--color-text-secondary);
+            max-width: 600px;
+        }
+
+        .performance-graph {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .graph-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .graph-tabs {
+            display: flex;
+            gap: 24px;
+        }
+
+        .graph-tab {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: all var(--transition-fast);
+        }
+
+        .graph-tab.active {
+            color: var(--color-text-primary);
+            border-color: var(--color-accent-primary);
+        }
+
+        .graph-legend {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.green { background: var(--color-graph-green); }
+        .legend-dot.blue { background: var(--color-graph-blue); }
+        .legend-dot.purple { background: var(--color-graph-purple); }
+
+        .graph-visualization {
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .graph-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--color-graph-green) 0%, var(--color-graph-blue) 100%);
+            border-radius: 2px 2px 0 0;
+            opacity: 0.8;
+            transition: opacity var(--transition-fast);
+            animation: growBar 1s ease-out forwards;
+        }
+
+        .graph-bar:hover {
+            opacity: 1;
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
+        .performance-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+
+        .stat-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--color-accent-primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        /* ============================================
+           SECTION: FEATURES GRID
+           Removable: Yes
+           Dependencies: None
+           ============================================ */
+        .features {
+            padding: var(--section-padding);
+            background: var(--color-bg-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all var(--transition-normal);
+        }
+
+        .feature-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-accent-primary);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .feature-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .feature-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition-fast);
+        }
+
+        .feature-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ============================================
+           SECTION: CONTENT BLOCKS (Uptime, Cost, Security)
+           Removable: Yes (each block independent)
+           Dependencies: None
+           ============================================ */
+        .content-section {
+            padding: var(--section-padding);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .content-grid.reverse {
+            direction: rtl;
+        }
+
+        .content-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .content-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .content-text > p {
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .content-list svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-accent-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .content-visual {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .uptime-display {
+            text-align: center;
+        }
+
+        .uptime-value {
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--color-accent-primary);
+            font-family: var(--font-mono);
+        }
+
+        .uptime-label {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            margin-top: 8px;
+        }
+
+        /* ============================================
+           SECTION: CTA BANNER
+           Removable: Yes
+           Dependencies: None
+           ============================================ */
+        .cta-banner {
+            padding: var(--section-padding);
+            background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+        }
+
+        .cta-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-card h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-card p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            position: relative;
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+
+        /* ============================================
+           SECTION: FOOTER
+           Removable: No (core component)
+           Dependencies: None
+           ============================================ */
+        .footer {
+            background: var(--color-bg-primary);
+            border-top: 1px solid var(--color-border);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin-top: 20px;
+            max-width: 280px;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: var(--color-text-muted);
+            font-size: 13px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            color: var(--color-text-secondary);
+            transition: all var(--transition-fast);
+        }
+
+        .footer-social a:hover {
+            border-color: var(--color-accent-primary);
+            color: var(--color-accent-primary);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .content-grid.reverse {
+                direction: ltr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .logo-cloud-grid {
+                gap: 24px 40px;
+            }
+            
+            .performance-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-card {
+                padding: 40px 24px;
+            }
+            
+            .cta-card h2 {
+                font-size: 28px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
+            .footer-brand {
+                grid-column: span 2;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .performance-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         SECTION: ANNOUNCEMENT BAR
+         Removable: Yes - Simply delete this entire section
+         ============================================ -->
+    <div class="announcement-bar">
+        <div class="container">
+            <p>🚀 New Feature Launch: $50 Metal databases are here. <a href="#">Learn more →</a></p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SECTION: HEADER / NAVIGATION
+         Removable: No - Core navigation component
+         ============================================ -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span>YourBrand</span>
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#performance">Performance</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="/docs">Documentation</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+                
+                <div class="nav-cta">
+                    <a href="/login" class="btn btn-ghost">Log in</a>
+                    <a href="/signup" class="btn btn-primary">Get Started</a>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================
+         SECTION: HERO
+         Removable: No - Main landing section
+         ============================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Now available: Enterprise tier
+                </div>
+                
+                <h1>The world's fastest and most reliable database</h1>
+                
+                <p>Our platform delivers horizontal scale, incredible performance, and simplified operations — no matter the size of your business. Powered by cutting-edge technology with a shared-nothing architecture.</p>
+                
+                <div class="hero-features">
+                    <span class="hero-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        Performance
+                    </span>
+                    <span class="hero-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        Security
+                    </span>
+                    <span class="hero-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Uptime
+                    </span>
+                    <span class="hero-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        Cost
+                    </span>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="/signup" class="btn btn-primary btn-large">Get Started Free</a>
+                    <a href="/demo" class="btn btn-secondary btn-large">Book a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: LOGO CLOUD
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="logo-cloud">
+        <div class="container">
+            <p class="logo-cloud-label">Our technology powers Tier 0 databases at:</p>
+            <div class="logo-cloud-grid">
+                <span class="logo-cloud-item">block</span>
+                <span class="logo-cloud-item">Etsy</span>
+                <span class="logo-cloud-item">intercom</span>
+                <span class="logo-cloud-item">gusto</span>
+                <span class="logo-cloud-item">KICK</span>
+                <span class="logo-cloud-item">myfitnesspal</span>
+                <span class="logo-cloud-item">attentive</span>
+                <span class="logo-cloud-item">slack</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: TESTIMONIAL (Single Quote)
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-card">
+                <blockquote>
+                    "When you buy our platform, you're getting the technology and database expertise that ran and scaled YouTube, the internet's #2 site, and the team that scaled GitHub to over 100M users globally."
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">TB</div>
+                    <div class="testimonial-info">
+                        <strong>Todd Berman</strong>
+                        <span>@Attentive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: ARCHITECTURE DIAGRAM
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="architecture">
+        <div class="container">
+            <div class="architecture-header">
+                <h2>Built for Scale</h2>
+                <p>Scale horizontally through explicit sharding — enabling a shared nothing architecture distributing data across thousands of nodes.</p>
+            </div>
+            
+            <div class="architecture-tabs">
+                <button class="architecture-tab active">Vitess</button>
+                <button class="architecture-tab">Postgres</button>
+                <button class="architecture-tab">Managed</button>
+            </div>
+            
+            <div class="architecture-diagram">
+                <pre>
+   ┌────────────────────────────────┐   
+   │░░░░░░░░░░░░░VTGate░░░░░░░░░░░░░│   
+   └────────────────────────────────┘   
+                    │                   
+          ─ ─ ─ ─ ─ ┴ ─ ─ ─ ─ ┐         
+         │                              
+         ▼                    ▼         
+   ╔═══════════╗        ╔═══════════╗   
+   ║  Primary  ║        ║  Primary  ║   
+   ╚═══════════╝        ╚═══════════╝   
+         │                    │         
+     ─ ─ ┴ ─ ─            ─ ─ ┴ ─ ─     
+    │         │          │         │    
+    ▼         ▼          ▼         ▼    
+┌───────┐ ┌───────┐  ┌───────┐ ┌───────┐
+│Replica│ │Replica│  │Replica│ │Replica│
+└───────┘ └───────┘  └───────┘ └───────┘
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: PERFORMANCE METRICS
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="performance" id="performance">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Performance</div>
+                <h2>Blazing Fast. Unlimited IOPS.</h2>
+                <p>Run your database on the fastest servers available in the cloud. Our NVMe drives unlock unlimited IOPS and drastically lower latencies.</p>
+            </div>
+            
+            <div class="performance-graph">
+                <div class="graph-header">
+                    <div class="graph-tabs">
+                        <span class="graph-tab active">Query latency</span>
+                        <span class="graph-tab">Availability</span>
+                        <span class="graph-tab">Queries</span>
+                        <span class="graph-tab">Rows read</span>
+                        <span class="graph-tab">Rows written</span>
+                    </div>
+                    <div class="graph-legend">
+                        <span class="legend-item"><span class="legend-dot green"></span> p50</span>
+                        <span class="legend-item"><span class="legend-dot blue"></span> p95</span>
+                        <span class="legend-item"><span class="legend-dot purple"></span> p99</span>
+                    </div>
+                </div>
+                <div class="graph-visualization" id="performanceGraph"></div>
+            </div>
+            
+            <div class="performance-stats">
+                <div class="stat-card">
+                    <div class="stat-value">99.999%</div>
+                    <div class="stat-label">Uptime SLA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">&lt;5ms</div>
+                    <div class="stat-label">Avg Latency</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1M+</div>
+                    <div class="stat-label">QPS Capacity</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">70K+</div>
+                    <div class="stat-label">Nodes Supported</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: UPTIME
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="content-section" id="uptime">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text">
+                    <div class="section-label">Uptime</div>
+                    <h2>Your data is always safe</h2>
+                    <p>Ensuring your database is always running and your data is always safe is our number one priority. Nothing comes before uptime and reliability.</p>
+                    
+                    <ul class="content-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Deploy schema changes fully online</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Revertable schema changes with zero data loss</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Direct traffic to new read-only replicas</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Online cluster resizing and resharding</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="content-visual">
+                    <div class="uptime-display">
+                        <div class="uptime-value">99.999%</div>
+                        <div class="uptime-label">Multi-region SLA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: COST
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="content-section" id="cost">
+        <div class="container">
+            <div class="content-grid reverse">
+                <div class="content-text">
+                    <div class="section-label">Cost</div>
+                    <h2>Cost is a unit of scale</h2>
+                    <p>Our product is less expensive than RDS MySQL and Aurora for around 85% of the workloads that customers have migrated. No long sales process or annoying pitches.</p>
+                    
+                    <ul class="content-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Best price to performance ratio available</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Bring your own cloud with Managed option</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Purchase through AWS or GCP Marketplace</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Reserved Instances & Savings Plans supported</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="content-visual">
+                    <div class="uptime-display">
+                        <div class="uptime-value">85%</div>
+                        <div class="uptime-label">Cost savings vs Aurora</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: SECURITY
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="content-section" id="security">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text">
+                    <div class="section-label">Security</div>
+                    <h2>Enterprise-grade security</h2>
+                    <p>Trusted by some of the world's largest brands. Our core infrastructure was built to comply with high standards of security, compliance, and privacy.</p>
+                    
+                    <ul class="content-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>SOC 2 Type 2 + HIPAA compliance</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>PCI DSS 4.0 Level 1 Service Provider</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>HIPAA BAA available on all plans</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Trust Center with compliance docs</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="content-visual">
+                    <div class="uptime-display">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-accent-primary)">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <polyline points="9 12 11 14 15 10"/>
+                        </svg>
+                        <div class="uptime-label" style="margin-top: 16px;">SOC 2 Certified</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: FEATURES GRID
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+                <div class="section-label" style="justify-content: center;">Features</div>
+                <h2>Everything you need to scale</h2>
+                <p style="margin: 16px auto 0;">An end-to-end database management platform that prevents human error and provides full insight into query performance.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Branching & Deploy Requests</h3>
+                    <p>Zero downtime schema changes that your team can review, test, and safely deploy.</p>
+                    <a href="#" class="feature-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <h3>Vector Support</h3>
+                    <p>Store your vector data alongside your application's relational data with native vector support.</p>
+                    <a href="#" class="feature-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="1 4 1 10 7 10"/>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                        </svg>
+                    </div>
+                    <h3>Schema Rollbacks</h3>
+                    <p>Roll back bad schema changes with no downtime and no data loss. Instant recovery.</p>
+                    <a href="#" class="feature-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <h3>Query Insights</h3>
+                    <p>Full database observability with Insights to give you a detailed overview of cluster health.</p>
+                    <a href="#" class="feature-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                            <line x1="6" y1="6" x2="6.01" y2="6"/>
+                            <line x1="6" y1="18" x2="6.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3>Horizontal Sharding</h3>
+                    <p>Automate the horizontal scaling of your database with explicit sharding workflows.</p>
+                    <a href="#" class="feature-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3>Global Edge Network</h3>
+                    <p>Utilize our Global Edge Network to automatically route query traffic to local nodes.</p>
+                    <a href="#" class="feature-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: CTA BANNER
+         Removable: Yes - Delete entire section
+         ============================================ -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to get started?</h2>
+                <p>Join thousands of teams building with the world's most scalable database platform.</p>
+                <div class="cta-buttons">
+                    <a href="/signup" class="btn btn-primary btn-large">Start for Free</a>
+                    <a href="/contact" class="btn btn-secondary btn-large">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: FOOTER
+         Removable: No - Core navigation component
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <span>YourBrand</span>
+                    </a>
+                    <p>The world's fastest and most scalable cloud database platform for modern applications.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/changelog">Changelog</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="/case-studies">Case Studies</a></li>
+                        <li><a href="/enterprise">Enterprise</a></li>
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/security">Security</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/docs">Documentation</a></li>
+                        <li><a href="/support">Support</a></li>
+                        <li><a href="/status">Status</a></li>
+                        <li><a href="/trust">Trust Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Open Source</h4>
+                    <ul class="footer-links">
+                        <li><a href="/vitess">Vitess</a></li>
+                        <li><a href="/community">Community</a></li>
+                        <li><a href="https://github.com">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/cookies">Cookies</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://github.com" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                © 2026 YourBrand, Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT - Graph Animation
+         ============================================ -->
+    <script>
+        // Generate animated performance graph bars
+        document.addEventListener('DOMContentLoaded', function() {
+            const graphContainer = document.getElementById('performanceGraph');
+            const barCount = 60;
+            
+            for (let i = 0; i < barCount; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'graph-bar';
+                
+                // Create varying heights to simulate real data
+                const baseHeight = 30;
+                const variance = Math.sin(i * 0.3) * 20 + Math.random() * 30;
+                const height = Math.max(20, Math.min(180, baseHeight + variance));
+                
+                bar.style.height = height + 'px';
+                bar.style.animationDelay = (i * 0.02) + 's';
+                
+                graphContainer.appendChild(bar);
+            }
+        });
+
+        // Tab switching functionality
+        document.querySelectorAll('.architecture-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.architecture-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.graph-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.graph-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

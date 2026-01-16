@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanetScale Template — Modular Dark Theme</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES — Easy theme customization
+           ============================================ */
+        :root {
+            /* Colors */
+            --color-bg-primary: #0a0a0a;
+            --color-bg-secondary: #111111;
+            --color-bg-tertiary: #1a1a1a;
+            --color-bg-card: #141414;
+            --color-bg-hover: #1f1f1f;
+            
+            --color-text-primary: #f5f5f5;
+            --color-text-secondary: #a3a3a3;
+            --color-text-muted: #737373;
+            
+            --color-accent-primary: #f97316;
+            --color-accent-secondary: #fb923c;
+            --color-accent-glow: rgba(249, 115, 22, 0.15);
+            
+            --color-border: #262626;
+            --color-border-subtle: #1f1f1f;
+            
+            --color-success: #22c55e;
+            --color-info: #3b82f6;
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Spacing */
+            --section-padding: 100px 0;
+            --container-max: 1200px;
+            --container-padding: 0 24px;
+            
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--color-accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--color-accent-secondary);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+
+        /* ============================================
+           SECTION: ANNOUNCEMENT BANNER
+           Remove this section if you don't need a top banner
+           ============================================ */
+        .announcement-banner {
+            background: linear-gradient(90deg, var(--color-accent-primary), #ea580c);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .announcement-banner a {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .announcement-banner a:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ============================================
+           SECTION: HEADER / NAVIGATION
+           Main navigation with logo and menu items
+           ============================================ */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--color-text-primary);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-ghost:hover {
+            color: var(--color-text-primary);
+            background: var(--color-bg-hover);
+        }
+
+        .btn-primary {
+            background: var(--color-accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-secondary);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-bg-hover);
+            border-color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SECTION: HERO
+           Main hero section with headline and CTAs
+           ============================================ */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--color-bg-tertiary);
+            border: 1px solid var(--color-border);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--color-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-actions .btn {
+            padding: 14px 28px;
+            font-size: 15px;
+        }
+
+        /* ============================================
+           SECTION: LOGO CLOUD
+           Trusted by companies logos grid
+           ============================================ */
+        .logo-cloud {
+            padding: 60px 0 80px;
+            border-top: 1px solid var(--color-border-subtle);
+        }
+
+        .logo-cloud-label {
+            text-align: center;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            margin-bottom: 32px;
+        }
+
+        .logo-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px 60px;
+        }
+
+        .logo-item {
+            opacity: 0.6;
+            transition: opacity var(--transition-base);
+            filter: grayscale(100%) brightness(2);
+        }
+
+        .logo-item:hover {
+            opacity: 1;
+        }
+
+        .logo-item svg,
+        .logo-item img {
+            height: 28px;
+            width: auto;
+        }
+
+        /* ============================================
+           SECTION: TESTIMONIAL QUOTE (Standalone)
+           Large featured quote block
+           ============================================ */
+        .testimonial-featured {
+            padding: 80px 0;
+            background: var(--color-bg-secondary);
+            border-top: 1px solid var(--color-border-subtle);
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .testimonial-featured blockquote {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .testimonial-featured p {
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.5;
+            color: var(--color-text-primary);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-featured cite {
+            font-style: normal;
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        .testimonial-featured cite strong {
+            color: var(--color-text-secondary);
+        }
+
+        /* ============================================
+           SECTION: FEATURE CONTENT BLOCK
+           Reusable section with heading and content
+           ============================================ */
+        .content-section {
+            padding: var(--section-padding);
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--color-bg-secondary);
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent-primary);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .section-title a:hover {
+            color: var(--color-accent-primary);
+        }
+
+        .section-description {
+            font-size: 17px;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECTION: DIAGRAM / CODE BLOCK
+           Technical diagram or code visualization
+           ============================================ */
+        .diagram-section {
+            padding: var(--section-padding);
+        }
+
+        .diagram-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 24px;
+            background: var(--color-bg-tertiary);
+            padding: 4px;
+            border-radius: var(--radius-md);
+            width: fit-content;
+        }
+
+        .diagram-tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: var(--color-text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .diagram-tab:hover {
+            color: var(--color-text-secondary);
+        }
+
+        .diagram-tab.active {
+            background: var(--color-bg-card);
+            color: var(--color-text-primary);
+        }
+
+        .diagram-container {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            overflow-x: auto;
+        }
+
+        .diagram-ascii {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--color-text-secondary);
+            white-space: pre;
+        }
+
+        /* ============================================
+           SECTION: STATS / METRICS GRID
+           Key statistics in a grid layout
+           ============================================ */
+        .stats-section {
+            padding: var(--section-padding);
+            background: var(--color-bg-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--color-accent-primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SECTION: FEATURE LIST
+           Bullet point feature list
+           ============================================ */
+        .feature-list {
+            list-style: none;
+            display: grid;
+            gap: 16px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .feature-list li::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            background: var(--color-accent-primary);
+            border-radius: 50%;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 12px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .feature-list a {
+            color: var(--color-accent-primary);
+        }
+
+        /* ============================================
+           SECTION: TESTIMONIAL INLINE
+           Smaller inline quote within content
+           ============================================ */
+        .testimonial-inline {
+            margin: 48px 0;
+            padding: 32px;
+            background: var(--color-bg-tertiary);
+            border-left: 3px solid var(--color-accent-primary);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .testimonial-inline p {
+            font-size: 16px;
+            color: var(--color-text-primary);
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .testimonial-inline cite {
+            font-style: normal;
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SECTION: IMAGE / GRAPH BLOCK
+           For displaying charts, graphs, screenshots
+           ============================================ */
+        .image-block {
+            margin: 40px 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .image-block img {
+            width: 100%;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 16px 20px;
+            background: var(--color-bg-tertiary);
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SECTION: CTA BANNER
+           Call to action banner section
+           ============================================ */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse, var(--color-accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================
+           SECTION: DIVIDER
+           Horizontal divider with optional text
+           ============================================ */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 0;
+        }
+
+        .divider-dashed {
+            border-top-style: dashed;
+        }
+
+        /* ============================================
+           SECTION: FOOTER
+           Multi-column footer with links
+           ============================================ */
+        .footer {
+            padding: 80px 0 40px;
+            background: var(--color-bg-secondary);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand {
+            max-width: 280px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 40px;
+            border-top: 1px solid var(--color-border-subtle);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-legal {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a,
+        .footer-legal span {
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            color: var(--color-text-muted);
+            transition: color var(--transition-fast);
+        }
+
+        .footer-social a:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        
+        .mt-0 { margin-top: 0; }
+        .mb-0 { margin-bottom: 0; }
+        .mt-4 { margin-top: 16px; }
+        .mb-4 { margin-bottom: 16px; }
+        .mt-8 { margin-top: 32px; }
+        .mb-8 { margin-bottom: 32px; }
+        
+        .hidden { display: none; }
+        .visible { display: block; }
+        
+        /* ============================================
+           RESPONSIVE UTILITIES
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .logo-grid {
+                gap: 30px 40px;
+            }
+            
+            .diagram-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     SECTION: ANNOUNCEMENT BANNER
+     Status: REMOVABLE
+     Description: Top promotional banner
+     ============================================ -->
+<div class="announcement-banner">
+    🚀 $50 Metal Postgres databases are here. <a href="#">Learn more →</a>
+</div>
+
+<!-- ============================================
+     SECTION: HEADER / NAVIGATION
+     Status: REQUIRED (core navigation)
+     ============================================ -->
+<header class="header">
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+            </div>
+            <span>YourBrand</span>
+        </a>
+        
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="#platform">Platform</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="#" class="btn btn-ghost">Log in</a>
+                <a href="#" class="btn btn-primary">Get started</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- ============================================
+     SECTION: HERO
+     Status: REQUIRED (main value proposition)
+     ============================================ -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            All systems operational
+        </div>
+        
+        <h1>The world's <span class="highlight">fastest</span> and most reliable database</h1>
+        
+        <p class="hero-description">
+            Our platform delivers horizontal scale, incredible performance, and simplified operations — no matter the size your business. Powered by cutting-edge technology with unlimited IOPS.
+        </p>
+        
+        <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Get started free</a>
+            <a href="#" class="btn btn-outline">Book a demo</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION: LOGO CLOUD
+     Status: REMOVABLE
+     Description: Trusted by / customer logos
+     ============================================ -->
+<section class="logo-cloud">
+    <div class="container">
+        <p class="logo-cloud-label">Trusted by industry leaders</p>
+        <div class="logo-grid">
+            <div class="logo-item">
+                <svg height="28" viewBox="0 0 120 28" fill="currentColor">
+                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Block</text>
+                </svg>
+            </div>
+            <div class="logo-item">
+                <svg height="28" viewBox="0 0 80 28" fill="currentColor">
+                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Etsy</text>
+                </svg>
+            </div>
+            <div class="logo-item">
+                <svg height="28" viewBox="0 0 140 28" fill="currentColor">
+                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Intercom</text>
+                </svg>
+            </div>
+            <div class="logo-item">
+                <svg height="28" viewBox="0 0 100 28" fill="currentColor">
+                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Gusto</text>
+                </svg>
+            </div>
+            <div class="logo-item">
+                <svg height="28" viewBox="0 0 100 28" fill="currentColor">
+                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Slack</text>
+                </svg>
+            </div>
+            <div class="logo-item">
+                <svg height="28" viewBox="0 0 140 28" fill="currentColor">
+                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Attentive</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION: FEATURED TESTIMONIAL
+     Status: REMOVABLE
+     Description: Large standalone quote
+     ============================================ -->
+<section class="testimonial-featured">
+    <blockquote>
+        <p>"We chose this platform to host our most demanding workloads, doing millions of queries per second on hundreds of terabytes of data."</p>
+        <cite>— <strong>John Smith</strong>, Chief Product Officer @TechCorp</cite>
+    </blockquote>
+</section>
+
+<!-- ============================================
+     SECTION: ARCHITECTURE DIAGRAM
+     Status: REMOVABLE
+     Description: Technical diagram with tabs
+     ============================================ -->
+<section class="diagram-section" id="platform">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Architecture</span>
+            <h2 class="section-title">Scale horizontally with sharding</h2>
+            <p class="section-description">
+                Our technology allows databases to scale horizontally through explicit sharding — enabling a shared nothing architecture distributing data across thousands of nodes.
+            </p>
+        </div>
+        
+        <div class="diagram-tabs">
+            <button class="diagram-tab active">Basic</button>
+            <button class="diagram-tab">Standard</button>
+            <button class="diagram-tab">Enterprise</button>
+        </div>
+        
+        <div class="diagram-container">
+            <pre class="diagram-ascii">
+       ┌────────────────────────────────┐   
+       │░░░░░░░░░░░░░Gateway░░░░░░░░░░░░│   
+       └────────────────────────────────┘   
+                        │                   
+                                            
+              ─ ─ ─ ─ ─ ┴ ─ ─ ─ ─ ┐         
+             │                              
+                                  │         
+             ▼                    ▼         
+       ╔═══════════╗        ╔═══════════╗   
+       ║           ║        ║           ║   
+       ║  Primary  ║        ║  Primary  ║   
+       ║           ║        ║           ║   
+       ╚═══════════╝        ╚═══════════╝   
+             │                    │         
+                                            
+         ─ ─ ┴ ─ ─            ─ ─ ┴ ─ ─     
+        │         │          │         │    
+        ▼         ▼          ▼         ▼    
+    ┌───────┐ ┌───────┐  ┌───────┐ ┌───────┐
+    │Replica│ │Replica│  │Replica│ │Replica│
+    └───────┘ └───────┘  └───────┘ └───────┘
+            </pre>
+        </div>
+        
+        <div class="testimonial-inline">
+            <p>"Our migration to this architecture is more than just a technological upgrade; it's a strategic move to future-proof our database for the next decade and beyond."</p>
+            <cite>— Ryan Sherlock, Engineering Lead @Intercom</cite>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============================================
+     SECTION: PERFORMANCE
+     Status: REMOVABLE
+     Description: Performance metrics and graph
+     ============================================ -->
+<section class="content-section" id="performance">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Performance</span>
+            <h2 class="section-title"><a href="#performance">Blazing fast performance</a></h2>
+            <p class="section-description">
+                Run your database on the fastest servers available in the cloud. Our blazing fast NVMe drives unlock unlimited IOPS and drastically lower latencies compared to other cloud providers.
+            </p>
+        </div>
+        
+        <div class="image-block">
+            <div style="background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%); padding: 40px; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 600 150" style="width: 100%; max-width: 600px;">
+                    <!-- Graph background -->
+                    <defs>
+                        <linearGradient id="graphGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#f97316;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Grid lines -->
+                    <line x1="50" y1="20" x2="580" y2="20" stroke="#333" stroke-width="1"/>
+                    <line x1="50" y1="60" x2="580" y2="60" stroke="#333" stroke-width="1"/>
+                    <line x1="50" y1="100" x2="580" y2="100" stroke="#333" stroke-width="1"/>
+                    <line x1="50" y1="140" x2="580" y2="140" stroke="#333" stroke-width="1"/>
+                    <!-- Area fill -->
+                    <path d="M50,120 Q150,100 200,80 T350,40 T500,30 L580,35 L580,140 L50,140 Z" fill="url(#graphGradient)"/>
+                    <!-- Line -->
+                    <path d="M50,120 Q150,100 200,80 T350,40 T500,30 L580,35" fill="none" stroke="#f97316" stroke-width="2"/>
+                    <!-- Labels -->
+                    <text x="20" y="25" fill="#666" font-size="10">45ms</text>
+                    <text x="20" y="105" fill="#666" font-size="10">5ms</text>
+                    <text x="50" y="135" fill="#666" font-size="10">Before</text>
+                    <text x="540" y="135" fill="#666" font-size="10">After</text>
+                </svg>
+            </div>
+            <div class="image-caption">
+                p95 latency comparison: Before and after migration showing dramatic performance improvements
+            </div>
+        </div>
+        
+        <div class="testimonial-inline">
+            <p>"We achieved rare improvements in performance, cost, and reliability — a win for our customers and our business."</p>
+            <cite>— Aaron Young, Engineering Manager @CashApp</cite>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============================================
+     SECTION: UPTIME
+     Status: REMOVABLE
+     Description: Reliability and uptime features
+     ============================================ -->
+<section class="content-section" id="uptime">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Reliability</span>
+            <h2 class="section-title"><a href="#uptime">99.999% Uptime SLA</a></h2>
+            <p class="section-description">
+                Ensuring your database is always running and your data is always safe is our number one priority. Nothing comes before uptime and reliability.
+            </p>
+        </div>
+        
+        <ul class="feature-list">
+            <li>Deploy schema changes fully online with zero downtime</li>
+            <li>Revertable schema changes with zero data loss</li>
+            <li>Automatic traffic direction to read-only replicas</li>
+            <li>Online version updates without service interruption</li>
+            <li>Online cluster resizing and resharding</li>
+        </ul>
+        
+        <div class="testimonial-inline">
+            <p>"When you buy this platform, you're getting the technology and expertise that scaled some of the world's largest applications."</p>
+            <cite>— Todd Berman, CTO @Attentive</cite>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============================================
+     SECTION: STATS / METRICS
+     Status: REMOVABLE
+     Description: Key statistics display
+     ============================================ -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value">99.999%</div>
+                <div class="stat-label">Uptime SLA</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">100M+</div>
+                <div class="stat-label">Queries per second</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">&lt;5ms</div>
+                <div class="stat-label">Average latency</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">70,000+</div>
+                <div class="stat-label">Nodes deployed</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============================================
+     SECTION: COST
+     Status: REMOVABLE
+     Description: Pricing and cost benefits
+     ============================================ -->
+<section class="content-section" id="cost">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Pricing</span>
+            <h2 class="section-title"><a href="#cost">Cost-effective at scale</a></h2>
+            <p class="section-description">
+                We believe cost is a unit of scale. Our product is less expensive than competitors for the majority of workloads that customers have migrated to our platform.
+            </p>
+        </div>
+        
+        <ul class="feature-list">
+            <li>Best price to performance ratio of any database service</li>
+            <li>Bring your own cloud for maximum flexibility</li>
+            <li>Purchase through AWS or GCP Marketplace</li>
+            <li>Reserved instances and savings plans available</li>
+            <li>No long sales process or annoying pitches</li>
+        </ul>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============================================
+     SECTION: SECURITY
+     Status: REMOVABLE
+     Description: Security and compliance info
+     ============================================ -->
+<section class="content-section" id="security">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Security</span>
+            <h2 class="section-title"><a href="#security">Enterprise-grade security</a></h2>
+            <p class="section-description">
+                Trusted by some of the world's largest brands. Our core infrastructure was built to comply with high standards of security, compliance, and privacy.
+            </p>
+        </div>
+        
+        <ul class="feature-list">
+            <li>SOC 1 Type 2 & SOC 2 Type 2 + HIPAA compliance</li>
+            <li>PCI DSS 4.0 compliance as a Level 1 Service Provider</li>
+            <li>HIPAA Business Associate Agreements available on all plans</li>
+            <li>End-to-end encryption for data at rest and in transit</li>
+        </ul>
+        
+        <div class="testimonial-inline">
+            <p>"We have very strict regulatory requirements that can feel painful to the average engineer, however they were a strong partner in grinding through our asks."</p>
+            <cite>— Aaron Young, Security Lead @CashApp</cite>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============================================
+     SECTION: FEATURES
+     Status: REMOVABLE
+     Description: Platform features list
+     ============================================ -->
+<section class="content-section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Platform</span>
+            <h2 class="section-title"><a href="#features">Everything you need</a></h2>
+            <p class="section-description">
+                An opinionated database platform built by infrastructure teams behind the world's largest applications. All features combine to provide an end-to-end database management platform.
+            </p>
+        </div>
+        
+        <ul class="feature-list">
+            <li>Branching and deploy requests for zero downtime schema changes</li>
+            <li>Vector data storage alongside your relational data</li>
+            <li>Roll back bad schema changes with no downtime and no data loss</li>
+            <li>Full database observability with detailed query insights</li>
+            <li>Automate horizontal scaling with explicit sharding workflows</li>
+            <li>Global Edge Network for automatic query routing</li>
+            <li>Integrations with Fivetran, Airbyte, Datadog, and more</li>
+            <li>Best-in-class support from database experts</li>
+        </ul>
+        
+        <div class="testimonial-inline">
+            <p>"Databases are hard. We would rather experts manage them. We wanted the support they offer because they are the experts in the field."</p>
+            <cite>— Chris Karper, Engineering @MyFitnessPal</cite>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION: CTA BANNER
+     Status: REMOVABLE
+     Description: Final call to action
+     ============================================ -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to get started?</h2>
+            <p>Join thousands of companies building with the world's fastest database platform.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary">Start free trial</a>
+                <a href="#" class="btn btn-outline">Contact sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION: FOOTER
+     Status: REQUIRED (site navigation)
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <span>YourBrand</span>
+                </a>
+                <p>The world's fastest and most reliable database platform for modern applications.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Changelog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Security</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Status</a></li>
+                    <li><a href="#">Trust Center</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Developers</h4>
+                <ul class="footer-links">
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Guides</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <span>© 2026 YourBrand, Inc. All rights reserved.</span>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Cookies</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT: Interactive functionality
+     ============================================ -->
+<script>
+    // Tab switching for diagram section
+    document.querySelectorAll('.diagram-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.diagram-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+        });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add scroll effect to header
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.background = 'rgba(10, 10, 10, 0.95)';
+        } else {
+            header.style.background = 'rgba(10, 10, 10, 0.85)';
+        }
+    });
+</script>
+
+</body>
+</html>

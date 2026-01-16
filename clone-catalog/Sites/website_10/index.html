@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daisy AI Clone | Modular Template</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Easy theming
+           ============================================ */
+        :root {
+            /* Colors */
+            --color-cream: #F5F3EB;
+            --color-cream-dark: #EAE7DB;
+            --color-black: #1a1a1a;
+            --color-gray: #666;
+            --color-gray-light: #999;
+            
+            /* Accent Colors */
+            --color-mint: #A8E6CF;
+            --color-mint-light: #C5F0DC;
+            --color-pink: #FFB6C1;
+            --color-pink-light: #FFD4DB;
+            --color-yellow: #FFF59D;
+            --color-yellow-light: #FFFAC8;
+            --color-lavender: #E6E0F8;
+            
+            /* Typography */
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+            --font-handwritten: 'Caveat', cursive;
+            
+            /* Spacing */
+            --section-padding: 80px 5%;
+            --section-padding-mobile: 50px 5%;
+            
+            /* Borders & Shadows */
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-card: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-cream);
+            color: var(--color-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grid Background Pattern */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Utility Classes */
+        .highlight {
+            background: linear-gradient(180deg, transparent 60%, var(--color-yellow) 60%);
+            padding: 0 4px;
+        }
+
+        .handwritten {
+            font-family: var(--font-handwritten);
+        }
+
+        /* ============================================
+           SECTION 1: HEADER / NAVIGATION
+           - Removable: Yes
+           - Dependencies: None
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(245, 243, 235, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .btn-primary {
+            background: var(--color-black);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* ============================================
+           SECTION 2: HERO
+           - Removable: Yes
+           - Dependencies: Header for spacing
+           ============================================ */
+        .hero {
+            padding: 140px 5% 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 strong {
+            font-weight: 400;
+            background: linear-gradient(180deg, transparent 50%, var(--color-mint) 50%);
+            padding: 0 6px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--color-gray);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Hero Collage */
+        .hero-collage {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .collage-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s ease;
+        }
+
+        .collage-item:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+        }
+
+        .collage-item:nth-child(1) { transform: rotate(-3deg); }
+        .collage-item:nth-child(2) { transform: rotate(2deg); }
+        .collage-item:nth-child(3) { transform: rotate(-1deg); }
+        .collage-item:nth-child(4) { transform: rotate(3deg); }
+        .collage-item:nth-child(5) { transform: rotate(-2deg); }
+
+        .collage-card {
+            background: white;
+            padding: 12px;
+            aspect-ratio: 3/4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .collage-card-image {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 10px;
+        }
+
+        .sticky-note {
+            position: absolute;
+            padding: 10px 14px;
+            font-family: var(--font-handwritten);
+            font-size: 0.95rem;
+            border-radius: 4px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            z-index: 20;
+        }
+
+        .sticky-yellow {
+            background: var(--color-yellow);
+        }
+
+        .sticky-pink {
+            background: var(--color-pink-light);
+        }
+
+        .sticky-mint {
+            background: var(--color-mint-light);
+        }
+
+        /* ============================================
+           SECTION 3: TRANSFORM / FEATURES INTRO
+           - Removable: Yes
+           - Dependencies: None
+           ============================================ */
+        .transform-section {
+            padding: var(--section-padding);
+            background: white;
+        }
+
+        .transform-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .transform-content h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 40px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-item {
+            background: var(--color-cream);
+            padding: 18px 24px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.95rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .transform-visuals {
+            position: relative;
+            min-height: 450px;
+        }
+
+        .visual-element {
+            position: absolute;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s ease;
+        }
+
+        .visual-element:hover {
+            transform: scale(1.08);
+            z-index: 10;
+        }
+
+        .visual-mona {
+            width: 200px;
+            height: 260px;
+            background: linear-gradient(135deg, #8B7355 0%, #A0522D 100%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        .visual-sphere {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+            border-radius: 50%;
+            top: 20%;
+            right: 15%;
+        }
+
+        .visual-balloon {
+            width: 70px;
+            height: 90px;
+            background: linear-gradient(135deg, #E0E0E0 0%, #BDBDBD 100%);
+            bottom: 15%;
+            right: 10%;
+            border-radius: 50% 50% 45% 45%;
+        }
+
+        .visual-ghost {
+            width: 50px;
+            height: 65px;
+            background: white;
+            border: 2px solid #eee;
+            bottom: 20%;
+            left: 15%;
+            border-radius: 50% 50% 40% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .visual-flower {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            left: 20%;
+            background: var(--color-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        /* ============================================
+           SECTION 4: TAGLINE BANNER
+           - Removable: Yes
+           - Dependencies: None
+           ============================================ */
+        .tagline-banner {
+            padding: 60px 5%;
+            background: var(--color-cream);
+            text-align: center;
+        }
+
+        .tagline-banner h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           SECTION 5: PRODUCT FEATURES
+           - Removable: Yes (each subsection independent)
+           - Dependencies: None
+           ============================================ */
+        .features-section {
+            padding: var(--section-padding);
+        }
+
+        /* Feature: Wide Open Spaces */
+        .feature-wide-spaces {
+            background: var(--color-mint-light);
+            border-radius: var(--border-radius);
+            padding: 50px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .feature-wide-spaces h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-wide-spaces p {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        .feature-screenshot {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            border-radius: var(--border-radius-sm);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Feature Cards Grid */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            border-radius: var(--border-radius);
+        }
+
+        .feature-card-mint {
+            background: var(--color-mint-light);
+        }
+
+        .feature-card-pink {
+            background: var(--color-pink-light);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card-visual {
+            height: 200px;
+            background: rgba(255,255,255,0.5);
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECTION 6: PHILOSOPHY / CTA
+           - Removable: Yes
+           - Dependencies: None
+           ============================================ */
+        .philosophy-section {
+            padding: var(--section-padding);
+            background: white;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .philosophy-left h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .philosophy-left .highlight-word {
+            display: inline-block;
+            border: 2px solid var(--color-black);
+            border-radius: 50px;
+            padding: 2px 12px;
+        }
+
+        .philosophy-icon {
+            font-size: 60px;
+            margin-top: 20px;
+        }
+
+        .philosophy-right h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-decoration: underline;
+            text-decoration-color: var(--color-black);
+            text-underline-offset: 4px;
+        }
+
+        .philosophy-right p {
+            font-size: 1rem;
+            color: var(--color-gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           SECTION 7: WAITLIST / SIGNUP
+           - Removable: Yes
+           - Dependencies: None
+           ============================================ */
+        .waitlist-section {
+            padding: 80px 5%;
+            background: var(--color-yellow);
+            text-align: center;
+        }
+
+        .waitlist-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .waitlist-section p {
+            color: var(--color-gray);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 450px;
+            margin: 0 auto 20px;
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 20px;
+            border: 2px solid var(--color-black);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            background: white;
+            font-family: var(--font-sans);
+        }
+
+        .waitlist-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+        }
+
+        .waitlist-form button {
+            padding: 14px 28px;
+        }
+
+        .privacy-note {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+        }
+
+        .privacy-note a {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           SECTION 8: FOOTER
+           - Removable: Yes
+           - Dependencies: None
+           ============================================ */
+        .footer {
+            padding: 40px 5%;
+            background: var(--color-black);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-logo svg {
+            fill: white;
+        }
+
+        .footer-center {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-center a {
+            color: rgba(255,255,255,0.8);
+            transition: color 0.3s;
+        }
+
+        .footer-center a:hover {
+            color: white;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .team-avatars {
+            display: flex;
+            margin-right: 15px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--color-black);
+            margin-left: -10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .footer-link {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 900px) {
+            .transform-grid,
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .transform-visuals {
+                min-height: 350px;
+            }
+
+            .feature-wide-spaces {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-collage {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .collage-item:nth-child(4),
+            .collage-item:nth-child(5) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 12px 4%;
+            }
+
+            .btn-primary {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 120px 4% 40px;
+            }
+
+            .hero-collage {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .collage-item:nth-child(3) {
+                display: none;
+            }
+
+            .feature-wide-spaces,
+            .feature-card {
+                padding: 25px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Staggered animations for elements */
+        .hero-content { animation-delay: 0.1s; }
+        .hero-collage { animation-delay: 0.3s; }
+
+        /* Scroll-triggered animations (add via JS) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="grid-bg">
+
+    <!-- ==========================================
+         SECTION 1: HEADER
+         To remove: Delete this entire section
+         ========================================== -->
+    <header class="header">
+        <a href="#" class="logo">
+            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" fill="#1a1a1a"/>
+                <path d="M20 10 C14 10, 10 16, 10 20 C10 26, 14 30, 20 30 C26 30, 30 26, 30 20" stroke="white" stroke-width="2" fill="none"/>
+                <circle cx="20" cy="20" r="4" fill="white"/>
+            </svg>
+            <span>daisy</span>
+        </a>
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+    </header>
+
+    <!-- ==========================================
+         SECTION 2: HERO
+         To remove: Delete this entire section
+         Note: Adjust body padding-top if header removed
+         ========================================== -->
+    <section class="hero">
+        <div class="hero-content animate-fade-in">
+            <h1>Give your ideas a glow up. Meet your new <strong>AI creative collaborator.</strong></h1>
+            <p class="hero-subtitle">Capture, organize, and elevate your ideas across work, life, and leisure.</p>
+        </div>
+        
+        <div class="hero-collage animate-fade-in">
+            <!-- Collage Item 1 -->
+            <div class="collage-item">
+                <div class="collage-card">
+                    <div class="collage-card-image" style="background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);"></div>
+                    <span style="font-size: 0.8rem; color: var(--color-gray);">Book Club</span>
+                </div>
+                <div class="sticky-note sticky-yellow" style="top: -15px; left: -10px; transform: rotate(-8deg);">
+                    Help me promote our<br>neighborhood book club
+                </div>
+            </div>
+            
+            <!-- Collage Item 2 -->
+            <div class="collage-item">
+                <div class="collage-card">
+                    <div class="collage-card-image" style="background: linear-gradient(135deg, #f5e6d3 0%, #e8d4bc 100%); display: flex; align-items: center; justify-content: center;">
+                        <span style="font-family: var(--font-serif); font-size: 1.5rem; font-style: italic;">Let it Flow</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Collage Item 3 -->
+            <div class="collage-item">
+                <div class="collage-card">
+                    <div class="collage-card-image" style="background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);"></div>
+                </div>
+                <div class="sticky-note sticky-mint" style="bottom: 20px; right: -20px; transform: rotate(5deg);">
+                    Help me create a tax<br>invoice template
+                </div>
+            </div>
+            
+            <!-- Collage Item 4 -->
+            <div class="collage-item">
+                <div class="collage-card">
+                    <div class="collage-card-image" style="background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);"></div>
+                    <span style="font-size: 0.75rem; color: var(--color-gray);">Accounting for Makers</span>
+                </div>
+                <div class="sticky-note sticky-pink" style="top: 10px; right: -15px; transform: rotate(12deg); font-size: 0.85rem;">
+                    ✏️ coming soon...
+                </div>
+            </div>
+            
+            <!-- Collage Item 5 -->
+            <div class="collage-item">
+                <div class="collage-card">
+                    <div class="collage-card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                </div>
+                <div class="sticky-note sticky-yellow" style="bottom: -10px; left: 10px; transform: rotate(-4deg);">
+                    Create a blog post outline<br>about dopamine detoxing
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: TRANSFORM / FEATURES INTRO
+         To remove: Delete this entire section
+         ========================================== -->
+    <section class="transform-section reveal">
+        <div class="transform-grid">
+            <div class="transform-content">
+                <h2>Transform chaos<br>into creativity</h2>
+                <div class="feature-list">
+                    <div class="feature-item">Throw your thoughts onto an infinite canvas and watch them evolve</div>
+                    <div class="feature-item">Turn scattered ideas into coherent plans with your AI collaborator</div>
+                    <div class="feature-item">Save anything that sparks your creativity from across the web</div>
+                    <div class="feature-item">Experience the blissful feeling of a perfectly organized junk drawer</div>
+                </div>
+            </div>
+            <div class="transform-visuals">
+                <div class="visual-element visual-mona">🖼️</div>
+                <div class="visual-element visual-sphere animate-float"></div>
+                <div class="visual-element visual-balloon">🎈</div>
+                <div class="visual-element visual-ghost">👻</div>
+                <div class="visual-element visual-flower">🌸</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: TAGLINE BANNER
+         To remove: Delete this entire section
+         ========================================== -->
+    <section class="tagline-banner grid-bg reveal">
+        <h2>Turn midnight musings into<br>morning action plans</h2>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: PRODUCT FEATURES
+         To remove: Delete entire section or individual feature blocks
+         Each .feature-* can be removed independently
+         ========================================== -->
+    <section class="features-section">
+        <div class="container">
+            
+            <!-- Feature: Wide Open Spaces (Removable) -->
+            <div class="feature-wide-spaces reveal">
+                <div>
+                    <h3>Wide open spaces</h3>
+                    <p>Daisy's infinite canvas brings your scattered thoughts to life. Transform fragmented ideas into fully developed plans and projects, all in one visual, expansive space.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <div class="screenshot-placeholder">
+                        📱 Product Screenshot Placeholder
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature Cards (Each removable) -->
+            <div class="feature-cards">
+                
+                <!-- Card 1: AI Help (Removable) -->
+                <div class="feature-card feature-card-mint reveal">
+                    <h3>Get unblocked with a little help from AI</h3>
+                    <div class="feature-card-visual">🤖</div>
+                    <p>Brainstorm ideas, create action plans, generate to-do lists and more. Organize your thoughts and keep your projects moving forward with Daisy.</p>
+                </div>
+                
+                <!-- Card 2: Save Inspiration (Removable) -->
+                <div class="feature-card feature-card-pink reveal">
+                    <h3>Save inspiration anytime, anywhere</h3>
+                    <div class="feature-card-visual">✨</div>
+                    <p>Access all your inspiration in one place. Curate your personal creative library — images, videos, websites, and GIFs, at your fingertips. Drag and drop elements onto your canvas and watch your vision unfold.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: PHILOSOPHY / CTA
+         To remove: Delete this entire section
+         ========================================== -->
+    <section class="philosophy-section grid-bg reveal">
+        <div class="philosophy-grid">
+            <div class="philosophy-left">
+                <h3>It all starts with the <span class="highlight-word">seed</span> of an idea.</h3>
+                <div class="philosophy-icon">🌱</div>
+            </div>
+            <div class="philosophy-right">
+                <h4>Need a little help turning your good ideas into great ones?</h4>
+                <p>The way you cultivate your creativity can make all the difference. Nurture your ideas from fleeting thoughts into full-fledged project plans with Daisy.</p>
+                <p>Whatever sparks your passion or fuels your professional growth, Daisy is here to help.</p>
+                <p><strong>Let your thoughts take root and watch your creativity bloom.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: WAITLIST / SIGNUP
+         To remove: Delete this entire section
+         ========================================== -->
+    <section class="waitlist-section" id="waitlist">
+        <h2>Join the Waitlist</h2>
+        <p>Sign up with your email address to receive product news and updates.</p>
+        <form class="waitlist-form" onsubmit="handleSubmit(event)">
+            <input type="email" placeholder="Email Address" required>
+            <button type="submit" class="btn-primary">Sign Up</button>
+        </form>
+        <p class="privacy-note">We respect your privacy. <a href="#">Privacy Policy</a></p>
+    </section>
+
+    <!-- ==========================================
+         SECTION 8: FOOTER
+         To remove: Delete this entire section
+         ========================================== -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" fill="white"/>
+                <path d="M20 10 C14 10, 10 16, 10 20 C10 26, 14 30, 20 30 C26 30, 30 26, 30 20" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+                <circle cx="20" cy="20" r="4" fill="#1a1a1a"/>
+            </svg>
+        </div>
+        <div class="footer-center">
+            <a href="mailto:info@hidaisy.ai">info@hidaisy.ai</a>
+        </div>
+        <div class="footer-right">
+            <div class="team-avatars">
+                <div class="avatar">👤</div>
+                <div class="avatar">👤</div>
+                <div class="avatar">👤</div>
+                <div class="avatar">👤</div>
+            </div>
+            <a href="#" class="footer-link">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+    <script>
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            alert(`Thanks for signing up! We'll be in touch at ${email}`);
+            event.target.reset();
+        }
+
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

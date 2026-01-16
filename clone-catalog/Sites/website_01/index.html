@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revitin Clone | Prebiotic Toothpaste Template</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================================
+     SECTION: ANNOUNCEMENT BAR
+     - Top promotional banner
+     - Easy to remove: Delete this entire section
+     ============================================ -->
+<section id="announcement-bar" class="announcement-bar">
+    <div class="announcement-content">
+        <a href="#">New Product Drop: Travel Size is Here</a>
+        <span class="separator">•</span>
+        <a href="#">Subscribe & Get Free Shipping on Every Order</a>
+    </div>
+</section>
+<!-- END: ANNOUNCEMENT BAR -->
+
+
+<!-- ============================================
+     SECTION: HEADER/NAVIGATION
+     - Main navigation with logo
+     - Sticky on scroll
+     ============================================ -->
+<header id="header" class="header">
+    <div class="header-container">
+        <nav class="nav-left">
+            <a href="#" class="nav-link">Shop</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Ingredients</a>
+        </nav>
+        
+        <a href="#" class="logo">
+            <span class="logo-text">Revitin</span>
+            <span class="logo-trademark">®</span>
+        </a>
+        
+        <nav class="nav-right">
+            <a href="#" class="nav-link">Account</a>
+            <a href="#" class="cart-link">
+                <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 6h15l-1.5 9h-12z"/>
+                    <circle cx="9" cy="20" r="1"/>
+                    <circle cx="18" cy="20" r="1"/>
+                </svg>
+                <span class="cart-count">0</span>
+            </a>
+        </nav>
+    </div>
+</header>
+<!-- END: HEADER/NAVIGATION -->
+
+
+<!-- ============================================
+     SECTION: HERO
+     - Main hero banner with headline
+     - Background image with overlay
+     ============================================ -->
+<section id="hero" class="hero">
+    <div class="hero-background">
+        <div class="hero-fruits fruit-peach"></div>
+        <div class="hero-fruits fruit-citrus"></div>
+        <div class="hero-fruits fruit-berries"></div>
+    </div>
+    <div class="hero-content">
+        <span class="hero-badge">The World's First</span>
+        <h1 class="hero-title">Prebiotic Toothpaste</h1>
+        <p class="hero-subtitle">Nurture your oral microbiome with prebiotics, vitamins, and natural ingredients</p>
+        <a href="#products" class="btn btn-primary">Shop Revitin</a>
+    </div>
+</section>
+<!-- END: HERO -->
+
+
+<!-- ============================================
+     SECTION: PRODUCT INTRO
+     - "Toothpaste, Evolved" headline
+     - Brief product description
+     ============================================ -->
+<section id="product-intro" class="product-intro">
+    <div class="container">
+        <span class="section-label">Product</span>
+        <h2 class="section-title">Toothpaste, Evolved</h2>
+        <p class="section-description">
+            Good bacteria is important for our health, but most toothpastes brush it away. We don't. Revitin is a dentist-developed prebiotic formula that helps balance the oral microbiome for whiter teeth, fresher breath, and improved total body health.
+        </p>
+    </div>
+</section>
+<!-- END: PRODUCT INTRO -->
+
+
+<!-- ============================================
+     SECTION: PRODUCT SHOWCASE
+     - Featured product with flavor options
+     - Add to cart functionality
+     ============================================ -->
+<section id="products" class="product-showcase">
+    <div class="container">
+        <div class="product-card-main">
+            <div class="product-header">
+                <h3>Revitin Natural Toothpaste</h3>
+                <div class="product-rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="review-count">722 reviews</span>
+                </div>
+            </div>
+            
+            <div class="product-options">
+                <div class="flavor-selector">
+                    <button class="flavor-btn active" data-flavor="mint">
+                        <span class="flavor-dot mint"></span>
+                        Mint
+                    </button>
+                    <button class="flavor-btn" data-flavor="citrus">
+                        <span class="flavor-dot citrus"></span>
+                        Citrus
+                    </button>
+                </div>
+                
+                <div class="size-selector">
+                    <button class="size-btn active">Full Size</button>
+                    <button class="size-btn">Travel Size</button>
+                </div>
+            </div>
+            
+            <div class="product-display">
+                <div class="product-image-container">
+                    <img src="https://via.placeholder.com/300x400/FAF6F0/333333?text=Toothpaste+Tube" alt="Revitin Toothpaste" class="product-image">
+                    <div class="product-ingredients-float">
+                        <img src="https://via.placeholder.com/80x80/FFA500/FFFFFF?text=🍊" alt="Orange" class="float-ingredient orange">
+                        <img src="https://via.placeholder.com/60x60/FFD700/FFFFFF?text=🍋" alt="Lemon" class="float-ingredient lemon">
+                        <img src="https://via.placeholder.com/70x70/FF6B6B/FFFFFF?text=🍓" alt="Berry" class="float-ingredient berry">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <div class="price-display">
+                        <span class="price-label">from</span>
+                        <span class="price-amount">$13.60</span>
+                        <span class="price-unit">per tube</span>
+                    </div>
+                    <button class="btn btn-primary btn-full">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: PRODUCT SHOWCASE -->
+
+
+<!-- ============================================
+     SECTION: TRUST BADGES
+     - Scrolling badge bar
+     - Free-from claims
+     ============================================ -->
+<section id="trust-badges" class="trust-badges">
+    <div class="badges-track">
+        <div class="badges-content">
+            <span class="badge">✓ Fluoride & SLS Free</span>
+            <span class="badge">✓ Peanut Free</span>
+            <span class="badge">✓ Dye Free</span>
+            <span class="badge">✓ GMO Free</span>
+            <span class="badge">✓ Sugar & Xylitol Free</span>
+            <span class="badge">✓ Gluten Free</span>
+            <span class="badge">✓ Fluoride & SLS Free</span>
+            <span class="badge">✓ Peanut Free</span>
+            <span class="badge">✓ Dye Free</span>
+            <span class="badge">✓ GMO Free</span>
+            <span class="badge">✓ Sugar & Xylitol Free</span>
+            <span class="badge">✓ Gluten Free</span>
+        </div>
+    </div>
+</section>
+<!-- END: TRUST BADGES -->
+
+
+<!-- ============================================
+     SECTION: PREBIOTICS EXPLANATION
+     - Educational content about prebiotics
+     - Large image with text overlay
+     ============================================ -->
+<section id="prebiotics" class="prebiotics-section">
+    <div class="prebiotics-container">
+        <div class="prebiotics-image">
+            <div class="image-placeholder citrus-theme">
+                <span class="placeholder-icon">🍯</span>
+            </div>
+        </div>
+        <div class="prebiotics-content">
+            <span class="section-label">Why Prebiotics?</span>
+            <h2 class="section-title">Prebiotics are fibers that feed good bacteria</h2>
+            <p class="section-text">
+                And good bacteria creates a healthy oral environment. In addition to positively impacting the things you can taste and feel, like fresher breath and less sensitive teeth, a balanced oral environment is directly linked to cardiovascular, respiratory, and immune health.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- END: PREBIOTICS EXPLANATION -->
+
+
+<!-- ============================================
+     SECTION: INGREDIENTS
+     - "Nourish your smile" headline
+     - Ingredient cards with icons
+     ============================================ -->
+<section id="ingredients" class="ingredients-section">
+    <div class="container">
+        <span class="section-label">Clean Ingredients</span>
+        <h2 class="section-title">Nourish your smile the natural way</h2>
+        
+        <div class="ingredients-grid">
+            <div class="ingredient-card">
+                <div class="ingredient-icon">
+                    <img src="https://via.placeholder.com/100x100/FFA500/FFFFFF?text=🍊" alt="Tangerine">
+                </div>
+                <h4>Tangerine Oil</h4>
+                <p>A microbial substrate that has a positive impact on the oral environment</p>
+            </div>
+            
+            <div class="ingredient-card">
+                <div class="ingredient-icon">
+                    <img src="https://via.placeholder.com/100x100/FF6B6B/FFFFFF?text=🍇" alt="Vitamin C">
+                </div>
+                <h4>Vitamin C</h4>
+                <p>A powerful antioxidant that fights decay and gingivitis</p>
+            </div>
+            
+            <div class="ingredient-card">
+                <div class="ingredient-icon">
+                    <img src="https://via.placeholder.com/100x100/228B22/FFFFFF?text=🌿" alt="Crispus Chondrus">
+                </div>
+                <h4>Crispus Chondrus</h4>
+                <p>Prebiotic that balances oral ecology and contains minerals for strong teeth</p>
+            </div>
+            
+            <div class="ingredient-card">
+                <div class="ingredient-icon">
+                    <img src="https://via.placeholder.com/100x100/FF8C00/FFFFFF?text=🥭" alt="Vitamin E">
+                </div>
+                <h4>Vitamin E</h4>
+                <p>Supports tissue repair and combats oxidative stress</p>
+            </div>
+            
+            <div class="ingredient-card">
+                <div class="ingredient-icon">
+                    <img src="https://via.placeholder.com/100x100/DC143C/FFFFFF?text=🍒" alt="Cranberry Seed Oil">
+                </div>
+                <h4>Cranberry Seed Oil</h4>
+                <p>Inflammation calming prebiotic nutrient with essential fatty acids</p>
+            </div>
+            
+            <div class="ingredient-card">
+                <div class="ingredient-icon">
+                    <img src="https://via.placeholder.com/100x100/FFD700/FFFFFF?text=🍋" alt="CoQ10">
+                </div>
+                <h4>CoQ10</h4>
+                <p>Cell-energy enhancer for healthy mitochondrial function</p>
+            </div>
+        </div>
+        
+        <a href="#" class="btn btn-secondary">View All Ingredients</a>
+    </div>
+</section>
+<!-- END: INGREDIENTS -->
+
+
+<!-- ============================================
+     SECTION: COMPARISON TABLE
+     - Revitin vs Traditional Toothpaste
+     - Feature checklist
+     ============================================ -->
+<section id="comparison" class="comparison-section">
+    <div class="container">
+        <div class="comparison-table">
+            <div class="comparison-header">
+                <div class="comparison-col feature-col"></div>
+                <div class="comparison-col revitin-col">
+                    <span class="brand-label">Revitin</span>
+                </div>
+                <div class="comparison-col traditional-col">
+                    <span class="brand-label">Traditional Toothpaste</span>
+                </div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Biologic Dentist Developed</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Prebiotics + Vitamins</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Balances Oral Microbiome</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Safe if Swallowed</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">No Xylitol, Fluoride & SLS</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Dye & GMO Free</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Antioxidants & CoQ10</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">15+ Years of Clinical Studies</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Whitens Teeth Naturally</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-col feature-col">Supports Total Body Health</div>
+                <div class="comparison-col revitin-col"><span class="check">✓</span></div>
+                <div class="comparison-col traditional-col"><span class="cross">✗</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: COMPARISON TABLE -->
+
+
+<!-- ============================================
+     SECTION: COMMON PROBLEMS
+     - Problems escalated by conventional toothpaste
+     - Problem cards with icons
+     ============================================ -->
+<section id="problems" class="problems-section">
+    <div class="container">
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title">"Common" oral health problems can be<br>escalated by conventional toothpaste</h2>
+        <p class="section-subtitle">When you switch to Revitin, you're equipping your oral microbiome with the tools it needs to heal itself.</p>
+        
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-icon">🦷</div>
+                <h4>Cavities</h4>
+                <p>Clinical research shows that prebiotics limit the growth of unhealthy plaque.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-icon">💉</div>
+                <h4>Bleeding Gums</h4>
+                <p>Inflammation is reduced when the body has enough antioxidants and fatty acids.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-icon">⚡</div>
+                <h4>Sensitive Teeth</h4>
+                <p>Non-stripping formulas support and preserve tooth enamel.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-icon">💊</div>
+                <h4>Mouth Sores</h4>
+                <p>Natural and SLS-free ingredients promote cell regeneration.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-icon">🧫</div>
+                <h4>Plaque Buildup</h4>
+                <p>A balanced oral environment stops plaque in its tracks.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-icon">⚠️</div>
+                <h4>Harsh Chemicals</h4>
+                <p>Fluoride and other harsh chemicals are directly linked to negative health outcomes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: COMMON PROBLEMS -->
+
+
+<!-- ============================================
+     SECTION: ORAL MICROBIOME
+     - "Pretend your mouth is a city" analogy
+     - Educational content with image
+     ============================================ -->
+<section id="microbiome" class="microbiome-section">
+    <div class="microbiome-container">
+        <div class="microbiome-image">
+            <div class="image-placeholder green-theme">
+                <span class="placeholder-text">Toothpaste Image</span>
+            </div>
+        </div>
+        <div class="microbiome-content">
+            <span class="section-label">The Oral Microbiome</span>
+            <h2 class="section-title">Pretend your mouth is a city</h2>
+            <p class="section-text">
+                There are different neighborhoods on your teeth, the roof of your mouth, and your gums. Each neighborhood has different microbial residents who want to live in harmony. And when they do, our breath is fresh, our gums don't bleed, and our teeth are strong.
+            </p>
+            <p class="section-text">
+                Traditional toothpastes and harsh chemicals discourage microbial harmony. In fact, they are designed to zap all the microbes in sight. We have 15 years of clinical research to prove that good bacteria is just that—good.
+            </p>
+            <a href="#products" class="btn btn-primary">Shop Revitin</a>
+        </div>
+    </div>
+</section>
+<!-- END: ORAL MICROBIOME -->
+
+
+<!-- ============================================
+     SECTION: WHY REVITIN
+     - Three feature cards
+     - Key differentiators
+     ============================================ -->
+<section id="why-revitin" class="why-section">
+    <div class="container">
+        <span class="section-label">Why Revitin?</span>
+        <p class="section-intro">Prebiotic toothpaste, unlike synthetic alternatives, nurtures oral microbiome using natural ingredients.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-number">01</span>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="24" cy="24" r="20"/>
+                        <path d="M24 14v20M14 24h20"/>
+                    </svg>
+                </div>
+                <h3>No Bad Ingredients</h3>
+                <p>Fluoride, triclosan, artificial dyes...the list goes on. These ingredients do more harm than good in the name of a quick fix or flavor. Our formula is effective, safe if swallowed, and delivers actual nutrients.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-number">02</span>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 24l8 8 16-16"/>
+                        <rect x="4" y="4" width="40" height="40" rx="4"/>
+                    </svg>
+                </div>
+                <h3>Backed by Research</h3>
+                <p>Founded by pioneering researcher & biologic dentist, Dr. Gerry Curatola, Revitin is a natural formula supported by 15 years of clinical research.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-number">03</span>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="24" cy="24" r="18"/>
+                        <circle cx="24" cy="24" r="8"/>
+                        <circle cx="24" cy="24" r="2"/>
+                    </svg>
+                </div>
+                <h3>Total Body Health</h3>
+                <p>When you balance your oral microbiome, you positively influence your entire system. Our cardiovascular, respiratory, and immune systems are all linked to the health of our oral environment.</p>
+            </div>
+        </div>
+        
+        <a href="#" class="btn btn-secondary">Learn More</a>
+    </div>
+</section>
+<!-- END: WHY REVITIN -->
+
+
+<!-- ============================================
+     SECTION: TESTIMONIALS
+     - Customer reviews carousel
+     - Social proof
+     ============================================ -->
+<section id="testimonials" class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title">Loved By Over +70,000 Smiles!</h2>
+        <p class="section-subtitle">Toothpaste so good, you'll actually look forward to brushing —just ask our customers.</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Very happy!! Pleasantly surprised at this product. I have tried so many and it is by far the best. My family loves it and I love the mouth feeling without the chemicals!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JS</div>
+                    <span class="author-name">Jonni S.</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Brushing my teeth with Revitin in confidence knowing that what I am putting in my body is the right choice. My teeth have been noticeably whiter. I have used for one month, twice a day. Love it!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <span class="author-name">Adora M.</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Amazing clean feeling with vibrant bright teeth! My kids love it as well. Revitin is my one and only toothpaste. I've used Revitin for many years now and I couldn't imagine using any other."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">KR</div>
+                    <span class="author-name">Kaylyn R.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: TESTIMONIALS -->
+
+
+<!-- ============================================
+     SECTION: CTA BANNER
+     - Final call-to-action
+     - Shop prompt
+     ============================================ -->
+<section id="cta" class="cta-section">
+    <div class="container">
+        <h2 class="cta-title">The world's first prebiotic toothpaste.<br>Try it today!</h2>
+        <a href="#products" class="btn btn-primary btn-large">Shop Revitin</a>
+    </div>
+</section>
+<!-- END: CTA BANNER -->
+
+
+<!-- ============================================
+     SECTION: FOOTER
+     - Site links
+     - Newsletter signup
+     - Copyright
+     ============================================ -->
+<footer id="footer" class="footer">
+    <div class="footer-container">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <span class="logo-text">Revitin</span>
+                    <span class="logo-trademark">®</span>
+                </a>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Revitin Toothpaste</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Ingredients</a></li>
+                        <li><a href="#">Meet Dr. Gerry</a></li>
+                        <li><a href="#">The Science</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Orders</h4>
+                    <ul>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return & Refund Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Wholesale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column newsletter-column">
+                    <h4>Newsletter</h4>
+                    <p>Receive special offers and first look at new products!</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© 2024, Revitin Clone Template</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END: FOOTER -->
+
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1337 Universe - Born From The Big Spark</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           CSS VARIABLES - EASY THEMING
+           ======================================== */
+        :root {
+            /* Primary Colors */
+            --color-neon-green: #00FF41;
+            --color-neon-cyan: #00FFFF;
+            --color-hot-pink: #FF1493;
+            --color-magenta: #FF00FF;
+            --color-coral: #FF6B6B;
+            
+            /* Background Colors */
+            --color-bg-dark: #0a0a0a;
+            --color-bg-light: #f5f5f0;
+            --color-bg-cream: #faf9f6;
+            
+            /* Text Colors */
+            --color-text-dark: #111111;
+            --color-text-light: #ffffff;
+            --color-text-muted: #666666;
+            
+            /* Fonts */
+            --font-display: 'Anton', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --font-serif: 'Playfair Display', serif;
+            
+            /* Spacing */
+            --section-padding: 80px 20px;
+            --container-max-width: 1200px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.4s ease;
+        }
+
+        /* ========================================
+           RESET & BASE STYLES
+           ======================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background: var(--color-bg-light);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========================================
+           UTILITY CLASSES
+           ======================================== */
+        .text-center { text-align: center; }
+        .text-uppercase { text-transform: uppercase; }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-1 0.3s infinite linear alternate-reverse;
+            color: var(--color-neon-cyan);
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+        }
+        
+        .glitch::after {
+            animation: glitch-2 0.3s infinite linear alternate-reverse;
+            color: var(--color-hot-pink);
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+        }
+
+        @keyframes glitch-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitch-2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(2px, 2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(-2px, 2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* ========================================
+           SECTION: HEADER / NAVIGATION
+           - Sticky header with logo and nav
+           - Removable: Delete entire section
+           ======================================== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            mix-blend-mode: difference;
+        }
+
+        .site-header__logo {
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: var(--color-text-light);
+            letter-spacing: 2px;
+        }
+
+        .site-header__nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .site-header__link {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-light);
+            transition: var(--transition-fast);
+        }
+
+        .site-header__link:hover {
+            color: var(--color-neon-green);
+        }
+
+        /* ========================================
+           SECTION: HERO
+           - Main headline with glitch effect
+           - Removable: Delete .hero section
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 20px 80px;
+            background: var(--color-bg-light);
+        }
+
+        .hero__content {
+            max-width: 900px;
+        }
+
+        .hero__eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-text-muted);
+            margin-bottom: 20px;
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 12vw, 140px);
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: var(--color-text-dark);
+            margin-bottom: 40px;
+        }
+
+        .hero__title-accent {
+            color: var(--color-neon-green);
+            display: inline-block;
+        }
+
+        .hero__description {
+            max-width: 500px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--color-text-muted);
+        }
+
+        /* ========================================
+           SECTION: THREE PILLARS
+           - Creation, Preservation, Destruction
+           - Removable: Delete .pillars section
+           ======================================== */
+        .pillars {
+            padding: var(--section-padding);
+            background: var(--color-bg-light);
+        }
+
+        .pillars__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pillar {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #ddd;
+            transition: var(--transition-medium);
+        }
+
+        .pillar:hover {
+            border-color: var(--color-neon-green);
+            transform: translateY(-5px);
+        }
+
+        .pillar__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-text-dark);
+        }
+
+        .pillar__icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--color-neon-green);
+        }
+
+        .pillar__title {
+            font-family: var(--font-display);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ========================================
+           SECTION: ENTITY INTRO (A1)
+           - Universe lore introduction
+           - Removable: Delete .entity-intro section
+           ======================================== */
+        .entity-intro {
+            padding: var(--section-padding);
+            background: var(--color-bg-cream);
+        }
+
+        .entity-intro__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .entity-intro__title {
+            font-family: var(--font-display);
+            font-size: clamp(80px, 15vw, 200px);
+            line-height: 0.85;
+            color: var(--color-text-dark);
+        }
+
+        .entity-intro__image {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+        }
+
+        .entity-intro__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%) contrast(1.1);
+        }
+
+        .entity-intro__stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .entity-intro__stat {
+            padding: 10px;
+            background: var(--color-bg-light);
+            text-align: center;
+        }
+
+        .entity-intro__lore {
+            max-width: 500px;
+            margin-top: 60px;
+        }
+
+        .entity-intro__lore p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .entity-intro__lore strong {
+            color: var(--color-text-dark);
+        }
+
+        /* ========================================
+           SECTION: CHARACTER CARD - CHAOS
+           - CH4O$ entity showcase
+           - Removable: Delete .character-chaos section
+           - Reusable: Copy and modify for new characters
+           ======================================== */
+        .character-chaos {
+            padding: var(--section-padding);
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+        }
+
+        .character-chaos__hero {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .character-chaos__title {
+            font-family: var(--font-display);
+            font-size: clamp(60px, 20vw, 250px);
+            line-height: 0.85;
+            color: var(--color-neon-green);
+            text-shadow: 
+                0 0 20px var(--color-neon-green),
+                0 0 40px var(--color-neon-green);
+        }
+
+        .character-chaos__image {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .character-chaos__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .character-chaos__image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                var(--color-bg-dark) 100%
+            );
+        }
+
+        .character-chaos__description {
+            max-width: 600px;
+        }
+
+        .character-chaos__description p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .character-chaos__meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .character-chaos__meta dt {
+            color: var(--color-text-muted);
+            margin-bottom: 5px;
+        }
+
+        .character-chaos__meta dd {
+            color: var(--color-neon-green);
+        }
+
+        .character-chaos__cta {
+            margin-top: 40px;
+        }
+
+        .character-chaos__cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-light);
+            transition: var(--transition-fast);
+        }
+
+        .character-chaos__cta a:hover {
+            color: var(--color-neon-green);
+        }
+
+        /* ========================================
+           SECTION: CHARACTER CARD - MEMORY
+           - M3MORY entity showcase (pink theme)
+           - Removable: Delete .character-memory section
+           - Reusable: Copy and modify for new characters
+           ======================================== */
+        .character-memory {
+            padding: var(--section-padding);
+            background: var(--color-hot-pink);
+            color: var(--color-text-dark);
+        }
+
+        .character-memory__hero {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .character-memory__title {
+            font-family: var(--font-serif);
+            font-size: clamp(50px, 15vw, 180px);
+            line-height: 0.9;
+            font-style: italic;
+            color: var(--color-text-dark);
+        }
+
+        .character-memory__image {
+            position: relative;
+            aspect-ratio: 1/1;
+            max-width: 500px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+
+        .character-memory__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.2);
+        }
+
+        .character-memory__description {
+            max-width: 600px;
+        }
+
+        .character-memory__description p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .character-memory__meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .character-memory__meta dt {
+            color: rgba(0,0,0,0.5);
+            margin-bottom: 5px;
+        }
+
+        .character-memory__meta dd {
+            color: var(--color-text-dark);
+            font-weight: 700;
+        }
+
+        .character-memory__cta {
+            margin-top: 40px;
+        }
+
+        .character-memory__cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-dark);
+            transition: var(--transition-fast);
+        }
+
+        .character-memory__cta a:hover {
+            color: var(--color-text-light);
+        }
+
+        /* ========================================
+           SECTION: CHARACTER CARD - RAVE
+           - R4V3 entity showcase (coral/warm theme)
+           - Removable: Delete .character-rave section
+           - Reusable: Copy and modify for new characters
+           ======================================== */
+        .character-rave {
+            padding: var(--section-padding);
+            background: linear-gradient(135deg, #ff9a8b 0%, #ff6a88 50%, #ff99ac 100%);
+            color: var(--color-text-dark);
+        }
+
+        .character-rave__hero {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .character-rave__title {
+            font-family: var(--font-display);
+            font-size: clamp(60px, 18vw, 220px);
+            line-height: 0.85;
+            color: var(--color-text-light);
+            text-shadow: 4px 4px 0 var(--color-text-dark);
+        }
+
+        .character-rave__image {
+            position: relative;
+            aspect-ratio: 3/4;
+            max-width: 450px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+
+        .character-rave__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .character-rave__description {
+            max-width: 600px;
+        }
+
+        .character-rave__description p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .character-rave__meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .character-rave__meta dt {
+            color: rgba(0,0,0,0.5);
+            margin-bottom: 5px;
+        }
+
+        .character-rave__meta dd {
+            color: var(--color-text-dark);
+            font-weight: 700;
+        }
+
+        .character-rave__cta {
+            margin-top: 40px;
+        }
+
+        .character-rave__cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-dark);
+            border-bottom: 2px solid var(--color-text-dark);
+            padding-bottom: 5px;
+            transition: var(--transition-fast);
+        }
+
+        .character-rave__cta a:hover {
+            border-color: var(--color-text-light);
+            color: var(--color-text-light);
+        }
+
+        /* ========================================
+           SECTION: NEWSLETTER / JOIN
+           - Email signup section
+           - Removable: Delete .newsletter section
+           ======================================== */
+        .newsletter {
+            padding: var(--section-padding);
+            background: var(--color-bg-light);
+        }
+
+        .newsletter__grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .newsletter__badge {
+            font-family: var(--font-display);
+            font-size: clamp(60px, 12vw, 120px);
+            line-height: 0.85;
+            text-transform: uppercase;
+            color: var(--color-hot-pink);
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        .newsletter__content {
+            max-width: 500px;
+        }
+
+        .newsletter__title {
+            font-family: var(--font-display);
+            font-size: clamp(40px, 8vw, 80px);
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .newsletter__description {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--color-text-muted);
+            margin-bottom: 30px;
+        }
+
+        .newsletter__form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter__input {
+            flex: 1;
+            padding: 15px 20px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            border: 2px solid var(--color-text-dark);
+            background: transparent;
+            transition: var(--transition-fast);
+        }
+
+        .newsletter__input:focus {
+            outline: none;
+            border-color: var(--color-neon-green);
+        }
+
+        .newsletter__button {
+            padding: 15px 30px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: var(--color-text-dark);
+            color: var(--color-text-light);
+            border: 2px solid var(--color-text-dark);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .newsletter__button:hover {
+            background: var(--color-neon-green);
+            border-color: var(--color-neon-green);
+            color: var(--color-text-dark);
+        }
+
+        /* ========================================
+           SECTION: FOOTER
+           - Social links and copyright
+           - Removable: Delete .site-footer section
+           ======================================== */
+        .site-footer {
+            padding: 40px 20px;
+            background: var(--color-bg-light);
+            border-top: 1px solid #ddd;
+        }
+
+        .site-footer__grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .site-footer__social {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .site-footer__social a {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .site-footer__social a:hover {
+            color: var(--color-neon-green);
+        }
+
+        .site-footer__copyright {
+            font-size: 10px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ========================================
+           RESPONSIVE STYLES
+           ======================================== */
+        @media (max-width: 768px) {
+            .site-header__nav {
+                display: none;
+            }
+
+            .pillars__grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+            }
+
+            .entity-intro__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .newsletter__grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .newsletter__badge {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+
+            .newsletter__form {
+                flex-direction: column;
+            }
+
+            .character-chaos__meta,
+            .character-memory__meta,
+            .character-rave__meta {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         SECTION: HEADER / NAVIGATION
+         - Remove this entire section to hide nav
+         ========================================== -->
+    <header class="site-header">
+        <div class="site-header__logo">1337</div>
+        <nav class="site-header__nav">
+            <a href="#chaos" class="site-header__link">CH4O$</a>
+            <a href="#memory" class="site-header__link">M3MORY</a>
+            <a href="#rave" class="site-header__link">R4V3</a>
+            <a href="#join" class="site-header__link">Join</a>
+        </nav>
+    </header>
+
+    <!-- ==========================================
+         SECTION: HERO
+         - Main headline with universe tagline
+         - Remove this section to start with pillars
+         ========================================== -->
+    <section class="hero">
+        <div class="hero__content">
+            <p class="hero__eyebrow">Welcome to</p>
+            <h1 class="hero__title">
+                <span class="hero__title-accent glitch" data-text="1337">1337</span> IS A UNIVERS3 BORN FROM THE BIG SPARK
+            </h1>
+            <p class="hero__description">
+                It is inhabited by a civilization of entities—beings of every shape, size and form governed by the universe's three fundamental energies.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: THREE PILLARS
+         - Creation, Preservation, Destruction
+         - Can be reused for any 3-column feature grid
+         ========================================== -->
+    <section class="pillars">
+        <div class="container">
+            <div class="pillars__grid">
+                <!-- Pillar: Creation -->
+                <div class="pillar">
+                    <div class="pillar__icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="pillar__title">CREA<br>TION</h3>
+                </div>
+                
+                <!-- Pillar: Preservation -->
+                <div class="pillar">
+                    <div class="pillar__icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="pillar__title">PRESERVA<br>TION</h3>
+                </div>
+                
+                <!-- Pillar: Destruction -->
+                <div class="pillar">
+                    <div class="pillar__icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 2C13.5 2 15.5 4 15.5 6.5C15.5 7.38 15.16 8.18 14.63 8.78L19 13.5L14.38 18.12C13.78 17.59 12.98 17.25 12.1 17.25C9.6 17.25 7.6 19.25 7.6 19.25L2.88 14.5L7.5 9.88C8.1 10.41 8.9 10.75 9.78 10.75C12.28 10.75 13.5 8.5 13.5 6.5V2Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="pillar__title">DESTRUC<br>TION</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: ENTITY INTRO (A1)
+         - Universe lore and first character intro
+         - Remove to skip lore section
+         ========================================== -->
+    <section class="entity-intro">
+        <div class="container">
+            <div class="entity-intro__grid">
+                <div>
+                    <h2 class="entity-intro__title">A1</h2>
+                    <div class="entity-intro__stats">
+                        <div class="entity-intro__stat">PWR: 87</div>
+                        <div class="entity-intro__stat">INT: 94</div>
+                        <div class="entity-intro__stat">SPD: 76</div>
+                        <div class="entity-intro__stat">DEF: 82</div>
+                    </div>
+                </div>
+                <div class="entity-intro__image">
+                    <!-- Replace with your image -->
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#00FF41,#00FFFF);display:flex;align-items:center;justify-content:center;color:#000;font-family:var(--font-display);font-size:24px;">
+                        [CHARACTER IMAGE]
+                    </div>
+                </div>
+            </div>
+            
+            <div class="entity-intro__lore">
+                <p>
+                    <strong>Since the beginning, the entities of the 1337 universe have lived in peace and harmony.</strong>
+                </p>
+                <p>
+                    As of late, rumor has it that there is a mutant A1 Bug that threatens the balance of the entities, and subsequently the universe.
+                </p>
+                <p>
+                    <strong>Things have begun to fluctuate.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: CHARACTER - CH4O$ (CHAOS)
+         - Dark theme character showcase
+         - Reusable: Copy entire section for new chars
+         ========================================== -->
+    <section id="chaos" class="character-chaos">
+        <div class="container">
+            <div class="character-chaos__hero">
+                <h2 class="character-chaos__title glitch" data-text="CH4O$">CH4O$</h2>
+            </div>
+            
+            <div class="character-chaos__image">
+                <!-- Replace with your image -->
+                <div style="width:100%;height:100%;background:linear-gradient(to bottom,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;color:var(--color-neon-green);font-family:var(--font-display);font-size:32px;">
+                    [CHAOS CHARACTER IMAGE]
+                </div>
+            </div>
+            
+            <div class="character-chaos__description">
+                <p>
+                    Amidst all of the uncertainty and confusion, meet Chaos, an entity driven by creation. Chaos is curious about the A1 Bug and sees opportunity for it to move the world forward.
+                </p>
+                
+                <dl class="character-chaos__meta">
+                    <div>
+                        <dt>Alignment</dt>
+                        <dd>Creation Energy</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd>Active // Searching</dd>
+                    </div>
+                    <div>
+                        <dt>Power Level</dt>
+                        <dd>████████░░ 82%</dd>
+                    </div>
+                    <div>
+                        <dt>Last Seen</dt>
+                        <dd>Sector 7G</dd>
+                    </div>
+                </dl>
+                
+                <div class="character-chaos__cta">
+                    <a href="#">
+                        INSTAGRAM
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: CHARACTER - M3MORY (MEMORY)
+         - Pink theme character showcase
+         - Reusable: Copy entire section for new chars
+         ========================================== -->
+    <section id="memory" class="character-memory">
+        <div class="container">
+            <div class="character-memory__hero">
+                <h2 class="character-memory__title">M3MORY</h2>
+            </div>
+            
+            <div class="character-memory__image">
+                <!-- Replace with your image -->
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,#ff6b6b,#feca57);display:flex;align-items:center;justify-content:center;color:#000;font-family:var(--font-serif);font-size:28px;font-style:italic;">
+                    [MEMORY CHARACTER IMAGE]
+                </div>
+            </div>
+            
+            <div class="character-memory__description">
+                <p>
+                    Memory is driven by preservation—keen to hold on to the world as she knows it. What came before has created the beauty she cherishes so deeply. The A1 bug can only jeopardize the delicate balance of the universe.
+                </p>
+                
+                <dl class="character-memory__meta">
+                    <div>
+                        <dt>Alignment</dt>
+                        <dd>Preservation Energy</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd>Watchful // Guarding</dd>
+                    </div>
+                    <div>
+                        <dt>Power Level</dt>
+                        <dd>████████░░ 78%</dd>
+                    </div>
+                    <div>
+                        <dt>Last Seen</dt>
+                        <dd>The Archives</dd>
+                    </div>
+                </dl>
+                
+                <div class="character-memory__cta">
+                    <a href="#">
+                        INSTAGRAM
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: CHARACTER - R4V3 (RAVE)
+         - Warm gradient character showcase
+         - Reusable: Copy entire section for new chars
+         ========================================== -->
+    <section id="rave" class="character-rave">
+        <div class="container">
+            <div class="character-rave__hero">
+                <h2 class="character-rave__title">R4V3</h2>
+            </div>
+            
+            <div class="character-rave__image">
+                <!-- Replace with your image -->
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,#a8e6cf,#dcedc1);display:flex;align-items:center;justify-content:center;color:#000;font-family:var(--font-display);font-size:28px;">
+                    [RAVE CHARACTER IMAGE]
+                </div>
+            </div>
+            
+            <div class="character-rave__description">
+                <p>
+                    Rave is driven by destruction—a natural part of life and that creates space for new growth and development. A1 as a chance to "cleanse" 1337 and create a new order out of the disruption.
+                </p>
+                
+                <dl class="character-rave__meta">
+                    <div>
+                        <dt>Alignment</dt>
+                        <dd>Destruction Energy</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd>Volatile // Ready</dd>
+                    </div>
+                    <div>
+                        <dt>Power Level</dt>
+                        <dd>█████████░ 91%</dd>
+                    </div>
+                    <div>
+                        <dt>Last Seen</dt>
+                        <dd>The Void Edge</dd>
+                    </div>
+                </dl>
+                
+                <div class="character-rave__cta">
+                    <a href="#">
+                        INSTAGRAM
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: NEWSLETTER / JOIN
+         - Email signup call-to-action
+         - Remove to hide signup section
+         ========================================== -->
+    <section id="join" class="newsletter">
+        <div class="container">
+            <div class="newsletter__grid">
+                <span class="newsletter__badge">JOIN</span>
+                
+                <div class="newsletter__content">
+                    <h2 class="newsletter__title">THE INNER CIRCLE</h2>
+                    <p class="newsletter__description">
+                        Subscribe now for exclusive access to our latest tech insights and community updates. Be in the know—always.
+                    </p>
+                    <form class="newsletter__form" action="#" method="POST">
+                        <input 
+                            type="email" 
+                            class="newsletter__input" 
+                            placeholder="Enter your email" 
+                            required
+                            aria-label="Email address"
+                        >
+                        <button type="submit" class="newsletter__button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: FOOTER
+         - Social links and copyright
+         - Remove to hide footer entirely
+         ========================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="site-footer__grid">
+                <div class="site-footer__social">
+                    <a href="#">TWITTER ↗</a>
+                    <a href="#">INSTAGRAM ↗</a>
+                    <a href="#">LINKEDIN ↗</a>
+                </div>
+                
+                <p class="site-footer__copyright">
+                    © 2025 1337 Universe. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         - Smooth scroll and animations
+         ========================================== -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
+
+        // Newsletter form handling
+        document.querySelector('.newsletter__form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter__input').value;
+            alert(`Thanks for subscribing with: ${email}`);
+            this.reset();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

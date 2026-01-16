@@ -1,0 +1,167 @@
+<!--
+================================================================================
+SECTION: CONTENT TABS
+================================================================================
+Purpose: Tabbed content area for Overview, Features, Screenshots, etc.
+Dependencies: Should be inside the content area, after the content box
+To Use: Copy after the content box section
+CSS: Included inline below - copy to your main stylesheet or keep inline
+================================================================================
+-->
+
+<!-- CONTENT TABS CSS -->
+<style>
+.content-tabs {
+    background: #2f3a4d;
+    border: 1px solid #3a4860;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.tabs-nav {
+    display: flex;
+    background: linear-gradient(180deg, #5a6a85 0%, #4a5a75 100%);
+    border-bottom: 1px solid #1a2030;
+}
+
+.tabs-nav a {
+    padding: 10px 15px;
+    color: #c8d0dc;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-right: 1px solid rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+
+.tabs-nav a:hover {
+    background: rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+.tabs-nav a.active {
+    background: #2f3a4d;
+    color: #ffffff;
+}
+
+.tab-content {
+    padding: 15px;
+}
+
+.tab-content h3 {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+}
+
+.tab-content h4 {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 13px;
+    color: #c9a227;
+    margin: 15px 0 6px 0;
+}
+
+.tab-content p {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    color: #c8d0dc;
+    line-height: 1.7;
+    margin: 0 0 10px 0;
+}
+
+.tab-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: #c8d0dc;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+.tab-content li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+</style>
+
+<!-- CONTENT TABS HTML -->
+<div class="content-tabs">
+    <div class="tabs-nav">
+        <a href="#" class="active">Overview</a>
+        <a href="#">Features</a>
+        <a href="#">Screenshots</a>
+        <a href="#">System Requirements</a>
+    </div>
+    <div class="tab-content">
+        <h3>See Windows in a whole new way</h3>
+        
+        <h4>Customize the look &amp; feel of Windows</h4>
+        <p>
+            Tired of your computer having the same old look as every other computer? Want to give 
+            your Windows PC its own unique style? Stardock WindowBlinds will let you apply thousands 
+            of different skins (visual styles) to change the look and feel of your entire desktop. 
+            WindowBlinds is so flexible that users can create skins that mimic the look and feel of 
+            other operating systems.
+        </p>
+        
+        <h4>Not Just Eye Candy</h4>
+        <p>
+            WindowBlinds doesn't just make Windows look better, it can make it more functional. You 
+            can create your own skins that add additional buttons to the title bar that provide 
+            additional functionality such as roll-up buttons, link buttons, program short cuts, even 
+            media player controls. Moreover, because WindowBlinds uses the latest features of your 
+            graphics card, it can make Windows even faster than the default Windows XP or "Aero" style.
+        </p>
+        
+        <h4>You are in control</h4>
+        <p>
+            Even with thousands of different visual styles to choose from, you can customize those 
+            visual styles as well. WindowBlinds gives you total control over your graphical user 
+            interface. WindowBlinds will let you change the color of your Windows GUI, change your 
+            wallpaper, give different windows their own specific look, choose a new Windows taskbar 
+            and Start button.
+        </p>
+        
+        <h4>Improve your productivity</h4>
+        <p>
+            WindowBlinds has features that significantly enhance a user's productivity when it comes 
+            to interacting with windows. For example, you set WindowBlinds to minimize windows just 
+            by right-clicking on the title bar, a great feature for minimizing several windows quickly 
+            without having to resort to "minimize all".
+        </p>
+    </div>
+</div>
+
+<!--
+================================================================================
+CUSTOMIZATION GUIDE:
+================================================================================
+1. TABS:
+   - Add tab: Add <a href="#">Tab Name</a> to .tabs-nav
+   - Remove tab: Delete the <a> element
+   - Active tab: Move class="active" to the current tab
+
+2. TAB CONTENT:
+   - Main heading: Modify <h3> text
+   - Section headings: Modify <h4> text
+   - Paragraphs: Add/remove/modify <p> tags
+   - Lists: Add <ul><li>...</li></ul> for bullet points
+
+3. MULTIPLE TAB PANELS (for JavaScript tabs):
+   - Wrap each tab's content in: <div class="tab-panel" id="tab-name">...</div>
+   - Add data-tab="tab-name" to each <a> in tabs-nav
+   - Implement JavaScript to show/hide panels
+
+4. COLORS:
+   - Tab bar: Change .tabs-nav background gradient
+   - Active tab: Modify .tabs-nav a.active background
+   - Content background: Change .content-tabs and .tab-content background
+   - Heading colors: Modify h3 and h4 color values
+   - Text color: Change .tab-content p color
+
+5. REMOVE TABS (single content):
+   - Delete entire <div class="tabs-nav">...</div>
+   - Keep .tab-content for simple content display
+================================================================================
+-->

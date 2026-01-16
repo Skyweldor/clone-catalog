@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anterior Clone Template</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Easy to customize
+           ============================================ */
+        :root {
+            /* Colors */
+            --color-bg-primary: #F5F0E8;
+            --color-bg-dark: #1A1A1A;
+            --color-text-primary: #1A1A1A;
+            --color-text-light: #FFFFFF;
+            --color-text-muted: #666666;
+            --color-accent: #E8E0D0;
+            --color-cta: #1A1A1A;
+            --color-cta-text: #FFFFFF;
+            
+            /* Typography */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Spacing */
+            --section-padding: 80px 0;
+            --container-max-width: 1200px;
+            --container-padding: 0 40px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ============================================
+           SECTION: HEADER / NAVIGATION
+           - Removable: Yes
+           - Contains: Logo, nav links, announcement, CTA
+           ============================================ */
+        .section-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--color-bg-primary);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--color-text-primary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .announcement-badge {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color var(--transition-fast);
+        }
+
+        .announcement-badge:hover {
+            color: var(--color-text-primary);
+        }
+
+        .announcement-badge::after {
+            content: '→';
+        }
+
+        .btn-cta {
+            background: var(--color-cta);
+            color: var(--color-cta-text);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ============================================
+           SECTION: HERO
+           - Removable: Yes
+           - Contains: Main headline, hero image with overlay, email signup
+           ============================================ */
+        .section-hero {
+            padding: 60px 0 80px;
+        }
+
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 10vw, 100px);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        .hero-card {
+            background: var(--color-bg-dark);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+
+        .hero-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Abstract colorful gradient placeholder */
+            background: linear-gradient(
+                135deg,
+                #FF6B9D 0%,
+                #C44AFF 25%,
+                #44D4FF 50%,
+                #44FF88 75%,
+                #FFD444 100%
+            );
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.3;
+            color: var(--color-text-light);
+            max-width: 360px;
+        }
+
+        .hero-form {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .hero-input {
+            flex: 1;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            background: rgba(255,255,255,0.1);
+            color: var(--color-text-light);
+            outline: none;
+            transition: background var(--transition-fast);
+        }
+
+        .hero-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .hero-input:focus {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .btn-join {
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            padding: 14px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--transition-fast);
+        }
+
+        .btn-join:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-social-proof {
+            text-align: center;
+            padding: 24px 0;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ============================================
+           SECTION: VALUE PROPOSITION
+           - Removable: Yes
+           - Contains: Two-column layout with headline and description
+           ============================================ */
+        .section-value-prop {
+            padding: var(--section-padding);
+        }
+
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .value-prop-headline {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        .value-prop-content p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: var(--color-text-primary);
+        }
+
+        .value-prop-content strong {
+            font-weight: 600;
+        }
+
+        .highlight-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--color-text-primary);
+            font-weight: 500;
+            border-bottom: 1px solid var(--color-text-primary);
+            padding-bottom: 2px;
+        }
+
+        .highlight-link .icon {
+            width: 16px;
+            height: 16px;
+            background: var(--color-text-primary);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--color-text-light);
+        }
+
+        /* ============================================
+           SECTION: SECURITY
+           - Removable: Yes
+           - Contains: Dark background security section with badges
+           ============================================ */
+        .section-security {
+            padding: var(--section-padding);
+        }
+
+        .security-card {
+            background: var(--color-bg-dark);
+            border-radius: 16px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .security-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(60px, 8vw, 120px);
+            font-weight: 400;
+            color: var(--color-bg-primary);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .security-content p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.8);
+            max-width: 480px;
+        }
+
+        .security-badges {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 24px;
+        }
+
+        .badges-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-light);
+            text-align: right;
+        }
+
+        .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .badge-icon {
+            width: 70px;
+            height: 70px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-weight: 700;
+            font-size: 14px;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .badge-icon.csf {
+            font-size: 12px;
+        }
+
+        .badge-icon.csf span:first-child {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .badge-icon.hipaa {
+            border-radius: 50%;
+        }
+
+        .badge-icon.hipaa svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        /* ============================================
+           SECTION: BOTTOM CTA
+           - Removable: Yes
+           - Contains: Final call-to-action with email signup
+           ============================================ */
+        .section-bottom-cta {
+            padding: 60px 0 80px;
+        }
+
+        .bottom-cta-content {
+            max-width: 600px;
+        }
+
+        .bottom-cta-content h3 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 32px;
+        }
+
+        .bottom-cta-form {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--color-text-primary);
+            padding-bottom: 12px;
+        }
+
+        .bottom-cta-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            color: var(--color-text-muted);
+            outline: none;
+        }
+
+        .bottom-cta-input::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .btn-text {
+            background: none;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            cursor: pointer;
+            transition: opacity var(--transition-fast);
+        }
+
+        .btn-text:hover {
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           SECTION: FOOTER
+           - Removable: Yes
+           - Contains: Logo, navigation links, copyright
+           ============================================ */
+        .section-footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-text-primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .footer-company-name {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-primary);
+            transition: opacity var(--transition-fast);
+        }
+
+        .footer-social a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 968px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image-container {
+                min-height: 250px;
+            }
+
+            .value-prop-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .security-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .security-badges {
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .badges-title {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-inner {
+                padding: 12px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .announcement-badge {
+                display: none;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero-headline {
+                font-size: 42px;
+            }
+
+            .hero-form {
+                flex-direction: column;
+            }
+
+            .security-card {
+                padding: 40px 24px;
+            }
+
+            .security-content h2 {
+                font-size: 60px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==========================================
+         SECTION: HEADER
+         - Sticky navigation bar
+         - Contains: Logo, nav links, announcement, CTA button
+         ========================================== -->
+    <header class="section-header" id="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <a href="#" class="logo">
+                    <span class="logo-icon">a</span>
+                    <span>Anterior</span>
+                </a>
+                <nav class="nav-links">
+                    <a href="#company">Company</a>
+                    <a href="#news">News</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <a href="#" class="announcement-badge">Anterior Raises $20M Series A</a>
+                <button class="btn-cta">Join Waitlist</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         SECTION: HERO
+         - Main headline and value proposition
+         - Contains: Large headline, hero card with image, email signup
+         ========================================== -->
+    <section class="section-hero" id="hero">
+        <div class="container">
+            <h1 class="hero-headline">Lead your plan into the future.</h1>
+            
+            <div class="hero-card">
+                <div class="hero-image-container">
+                    <!-- Replace with actual image -->
+                    <div class="hero-image" aria-label="Abstract colorful visualization"></div>
+                </div>
+                <div class="hero-content">
+                    <p class="hero-tagline">The AI platform built by clinicians to transform the administrative burden faced by healthcare payers.</p>
+                    <form class="hero-form">
+                        <input type="email" class="hero-input" placeholder="Enter your work e-mail" required>
+                        <button type="submit" class="btn-join">Join Waitlist</button>
+                    </form>
+                </div>
+            </div>
+
+            <p class="hero-social-proof">Used by payer organizations covering 50M+ lives</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: VALUE PROPOSITION
+         - Explains the company mission and product
+         - Contains: Italic headline, descriptive paragraphs, Florence mention
+         ========================================== -->
+    <section class="section-value-prop" id="value-prop">
+        <div class="container">
+            <div class="value-prop-grid">
+                <div class="value-prop-headline">
+                    Your clinicians spend more time searching for clarity in chaos than turning insight into care.
+                </div>
+                <div class="value-prop-content">
+                    <p>
+                        At Anterior, our mission is to help healthcare administration catch up with healthcare delivery. 
+                        <strong>We don't believe that healthcare is broken—the administrative layer is.</strong> Your clinicians are 
+                        spending more time searching for clarity in chaos than turning insight into care.
+                    </p>
+                    <p>
+                        We have built <strong>the platform that brings the potential of generative AI to healthcare 
+                        operations.</strong> At the core of our platform is <a href="#" class="highlight-link"><span class="icon">✦</span> Florence</a>, an AI-powered clinical co-pilot 
+                        designed for every administrative workflow a clinician needs to perform. Our <strong>software 
+                        is made by clinicians, for clinicians,</strong> ensuring that it meets the real-world needs of 
+                        healthcare professionals.
+                    </p>
+                    <p>
+                        Our promise is a world where <strong>healthcare admin feels invisible,</strong> clinicians feel empowered, 
+                        and <strong>patients receive the right care at the right time.</strong> By combining clinical excellence with 
+                        technical prowess, we ensure powerful healthcare operations transformation with 
+                        responsible AI use.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: SECURITY
+         - Security and compliance information
+         - Contains: Large "Security" heading, description, certification badges
+         ========================================== -->
+    <section class="section-security" id="security">
+        <div class="container">
+            <div class="security-card">
+                <div class="security-content">
+                    <h2>Security</h2>
+                    <p>
+                        We know that security is vital for your healthcare organization, so our 
+                        platform is purpose-built for enterprise to keep your members' data secure.
+                    </p>
+                </div>
+                <div class="security-badges">
+                    <span class="badges-title">Certificates<br>and Standards</span>
+                    
+                    <div class="badge-item">
+                        <span class="badge-label">HITRUST<br>Certified</span>
+                        <div class="badge-icon csf">
+                            <span>CSF</span>
+                            <span>V11</span>
+                        </div>
+                    </div>
+                    
+                    <div class="badge-item">
+                        <span class="badge-label">HIPAA<br>Compliant</span>
+                        <div class="badge-icon hipaa">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                <path d="M12 6v6l4 2"/>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: BOTTOM CTA
+         - Final call-to-action
+         - Contains: Headline, email signup form
+         ========================================== -->
+    <section class="section-bottom-cta" id="bottom-cta">
+        <div class="container">
+            <div class="bottom-cta-content">
+                <h3>Ready to lead your plan into the future?</h3>
+                <form class="bottom-cta-form">
+                    <input type="email" class="bottom-cta-input" placeholder="Enter your work e-mail" required>
+                    <button type="submit" class="btn-text">Join Waitlist</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: FOOTER
+         - Site footer
+         - Contains: Logo, navigation links, social icons, copyright
+         ========================================== -->
+    <footer class="section-footer" id="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="footer-logo-icon">a</span>
+                    </div>
+                    <span class="footer-company-name">Anterior</span>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#company">Company</a>
+                    <a href="#careers">Careers</a>
+                    <a href="#news">News</a>
+                    <a href="#press">Press</a>
+                    <a href="#privacy">Privacy</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="X (Twitter)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <span class="copyright">Anterior Inc. © 2023-2024</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         - Minimal JS for interactions
+         ========================================== -->
+    <script>
+        // Form submission handling (placeholder)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = form.querySelector('input[type="email"]').value;
+                alert(`Thanks! We'll be in touch at ${email}`);
+                form.reset();
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

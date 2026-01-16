@@ -1,0 +1,156 @@
+<!-- ============================================================
+     SECTION: CTA (Call to Action with Form)
+     
+     Dependencies: 
+     - CSS: .cta-*, .form-*, .section-*, .btn classes
+     - Variables: --color-*, --space-*, --radius-*
+     
+     To customize:
+     - Update section text (label, title, description)
+     - Modify form fields as needed
+     - Connect form to your backend (add action/method attributes)
+     
+     Form Fields:
+     - Full Name (text)
+     - Email (email)
+     - Phone (tel)
+     - Submit button
+     
+     Note: Add your form handling - this is just the frontend
+     ============================================================ -->
+<section class="cta-section" id="contact">
+    <div class="container cta-container">
+        
+        <!-- CTA Content -->
+        <div class="cta-content">
+            <span class="section-label">Get in Touch</span>
+            <h2 class="section-title">We're always here.</h2>
+            <p class="section-description">
+                Fill out our form or call us directly to find out if our programs 
+                are right for you. Our intake team is available 24/7.
+            </p>
+        </div>
+        
+        <!-- CTA Form -->
+        <div class="cta-form">
+            <h3 class="cta-form-title">Start your journey today</h3>
+            
+            <!-- Add action="" and method="" for your backend -->
+            <form>
+                <div class="form-group">
+                    <label class="form-label" for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567">
+                </div>
+                
+                <button type="submit" class="btn btn-primary form-submit">Request a Call</button>
+            </form>
+        </div>
+        
+    </div>
+</section>
+
+<!-- REQUIRED CSS -->
+<style>
+.cta-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -25%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.cta-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content .section-label {
+    color: var(--color-accent);
+}
+
+.cta-content .section-title {
+    color: var(--color-text-light);
+}
+
+.cta-content .section-description {
+    color: rgba(250, 248, 245, 0.8);
+}
+
+.cta-form {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+}
+
+.cta-form-title {
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.form-group {
+    margin-bottom: var(--space-sm);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xs);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 2px solid rgba(26, 46, 40, 0.1);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.form-input::placeholder {
+    color: rgba(74, 93, 86, 0.5);
+}
+
+.form-submit {
+    width: 100%;
+    margin-top: var(--space-sm);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cta-container { grid-template-columns: 1fr; }
+}
+</style>

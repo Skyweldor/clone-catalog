@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Template | Life-Changing Care</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================================
+           CSS VARIABLES - Edit these to quickly change the theme
+           ============================================================ */
+        :root {
+            /* Primary Colors */
+            --color-primary: #1a5f4a;
+            --color-primary-light: #2d7a62;
+            --color-primary-dark: #0f3d2f;
+            
+            /* Accent Colors */
+            --color-accent: #e8a54b;
+            --color-accent-light: #f5c97a;
+            
+            /* Background Colors */
+            --color-bg-cream: #faf8f5;
+            --color-bg-sage: #e8f0eb;
+            --color-bg-warm: #f5f0e8;
+            --color-bg-dark: #1a2e28;
+            
+            /* Text Colors */
+            --color-text-primary: #1a2e28;
+            --color-text-secondary: #4a5d56;
+            --color-text-light: #faf8f5;
+            
+            /* Typography */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+            --space-2xl: 8rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-base: 300ms ease;
+            --transition-slow: 500ms ease;
+        }
+
+        /* ============================================================
+           BASE STYLES
+           ============================================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-cream);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-text-light);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26, 95, 74, 0.25);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-text-light);
+        }
+
+        .btn-accent {
+            background: var(--color-accent);
+            color: var(--color-text-primary);
+        }
+
+        .btn-accent:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           SECTION: NAVIGATION
+           Remove: Delete entire <header> element and .nav-* styles
+           ============================================================ */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(26, 46, 40, 0.08);
+            transition: all var(--transition-base);
+        }
+
+        .nav-header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) var(--space-md);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-primary);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition-base);
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-xs);
+        }
+
+        .nav-mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
+            margin: 6px 0;
+            transition: all var(--transition-fast);
+        }
+
+        /* ============================================================
+           SECTION: HERO
+           Remove: Delete <section class="hero-section"> and .hero-* styles
+           ============================================================ */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--color-bg-cream) 0%, var(--color-bg-sage) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(26, 95, 74, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--color-bg-cream), transparent);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(26, 95, 74, 0.1);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            color: var(--color-primary);
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-lg);
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(26, 46, 40, 0.15);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) var(--space-md);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-floating-card.card-1 {
+            top: 20%;
+            left: -40px;
+            animation-delay: 0s;
+        }
+
+        .hero-floating-card.card-2 {
+            bottom: 20%;
+            right: -40px;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-card-label {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-card-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           SECTION: WHO WE SERVE (Service Cards)
+           Remove: Delete <section class="services-section"> and .services-* styles
+           ============================================================ */
+        .services-section {
+            padding: var(--space-2xl) 0;
+            background: var(--color-bg-cream);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-base);
+            border: 1px solid rgba(26, 46, 40, 0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(26, 46, 40, 0.12);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--color-primary);
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--color-bg-sage);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            transition: all var(--transition-base);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--color-primary);
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-primary);
+            fill: none;
+            stroke-width: 1.5;
+            transition: stroke var(--transition-base);
+        }
+
+        .service-card:hover .service-icon svg {
+            stroke: white;
+        }
+
+        .service-age {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+
+        .service-tag {
+            padding: 0.375rem 0.75rem;
+            background: var(--color-bg-sage);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-weight: 600;
+            color: var(--color-primary);
+            transition: gap var(--transition-fast);
+        }
+
+        .service-link:hover {
+            gap: var(--space-sm);
+        }
+
+        .service-link svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* ============================================================
+           SECTION: WHY IT WORKS (Features)
+           Remove: Delete <section class="features-section"> and .features-* styles
+           ============================================================ */
+        .features-section {
+            padding: var(--space-2xl) 0;
+            background: var(--color-bg-sage);
+            position: relative;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: all var(--transition-base);
+        }
+
+        .feature-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 40px rgba(26, 46, 40, 0.1);
+        }
+
+        .feature-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--color-primary);
+            opacity: 0.3;
+            margin-bottom: var(--space-sm);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+            color: var(--color-text-primary);
+        }
+
+        .feature-description {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-xs);
+            padding: var(--space-xs) 0;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .feature-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+           SECTION: TESTIMONIAL
+           Remove: Delete <section class="testimonial-section"> and .testimonial-* styles
+           ============================================================ */
+        .testimonial-section {
+            padding: var(--space-2xl) 0;
+            background: var(--color-bg-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-section::before {
+            content: '"';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-display);
+            font-size: 40rem;
+            color: var(--color-primary);
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-style: italic;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            margin-bottom: var(--space-lg);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info {
+            text-align: left;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .testimonial-role {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* ============================================================
+           SECTION: COMMUNITY
+           Remove: Delete <section class="community-section"> and .community-* styles
+           ============================================================ */
+        .community-section {
+            padding: var(--space-2xl) 0;
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .community-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .community-content .section-label {
+            color: var(--color-accent);
+        }
+
+        .community-content .section-title {
+            color: var(--color-text-light);
+        }
+
+        .community-content .section-description {
+            color: rgba(250, 248, 245, 0.7);
+        }
+
+        .community-visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .community-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+            opacity: 0.6;
+            transition: all var(--transition-base);
+        }
+
+        .community-avatar:nth-child(2) { opacity: 0.8; }
+        .community-avatar:nth-child(5) { opacity: 1; transform: scale(1.1); }
+        .community-avatar:nth-child(8) { opacity: 0.7; }
+
+        .community-avatar:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* ============================================================
+           SECTION: STATS / PROOF
+           Remove: Delete <section class="stats-section"> and .stats-* styles
+           ============================================================ */
+        .stats-section {
+            padding: var(--space-2xl) 0;
+            background: var(--color-bg-warm);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--space-lg);
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 400;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-description {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* ============================================================
+           SECTION: CTA (Call to Action)
+           Remove: Delete <section class="cta-section"> and .cta-* styles
+           ============================================================ */
+        .cta-section {
+            padding: var(--space-2xl) 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content .section-label {
+            color: var(--color-accent);
+        }
+
+        .cta-content .section-title {
+            color: var(--color-text-light);
+        }
+
+        .cta-content .section-description {
+            color: rgba(250, 248, 245, 0.8);
+        }
+
+        .cta-form {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+
+        .cta-form-title {
+            font-size: 1.25rem;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            border: 2px solid rgba(26, 46, 40, 0.1);
+            border-radius: var(--radius-sm);
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: var(--space-sm);
+        }
+
+        /* ============================================================
+           SECTION: FOOTER
+           Remove: Delete <footer> element and .footer-* styles
+           ============================================================ */
+        .footer {
+            background: var(--color-bg-dark);
+            color: rgba(250, 248, 245, 0.7);
+            padding: var(--space-xl) 0 var(--space-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-primary);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-text-light);
+        }
+
+        .footer-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-heading {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-links a {
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text-light);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(250, 248, 245, 0.1);
+        }
+
+        .footer-copyright {
+            font-size: 0.875rem;
+        }
+
+        .footer-accreditation {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.875rem;
+        }
+
+        .footer-badge {
+            width: 48px;
+            height: 48px;
+            background: rgba(250, 248, 245, 0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ============================================================
+           RESPONSIVE STYLES
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .community-container,
+            .cta-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .services-grid,
+            .features-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-mobile-toggle {
+                display: block;
+            }
+
+            .services-grid,
+            .features-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image {
+                height: 350px;
+            }
+
+            .hero-floating-card {
+                display: none;
+            }
+
+            .community-visual {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand {
+                max-width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         SECTION: NAVIGATION
+         To remove: Delete this entire <header> block
+         ============================================================ -->
+    <header class="nav-header">
+        <nav class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </span>
+                YourBrand
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#services" class="nav-link">Who We Serve</a></li>
+                <li><a href="#features" class="nav-link">Why It Works</a></li>
+                <li><a href="#proof" class="nav-link">Outcomes</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="btn btn-primary nav-cta">Get Started</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ============================================================
+         SECTION: HERO
+         To remove: Delete this entire <section class="hero-section"> block
+         ============================================================ -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Virtual Intensive Programs
+                </div>
+                <h1 class="hero-title">
+                    Life-changing care.<br>
+                    <span>Designed for you.</span>
+                </h1>
+                <p class="hero-description">
+                    We'll listen first, then create an ideal treatment environment and a 
+                    specialized care plan just for you. Our intake team is here 24/7.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Get Started Today</a>
+                    <a href="#services" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <!-- Replace with actual image -->
+                    <div class="hero-image"></div>
+                </div>
+                <div class="hero-floating-card card-1">
+                    <span class="hero-card-label">Available</span>
+                    <span class="hero-card-value">24/7</span>
+                </div>
+                <div class="hero-floating-card card-2">
+                    <span class="hero-card-label">Graduates helped</span>
+                    <span class="hero-card-value">50,000+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION: WHO WE SERVE (Services)
+         To remove: Delete this entire <section class="services-section"> block
+         ============================================================ -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Who We Serve</span>
+                <h2 class="section-title">Specialized programs. Individualized treatment.</h2>
+                <p class="section-description">
+                    We offer virtual programs for those who need more than weekly therapy, 
+                    with family support built in. Every care plan is individually designed.
+                </p>
+            </div>
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+                    </div>
+                    <span class="service-age">Ages 8-11</span>
+                    <h3 class="service-title">Program for Kids</h3>
+                    <div class="service-tags">
+                        <span class="service-tag">Mental Health</span>
+                        <span class="service-tag">Eating Disorders</span>
+                    </div>
+                    <a href="#" class="service-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <span class="service-age">Ages 12-17</span>
+                    <h3 class="service-title">Program for Teens</h3>
+                    <div class="service-tags">
+                        <span class="service-tag">Mental Health</span>
+                        <span class="service-tag">Substance Use</span>
+                        <span class="service-tag">Eating Disorders</span>
+                    </div>
+                    <a href="#" class="service-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                    </div>
+                    <span class="service-age">Ages 18-64</span>
+                    <h3 class="service-title">Program for Adults</h3>
+                    <div class="service-tags">
+                        <span class="service-tag">Mental Health</span>
+                        <span class="service-tag">Substance Use</span>
+                        <span class="service-tag">Eating Disorders</span>
+                    </div>
+                    <a href="#" class="service-link">
+                        Learn more 
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION: WHY IT WORKS (Features)
+         To remove: Delete this entire <section class="features-section"> block
+         ============================================================ -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Why It Works</span>
+                <h2 class="section-title">A care plan that's unique to you</h2>
+                <p class="section-description">
+                    We take the time to understand who you are, then build a curriculum 
+                    that addresses your challenges with a clinical team who supports you.
+                </p>
+            </div>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <span class="feature-number">01</span>
+                    <h3 class="feature-title">A dedicated team who understands</h3>
+                    <ul class="feature-list">
+                        <li>An expert-led peer support group</li>
+                        <li>A therapist who's helped others like you</li>
+                        <li>Selected based on age, condition, and preferences</li>
+                    </ul>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <span class="feature-number">02</span>
+                    <h3 class="feature-title">A schedule that works for you</h3>
+                    <ul class="feature-list">
+                        <li>Start your program as soon as today</li>
+                        <li>Join online sessions from home</li>
+                        <li>Available nights and weekends</li>
+                    </ul>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <span class="feature-number">03</span>
+                    <h3 class="feature-title">A safe treatment environment</h3>
+                    <ul class="feature-list">
+                        <li>HIPAA-compliant, private, and secure</li>
+                        <li>Built-in risk detection and safety planning</li>
+                        <li>24/7 crisis support you can rely on</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION: TESTIMONIAL
+         To remove: Delete this entire <section class="testimonial-section"> block
+         ============================================================ -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="testimonial-content">
+                <blockquote class="testimonial-quote">
+                    "To know you are not alone in your experiences is a beautiful thing. 
+                    The support I received here changed my perspective on healing."
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">K</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Kaley</div>
+                        <div class="testimonial-role">Program Graduate, Age 27</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION: COMMUNITY
+         To remove: Delete this entire <section class="community-section"> block
+         ============================================================ -->
+    <section class="community-section">
+        <div class="container community-container">
+            <div class="community-content">
+                <span class="section-label">Your Core Community</span>
+                <h2 class="section-title">Make connections that spark breakthroughs</h2>
+                <p class="section-description">
+                    We'll match you with people who share your challenges and won't judge 
+                    your experiences. So you can be yourself, see yourself in others' victories, 
+                    and find the courage to change.
+                </p>
+                <a href="#contact" class="btn btn-accent" style="margin-top: var(--space-md);">Start Healing Today</a>
+            </div>
+            <div class="community-visual">
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+                <div class="community-avatar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION: STATS / PROOF
+         To remove: Delete this entire <section class="stats-section"> block
+         ============================================================ -->
+    <section class="stats-section" id="proof">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Proven & Trusted</span>
+                <h2 class="section-title">The country's #1 intensive outpatient clinic</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">91%</div>
+                    <div class="stat-label">Industry-leading outcomes</div>
+                    <div class="stat-description">
+                        Of graduates report improvements in their most severe symptoms.
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">50k+</div>
+                    <div class="stat-label">Trusted by top clinicians</div>
+                    <div class="stat-description">
+                        Providers refer their patients to our programs.
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Science-backed methods</div>
+                    <div class="stat-description">
+                        Peer-reviewed studies verify our treatment approach.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION: CTA (Call to Action)
+         To remove: Delete this entire <section class="cta-section"> block
+         ============================================================ -->
+    <section class="cta-section" id="contact">
+        <div class="container cta-container">
+            <div class="cta-content">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">We're always here.</h2>
+                <p class="section-description">
+                    Fill out our form or call us directly to find out if our programs 
+                    are right for you. Our intake team is available 24/7.
+                </p>
+            </div>
+            <div class="cta-form">
+                <h3 class="cta-form-title">Start your journey today</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="(555) 123-4567">
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">Request a Call</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION: FOOTER
+         To remove: Delete this entire <footer> block
+         ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="footer-logo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </span>
+                        YourBrand
+                    </div>
+                    <p class="footer-description">
+                        Life-changing care designed around you. Virtual intensive outpatient 
+                        programs for mental health, substance use, and eating disorders.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">For Kids</a></li>
+                        <li><a href="#">For Teens</a></li>
+                        <li><a href="#">For Adults</a></li>
+                        <li><a href="#">Family Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Conditions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Mental Health</a></li>
+                        <li><a href="#">Substance Use</a></li>
+                        <li><a href="#">Eating Disorders</a></li>
+                        <li><a href="#">Trauma & PTSD</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 YourBrand. All rights reserved.
+                </div>
+                <div class="footer-accreditation">
+                    <div class="footer-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <span>Accredited by the Joint Commission</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+    <script>
+        // Navigation scroll effect
+        const nav = document.querySelector('.nav-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.service-card, .feature-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

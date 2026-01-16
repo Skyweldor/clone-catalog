@@ -1,0 +1,321 @@
+<!--
+================================================================================
+SECTION: CONTENT BOX
+================================================================================
+Purpose: Main content area with text, screenshot, price, and CTA buttons
+Dependencies: Should be inside the content area, after product header
+To Use: Copy after the product header section
+CSS: Included inline below - copy to your main stylesheet or keep inline
+================================================================================
+-->
+
+<!-- CONTENT BOX CSS -->
+<style>
+.content-box {
+    background: linear-gradient(180deg, #4a5a75 0%, #3a4860 50%, #2a3648 100%);
+    border: 1px solid #3a4860;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.content-box-inner {
+    display: flex;
+    gap: 20px;
+}
+
+.content-text {
+    flex: 1;
+}
+
+.content-text p {
+    margin: 0 0 10px 0;
+    line-height: 1.7;
+    color: #c8d0dc;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+.content-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Screenshot Area */
+.content-screenshot {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.screenshot-frame {
+    background: #1a2030;
+    border: 2px solid #4a5a75;
+    border-radius: 4px;
+    padding: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.screenshot-image {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #4a6a9a 0%, #3a5a8a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8899aa;
+    font-size: 11px;
+    border-radius: 2px;
+}
+
+.screenshot-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.screenshot-thumbs {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.screenshot-thumb {
+    flex: 1;
+    height: 35px;
+    background: #2a3648;
+    border: 1px solid #3a4860;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8899aa;
+    font-size: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.screenshot-thumb:hover,
+.screenshot-thumb.active {
+    border-color: #4a90d9;
+}
+
+/* Price and CTA Row */
+.price-cta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #3a4860;
+}
+
+.price-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.price-info {
+    text-align: left;
+}
+
+.price-amount {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.price-note {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10px;
+    color: #8899aa;
+    line-height: 1.4;
+}
+
+/* Compatibility Badges */
+.compatibility-badges {
+    display: flex;
+    gap: 6px;
+}
+
+.compat-badge {
+    text-align: center;
+}
+
+.compat-badge-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+    font-size: 20px;
+}
+
+.compat-badge-icon.vista {
+    background: linear-gradient(135deg, #00aa44 0%, #008833 100%);
+}
+
+.compat-badge-icon.xp {
+    background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+}
+
+.compat-badge-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.compat-badge-label {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 8px;
+    color: #8899aa;
+    text-transform: uppercase;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.btn-green {
+    background: linear-gradient(180deg, #7bc043 0%, #5a9e2f 50%, #4a8520 100%);
+}
+
+.btn-green:hover {
+    background: linear-gradient(180deg, #8cd054 0%, #6aae3f 50%, #5a9e2f 100%);
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.btn-orange {
+    background: linear-gradient(180deg, #ff7722 0%, #e85d00 50%, #cc4400 100%);
+}
+
+.btn-orange:hover {
+    background: linear-gradient(180deg, #ff8833 0%, #ff6611 50%, #e85d00 100%);
+    text-decoration: none;
+    color: #ffffff;
+}
+</style>
+
+<!-- CONTENT BOX HTML -->
+<div class="content-box">
+    <div class="content-box-inner">
+        <div class="content-text">
+            <p>
+                WindowBlinds is a one-of-a-kind utility that allows Windows users to completely 
+                change the look and feel of the Windows interface by applying a new skin. There 
+                are thousands of different skins to choose from that are freely downloadable from 
+                the WindowBlinds website.
+            </p>
+            <p>
+                A WindowBlinds skin can make Windows look like an alternative operating system, 
+                like their favorite sports or car brand, or something completely new. Because 
+                WindowBlinds uses the latest hardware acceleration features of modern video 
+                cards, WindowBlinds won't slow down your computer and uses very little memory.
+            </p>
+            <p>
+                WindowBlinds is safe and easy to use. It doesn't alter any system files and users 
+                can switch between the default Windows look and feel and a custom WindowBlinds 
+                skin with the click of a button. In addition, WindowBlinds has been tested to ensure 
+                it works with Windows Vista, so you know it is compatible, reliable, and more secure.
+            </p>
+        </div>
+        <div class="content-screenshot">
+            <div class="screenshot-frame">
+                <!-- Replace with actual screenshot: <img src="screenshot.png" alt="Screenshot"> -->
+                <div class="screenshot-image">
+                    [ Main Screenshot ]
+                </div>
+                <div class="screenshot-thumbs">
+                    <div class="screenshot-thumb active">1</div>
+                    <div class="screenshot-thumb">2</div>
+                    <div class="screenshot-thumb">3</div>
+                    <div class="screenshot-thumb">4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Price and CTA Row -->
+    <div class="price-cta-row">
+        <div class="price-section">
+            <div class="price-info">
+                <div class="price-amount">Price: $19.95</div>
+                <div class="price-note">A component of<br>Object Desktop ($49.95)</div>
+            </div>
+            <div class="compatibility-badges">
+                <div class="compat-badge">
+                    <div class="compat-badge-icon vista">🪟</div>
+                    <div class="compat-badge-label">Vista Ready!</div>
+                </div>
+                <div class="compat-badge">
+                    <div class="compat-badge-icon xp">🪟</div>
+                    <div class="compat-badge-label">XP Ready!</div>
+                </div>
+            </div>
+        </div>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-green">Buy Now!</a>
+            <a href="#" class="btn btn-orange">Free Trial!</a>
+        </div>
+    </div>
+</div>
+
+<!--
+================================================================================
+CUSTOMIZATION GUIDE:
+================================================================================
+1. CONTENT TEXT:
+   - Modify paragraph content as needed
+   - Add/remove <p> tags for more/fewer paragraphs
+
+2. SCREENSHOT:
+   - Replace placeholder: <img src="screenshot.png" alt="Screenshot">
+   - Thumbnails: Replace numbers with actual thumbnail images
+   - Remove thumbnails: Delete <div class="screenshot-thumbs">...</div>
+
+3. PRICE:
+   - Change amount: Modify .price-amount text
+   - Change note: Modify .price-note text
+   - Remove note: Delete <div class="price-note">...</div>
+
+4. COMPATIBILITY BADGES:
+   - Add badge: Copy a <div class="compat-badge">...</div> block
+   - Remove badge: Delete entire <div class="compat-badge">...</div>
+   - Colors: Use class "vista" for green, "xp" for blue, or create new classes
+   - Replace emoji with actual Windows logos: <img src="vista-logo.png">
+
+5. CTA BUTTONS:
+   - Change text: Modify button text
+   - Change link: Update href attribute
+   - Change color: Use class "btn-green" or "btn-orange"
+   - Add button: Copy an <a class="btn ...">...</a> element
+   - Remove button: Delete the <a> element
+
+6. COLORS:
+   - Box background: Change .content-box background gradient
+   - Text color: Modify .content-text p color
+   - Button gradients: Change .btn-green or .btn-orange background
+================================================================================
+-->

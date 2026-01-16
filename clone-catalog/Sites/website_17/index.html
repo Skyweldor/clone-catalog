@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency | Book Landing Page Template</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Easy Theme Customization
+           ============================================ */
+        :root {
+            /* Primary Colors */
+            --color-primary: #0B6B4F;
+            --color-primary-dark: #064535;
+            --color-primary-light: #0D8A66;
+            
+            /* Neutral Colors */
+            --color-white: #FFFFFF;
+            --color-cream: #F8F6F2;
+            --color-gray-light: #E8E6E2;
+            --color-gray: #6B6B6B;
+            --color-gray-dark: #3A3A3A;
+            --color-black: #1A1A1A;
+            
+            /* Typography */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            
+            /* Spacing */
+            --section-padding: 100px;
+            --container-max: 1200px;
+            --container-narrow: 800px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.4s ease;
+            --transition-slow: 0.6s ease;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--color-black);
+            background: var(--color-white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .container--narrow {
+            max-width: var(--container-narrow);
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-white { color: var(--color-white); }
+        .bg-primary { background-color: var(--color-primary); }
+        .bg-cream { background-color: var(--color-cream); }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+
+        .btn--outline:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .btn--dark {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+
+        .btn--dark:hover {
+            background: var(--color-gray-dark);
+        }
+
+        /* ============================================
+           SECTION: Navigation Bar
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition-medium);
+        }
+
+        .nav.scrolled {
+            background: rgba(11, 107, 79, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
+        }
+
+        .nav__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__cta {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-white);
+            padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+
+        .nav__cta:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           SECTION: Hero
+           - Removable: NO (Primary section)
+           - Dependencies: Organic shape SVGs
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: var(--color-primary);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+        }
+
+        .hero__bg-shape {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .hero__bg-shape--1 {
+            top: -10%;
+            right: -5%;
+            width: 60%;
+            opacity: 0.15;
+        }
+
+        .hero__bg-shape--2 {
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            opacity: 0.1;
+            transform: rotate(180deg);
+        }
+
+        .hero__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero__content {
+            color: var(--color-white);
+        }
+
+        .hero__eyebrow {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .hero__title {
+            font-size: clamp(60px, 8vw, 100px);
+            font-weight: 400;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 3vw, 28px);
+            font-style: italic;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .hero__authors {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .hero__cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hero__cta-group a {
+            font-size: 15px;
+        }
+
+        .hero__cta-group a:hover {
+            text-decoration: underline;
+        }
+
+        .hero__book {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero__book-image {
+            max-width: 380px;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.3));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ============================================
+           SECTION: Featured Quote (Below Hero)
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .featured-quote {
+            background: var(--color-white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .featured-quote__text {
+            font-family: var(--font-display);
+            font-size: clamp(24px, 3vw, 32px);
+            font-style: italic;
+            color: var(--color-gray-dark);
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        /* ============================================
+           SECTION: Testimonial Carousel
+           - Removable: YES
+           - Dependencies: carousel.js functionality
+           ============================================ */
+        .testimonial-carousel {
+            background: var(--color-cream);
+            padding: var(--section-padding) 0;
+        }
+
+        .testimonial-carousel__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: var(--transition-medium);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card__quote {
+            font-size: 17px;
+            color: var(--color-gray-dark);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-card__avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--color-gray-light);
+        }
+
+        .testimonial-card__name {
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-card__role {
+            font-size: 14px;
+            color: var(--color-gray);
+        }
+
+        /* ============================================
+           SECTION: The Backstory (Long-form Content)
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .backstory {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+
+        .backstory__inner {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .backstory__heading {
+            position: sticky;
+            top: 120px;
+        }
+
+        .backstory__title {
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 24px;
+            color: var(--color-primary);
+        }
+
+        .backstory__intro {
+            font-size: 20px;
+            color: var(--color-gray-dark);
+        }
+
+        .backstory__content p {
+            margin-bottom: 24px;
+            color: var(--color-gray-dark);
+        }
+
+        .backstory__content p:first-child::first-letter {
+            font-family: var(--font-display);
+            font-size: 4em;
+            float: left;
+            line-height: 0.8;
+            margin-right: 12px;
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           SECTION: Book CTA (Purchase Section)
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .book-cta {
+            position: relative;
+            padding: var(--section-padding) 0;
+            background: var(--color-primary);
+            overflow: hidden;
+        }
+
+        .book-cta__bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+        }
+
+        .book-cta__inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .book-cta__image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-cta__book {
+            max-width: 320px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+        }
+
+        .book-cta__content {
+            color: var(--color-white);
+        }
+
+        .book-cta__label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+
+        .book-cta__title {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 32px;
+        }
+
+        .book-cta__options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .book-cta__option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition-fast);
+        }
+
+        .book-cta__option:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+
+        .book-cta__option-name {
+            font-weight: 600;
+        }
+
+        .book-cta__option-price {
+            opacity: 0.9;
+        }
+
+        /* ============================================
+           SECTION: Endorsers Grid (Avatars)
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .endorsers {
+            padding: 60px 0;
+            background: var(--color-cream);
+        }
+
+        .endorsers__grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .endorser {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--color-gray-light);
+            transition: var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .endorser:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .endorser img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ============================================
+           SECTION: Newsletter Signup
+           - Removable: YES
+           - Dependencies: Form handling JS
+           ============================================ */
+        .newsletter {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+            text-align: center;
+        }
+
+        .newsletter__title {
+            font-size: clamp(28px, 4vw, 40px);
+            margin-bottom: 16px;
+            color: var(--color-primary);
+        }
+
+        .newsletter__subtitle {
+            color: var(--color-gray);
+            margin-bottom: 40px;
+        }
+
+        .newsletter__form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter__input {
+            flex: 1;
+            padding: 16px 24px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            border: 2px solid var(--color-gray-light);
+            border-radius: 6px;
+            outline: none;
+            transition: var(--transition-fast);
+        }
+
+        .newsletter__input:focus {
+            border-color: var(--color-primary);
+        }
+
+        .newsletter__input::placeholder {
+            color: var(--color-gray);
+        }
+
+        /* ============================================
+           SECTION: Quote Blocks Grid
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .quote-blocks {
+            padding: var(--section-padding) 0;
+            background: var(--color-cream);
+        }
+
+        .quote-blocks__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .quote-block {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 300px;
+            transition: var(--transition-medium);
+        }
+
+        .quote-block:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .quote-block__text {
+            font-size: 17px;
+            font-style: italic;
+            color: var(--color-gray-dark);
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .quote-block__author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .quote-block__avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-primary);
+        }
+
+        .quote-block__meta {
+            flex: 1;
+        }
+
+        .quote-block__name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .quote-block__role {
+            font-size: 13px;
+            color: var(--color-gray);
+        }
+
+        /* ============================================
+           SECTION: About the Authors
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .about-authors {
+            position: relative;
+            padding: var(--section-padding) 0;
+            overflow: hidden;
+        }
+
+        .about-authors__bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        }
+
+        .about-authors__bg-pattern {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,600 Q300,400 600,500 T1200,400 L1200,600 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .about-authors__inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-authors__image {
+            position: relative;
+        }
+
+        .about-authors__photo {
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .about-authors__content {
+            color: var(--color-white);
+        }
+
+        .about-authors__title {
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 24px;
+        }
+
+        .about-authors__bio {
+            font-size: 17px;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .about-authors__links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           SECTION: Final Quote / Manifesto
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .manifesto {
+            padding: var(--section-padding) 0 60px;
+            background: var(--color-white);
+            text-align: center;
+        }
+
+        .manifesto__text {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 3vw, 32px);
+            line-height: 1.6;
+            color: var(--color-gray-dark);
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        /* ============================================
+           SECTION: Footer CTA
+           - Removable: YES
+           - Dependencies: None
+           ============================================ */
+        .footer-cta {
+            position: relative;
+            padding: 80px 0;
+            background: var(--color-primary);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .footer-cta__bg-shape {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            opacity: 0.1;
+        }
+
+        .footer-cta__inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-cta__book {
+            max-width: 280px;
+            margin: 0 auto 32px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero__inner,
+            .backstory__inner,
+            .book-cta__inner,
+            .about-authors__inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .backstory__heading {
+                position: static;
+            }
+
+            .quote-blocks__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+                text-align: center;
+            }
+
+            .hero__book {
+                order: -1;
+            }
+
+            .hero__book-image {
+                max-width: 280px;
+            }
+
+            .hero__cta-group {
+                align-items: center;
+            }
+
+            .testimonial-carousel__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-blocks__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter__form {
+                flex-direction: column;
+            }
+
+            .about-authors__inner {
+                text-align: center;
+            }
+
+            .about-authors__links {
+                justify-content: center;
+            }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+        .animate-delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         SECTION: Navigation
+         ============================================ -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav__inner">
+                <div></div>
+                <a href="#book-section" class="nav__cta">Get the Book</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         SECTION: Hero
+         ============================================ -->
+    <section class="hero" id="hero">
+        <!-- Organic Background Shapes -->
+        <svg class="hero__bg-shape hero__bg-shape--1" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M400 0C600 100 800 200 800 400C800 600 600 800 400 800C200 800 0 600 0 400C0 200 200 0 400 0Z" fill="white"/>
+            <path d="M400 100C550 150 700 250 700 400C700 550 550 700 400 700C250 700 100 550 100 400C100 250 250 100 400 100Z" fill="none" stroke="white" stroke-width="2"/>
+            <path d="M300 200 Q400 100 500 200 T600 400 T500 600 T300 600 T200 400 T300 200" fill="none" stroke="white" stroke-width="1.5"/>
+        </svg>
+        
+        <svg class="hero__bg-shape hero__bg-shape--2" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M300 50C450 50 550 150 550 300C550 450 450 550 300 550C150 550 50 450 50 300C50 150 150 50 300 50Z" fill="white"/>
+        </svg>
+
+        <div class="container">
+            <div class="hero__inner">
+                <div class="hero__content">
+                    <p class="hero__eyebrow animate-in">A new book from the founders of Whiteboard</p>
+                    <h1 class="hero__title animate-in animate-delay-1">Agency</h1>
+                    <p class="hero__subtitle animate-in animate-delay-2">The Antidote to a Culture Obsessed with Self</p>
+                    <p class="hero__authors animate-in animate-delay-3">By Eric Brown & Taylor Jones</p>
+                    
+                    <div class="hero__cta-group animate-in animate-delay-4">
+                        <a href="#book-section" class="btn btn--outline">Limited-Edition Hardcover Available Now</a>
+                        <a href="#">Read with a friend: 2-Pack for $30</a>
+                        <a href="#">Also available on Amazon Kindle</a>
+                    </div>
+                </div>
+                
+                <div class="hero__book">
+                    <img src="https://cdn.prod.website-files.com/65cfdb9433d3e132b30b85ff/65d41d2a1abca6bbbd7467cf_Agency_Book_TitleChange_V4.png" 
+                         alt="Agency Book Cover" 
+                         class="hero__book-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Featured Quote
+         ============================================ -->
+    <section class="featured-quote" id="featured-quote">
+        <div class="container container--narrow">
+            <p class="featured-quote__text">
+                "If you're trying to do work that has purpose, help others, be great at what you do, 
+                and accomplish your own goals and dreams—we'd love to share this book with you."
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Testimonial Carousel
+         ============================================ -->
+    <section class="testimonial-carousel" id="testimonials">
+        <div class="container">
+            <div class="testimonial-carousel__grid">
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-card__quote">
+                        "Agency is a must read for anyone seeking to engage the joys and tensions 
+                        of vocational life with wisdom and balance."
+                    </p>
+                    <div class="testimonial-card__author">
+                        <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661e80e47b9747d3a00a4602_christy-vines-ideos.png" 
+                             alt="Christy Vines" 
+                             class="testimonial-card__avatar">
+                        <div>
+                            <p class="testimonial-card__name">Christy Vines</p>
+                            <p class="testimonial-card__role">President and CEO of Ideos Institute</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-card__quote">
+                        "If you are burnt out, struggling with vocational fulfillment, or simply at the stage 
+                        of life when you're asking, Is this all there is? then you'll want to read this book."
+                    </p>
+                    <div class="testimonial-card__author">
+                        <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/65d7b254772c815dbebbc8e1_dr-shelley-prevost.png" 
+                             alt="Dr. Shelley Prevost" 
+                             class="testimonial-card__avatar">
+                        <div>
+                            <p class="testimonial-card__name">Dr. Shelley Prevost</p>
+                            <p class="testimonial-card__role">Big Self School</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-card__quote">
+                        "Agency, a word you often hear, may hold within it a powerful finding for 
+                        unlocking effectiveness and growth – in life and work."
+                    </p>
+                    <div class="testimonial-card__author">
+                        <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/65d3bc37ed387530ba6e60a9_ElizabethDixon.webp" 
+                             alt="Elizabeth Dixon" 
+                             class="testimonial-card__avatar">
+                        <div>
+                            <p class="testimonial-card__name">Elizabeth Dixon</p>
+                            <p class="testimonial-card__role">Author, Speaker, CEO Trilith Foundation</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: The Backstory
+         ============================================ -->
+    <section class="backstory" id="backstory">
+        <div class="container">
+            <div class="backstory__inner">
+                <div class="backstory__heading">
+                    <h2 class="backstory__title">The Backstory</h2>
+                    <p class="backstory__intro">
+                        A journey from a dorm room to helping over 400 organizations build their dreams.
+                    </p>
+                </div>
+                
+                <div class="backstory__content">
+                    <p>
+                        We started making websites in a dorm room back in 2007. In September 2010, we decided 
+                        to take a chance on an idea we called "Whiteboard," a creative agency that has since 
+                        worked with over 400 organizations in more than 20 countries building solutions for 
+                        Fortune 500s, scrappy startups, global non-profits, and individuals willing to take 
+                        a risk on their idea.
+                    </p>
+                    <p>
+                        In a world rich with resources about leadership, self-help, management and marketing, 
+                        we began to wrestle with the word that defines our industry: agency. "Agency" is a word 
+                        often taken for granted. A byline we glance over in an email signature. A word often 
+                        associated with ego, overwork, and exploitation.
+                    </p>
+                    <p>
+                        But what does agency really mean? What does it mean for us as individuals, for our work, 
+                        and for our families? Can we reframe the importance of agency in our hearts and imaginations?
+                    </p>
+                    <p>
+                        Wrestling with these questions has been a cornerstone to our work for nearly fifteen years. 
+                        Practicing agency requires balancing tensions of purpose, expertise, advocacy, and ambition. 
+                        If you're feeling burned out, ineffective, isolated, or even vain—we'd suggest that your 
+                        posture of agency may be out of alignment.
+                    </p>
+                    <p>
+                        That's what this book is all about—finding your way through the tensions of working on 
+                        behalf of others to a sense of personal fulfillment and flourishing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Book CTA (Purchase)
+         ============================================ -->
+    <section class="book-cta" id="book-section">
+        <div class="container">
+            <div class="book-cta__inner">
+                <div class="book-cta__image">
+                    <img src="https://cdn.prod.website-files.com/65cfdb9433d3e132b30b85ff/65d41d2a1abca6bbbd7467cf_Agency_Book_TitleChange_V4.png" 
+                         alt="Agency Book" 
+                         class="book-cta__book">
+                </div>
+                
+                <div class="book-cta__content">
+                    <p class="book-cta__label">Limited-Edition Hardcover</p>
+                    <h2 class="book-cta__title">Get Your Copy Today</h2>
+                    
+                    <div class="book-cta__options">
+                        <a href="#" class="book-cta__option">
+                            <span class="book-cta__option-name">Read with a friend: 2-Pack</span>
+                            <span class="book-cta__option-price">$30</span>
+                        </a>
+                        <a href="#" class="book-cta__option">
+                            <span class="book-cta__option-name">10-Pack</span>
+                            <span class="book-cta__option-price">$150</span>
+                        </a>
+                        <a href="#" class="book-cta__option">
+                            <span class="book-cta__option-name">Case of 24</span>
+                            <span class="book-cta__option-price">$300</span>
+                        </a>
+                        <a href="#" class="book-cta__option">
+                            <span class="book-cta__option-name">Amazon Kindle</span>
+                            <span class="book-cta__option-price">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Endorsers Grid
+         ============================================ -->
+    <section class="endorsers" id="endorsers">
+        <div class="container">
+            <div class="endorsers__grid">
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661e9f0e254effb259961f89_Ashley-Jones-Momento.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661ea0cf0cd59a2ac3204dc6_Blake-Cantebury-Purposity.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661ea2ce47fe8999cea69460_Brett-Hagler.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661eb0aea926c8ca2c9e0a79_Christy-Vines.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661eb0e83e4d193b5634882a_Shelley-Prevost.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661ea2b3899c8340e580a6e1_Elizabeth-Dixon.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661ea0e8b173cc7d5c8e3506_Heath-Joey.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/662015a5491ba45f1289eff3_Jeff-Shinabarger.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661e9ed0b878f882341a5cc2_MZS.png" alt="Endorser">
+                </div>
+                <div class="endorser">
+                    <img src="https://cdn.prod.website-files.com/65d00a8edf8d72b5bb3134ae/661eb006fc3ccf6c7f2c4688_michael-wear.png" alt="Endorser">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Newsletter Signup
+         ============================================ -->
+    <section class="newsletter" id="newsletter">
+        <div class="container container--narrow">
+            <h2 class="newsletter__title">Sign up for updates</h2>
+            <p class="newsletter__subtitle">Be the first to know about new content, events, and more.</p>
+            
+            <form class="newsletter__form" id="newsletter-form">
+                <input type="email" 
+                       class="newsletter__input" 
+                       placeholder="Enter your email address" 
+                       required>
+                <button type="submit" class="btn btn--dark">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Quote Blocks Grid
+         ============================================ -->
+    <section class="quote-blocks" id="quotes">
+        <div class="container">
+            <div class="quote-blocks__grid">
+                
+                <div class="quote-block">
+                    <p class="quote-block__text">
+                        "Inside these pages, you will feel supported on the journey to face your own truth 
+                        and find balance within your best self at home and in the office."
+                    </p>
+                    <div class="quote-block__author">
+                        <div class="quote-block__avatar"></div>
+                        <div class="quote-block__meta">
+                            <p class="quote-block__name">Lauren Hall</p>
+                            <p class="quote-block__role">President and CEO, First Things First</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-block__text">
+                        "In a self-serving world, this is a concept that could literally change culture. 
+                        Agency is unsettling and challenging, practical and applicable."
+                    </p>
+                    <div class="quote-block__author">
+                        <div class="quote-block__avatar"></div>
+                        <div class="quote-block__meta">
+                            <p class="quote-block__name">Heath Wilson & Joey Odom</p>
+                            <p class="quote-block__role">Co-Founders of Aro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-block__text">
+                        "This book describes the freedom, power, and perspective of being in control 
+                        of your life and your career, no matter what job you have."
+                    </p>
+                    <div class="quote-block__author">
+                        <div class="quote-block__avatar"></div>
+                        <div class="quote-block__meta">
+                            <p class="quote-block__name">Rudy Cline-Thomas</p>
+                            <p class="quote-block__role">Founder & Managing Partner MASTRY, Inc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-block__text">
+                        "From two partners who started at the bottom, we receive an invitation to reclaim 
+                        our natural state: the redemption of everyone through effort and empathy."
+                    </p>
+                    <div class="quote-block__author">
+                        <div class="quote-block__avatar"></div>
+                        <div class="quote-block__meta">
+                            <p class="quote-block__name">Blake Canterbury</p>
+                            <p class="quote-block__role">Founder and CEO, Purposity</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-block__text">
+                        "Pride. Greed. Vanity. These are problems for all of us, but in Agency, 
+                        Eric and Taylor inspire us to something more, something higher."
+                    </p>
+                    <div class="quote-block__author">
+                        <div class="quote-block__avatar"></div>
+                        <div class="quote-block__meta">
+                            <p class="quote-block__name">Kevin Paul Scott</p>
+                            <p class="quote-block__role">Author and Co-founder of ADDO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-block__text">
+                        "This book is infused with the same spirit of service, brilliance, joy, and love 
+                        that I've come to experience in my work with Whiteboard."
+                    </p>
+                    <div class="quote-block__author">
+                        <div class="quote-block__avatar"></div>
+                        <div class="quote-block__meta">
+                            <p class="quote-block__name">Michael Wear</p>
+                            <p class="quote-block__role">Founder, Center for Christianity and Public Life</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: About the Authors
+         ============================================ -->
+    <section class="about-authors" id="about">
+        <div class="about-authors__bg">
+            <div class="about-authors__bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="about-authors__inner">
+                <div class="about-authors__image">
+                    <img src="https://cdn.prod.website-files.com/65cfdb9433d3e132b30b85ff/65d009e5d27831ef88a36811_photo_eric%2Btaylor.webp" 
+                         alt="Eric Brown and Taylor Jones" 
+                         class="about-authors__photo">
+                </div>
+                
+                <div class="about-authors__content">
+                    <h2 class="about-authors__title">About the Authors</h2>
+                    <p class="about-authors__bio">
+                        Eric Brown and Taylor Jones founded Whiteboard, an award-winning creative agency 
+                        empowering visionaries to design, build, and grow a brighter future.
+                    </p>
+                    <p class="about-authors__bio">
+                        Since starting Whiteboard in 2010, Eric and Taylor have served organizations across 
+                        all facets of the internet—websites, apps, branding, automation, and advertising—helping 
+                        over 400 organizations lead digital transformation, end-to-end.
+                    </p>
+                    
+                    <div class="about-authors__links">
+                        <a href="#" class="btn btn--outline">Speaking Inquiries</a>
+                        <a href="#" class="btn btn--outline">Visit Whiteboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Manifesto / Final Quote
+         ============================================ -->
+    <section class="manifesto" id="manifesto">
+        <div class="container container--narrow">
+            <p class="manifesto__text">
+                Agency is more than a job title, company name, or sports contract. Agency is about more 
+                than the boldness to take a risk and the skills to impress employers and clients. Agency 
+                is a posture, not a platform. Agency requires a blend of seemingly competing goals: being 
+                inspired by a vision and honing individual talents, pouring into others while doing what 
+                it takes to stay healthy mentally, physically, and emotionally.
+            </p>
+            <a href="#newsletter" class="btn btn--primary">Get Updates</a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION: Footer CTA
+         ============================================ -->
+    <section class="footer-cta" id="footer">
+        <svg class="footer-cta__bg-shape" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 200C0 89.5 89.5 0 200 0H600C710.5 0 800 89.5 800 200C800 310.5 710.5 400 600 400H200C89.5 400 0 310.5 0 200Z" fill="white"/>
+        </svg>
+        
+        <div class="container footer-cta__inner">
+            <img src="https://cdn.prod.website-files.com/65cfdb9433d3e132b30b85ff/65d41d2a1abca6bbbd7467cf_Agency_Book_TitleChange_V4.png" 
+                 alt="Agency Book" 
+                 class="footer-cta__book">
+        </div>
+    </section>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Newsletter form handling
+        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for subscribing!');
+            e.target.reset();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.testimonial-card, .quote-block').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

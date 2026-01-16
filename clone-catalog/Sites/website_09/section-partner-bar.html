@@ -1,0 +1,135 @@
+<!--
+================================================================================
+SECTION: PARTNER LOGOS BAR
+================================================================================
+Purpose: Display affiliated/partner site logos and links
+Dependencies: None - this section is fully self-contained
+To Use: Copy before the footer section
+CSS: Included inline below - copy to your main stylesheet or keep inline
+================================================================================
+-->
+
+<!-- PARTNER LOGOS BAR CSS -->
+<style>
+#partner-bar {
+    background: linear-gradient(180deg, #3a4860 0%, #2a3648 100%);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-top: 1px solid #3a4860;
+    border-bottom: 1px solid #1a2030;
+}
+
+.partner-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #8899aa;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.partner-logo:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.partner-logo-icon {
+    width: 20px;
+    height: 20px;
+    background: #4a5a75;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.partner-logo-icon img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Color variations for partner icons */
+.partner-logo-icon.blue {
+    background: linear-gradient(135deg, #4a90d9 0%, #3a70b9 100%);
+}
+
+.partner-logo-icon.green {
+    background: linear-gradient(135deg, #5a9e2f 0%, #4a8520 100%);
+}
+
+.partner-logo-icon.orange {
+    background: linear-gradient(135deg, #e85d00 0%, #cc4400 100%);
+}
+
+.partner-logo-icon.purple {
+    background: linear-gradient(135deg, #8866aa 0%, #664488 100%);
+}
+</style>
+
+<!-- PARTNER LOGOS BAR HTML -->
+<div id="partner-bar">
+    <a href="#" class="partner-logo">
+        <span class="partner-logo-icon blue">🌐</span>
+        WinCustomize.com
+    </a>
+    <a href="#" class="partner-logo">
+        <span class="partner-logo-icon green">🎮</span>
+        TotalGaming.net
+    </a>
+    <a href="#" class="partner-logo">
+        <span class="partner-logo-icon orange">🎨</span>
+        StardockDesign.com
+    </a>
+    <a href="#" class="partner-logo">
+        <span class="partner-logo-icon purple">👤</span>
+        JoeUser.com
+    </a>
+    <a href="#" class="partner-logo">
+        <span class="partner-logo-icon">🎨</span>
+        MyColors
+    </a>
+</div>
+
+<!--
+================================================================================
+CUSTOMIZATION GUIDE:
+================================================================================
+1. ADD PARTNER:
+   Copy and modify:
+   <a href="#" class="partner-logo">
+       <span class="partner-logo-icon">🌐</span>
+       PartnerName.com
+   </a>
+
+2. REMOVE PARTNER:
+   Delete entire <a class="partner-logo">...</a> element
+
+3. ICONS:
+   - Use emoji: Just put the emoji inside .partner-logo-icon
+   - Use image: <img src="partner-icon.png" alt="Icon">
+   
+4. ICON COLORS:
+   Add class to .partner-logo-icon:
+   - "blue" - Blue gradient
+   - "green" - Green gradient  
+   - "orange" - Orange gradient
+   - "purple" - Purple gradient
+   - Or create your own color class
+
+5. LINK:
+   - Update href attribute to actual partner URL
+
+6. COLORS:
+   - Bar background: Change #partner-bar background gradient
+   - Text color: Modify .partner-logo color
+   - Hover color: Change .partner-logo:hover color
+   - Default icon: Modify .partner-logo-icon background
+================================================================================
+-->

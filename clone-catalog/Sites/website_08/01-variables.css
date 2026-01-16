@@ -1,0 +1,47 @@
+/* ============================================================
+   CSS VARIABLES - Edit these to quickly change the theme
+   ============================================================ */
+:root {
+    /* Primary Colors */
+    --color-primary: #1a5f4a;
+    --color-primary-light: #2d7a62;
+    --color-primary-dark: #0f3d2f;
+    
+    /* Accent Colors */
+    --color-accent: #e8a54b;
+    --color-accent-light: #f5c97a;
+    
+    /* Background Colors */
+    --color-bg-cream: #faf8f5;
+    --color-bg-sage: #e8f0eb;
+    --color-bg-warm: #f5f0e8;
+    --color-bg-dark: #1a2e28;
+    
+    /* Text Colors */
+    --color-text-primary: #1a2e28;
+    --color-text-secondary: #4a5d56;
+    --color-text-light: #faf8f5;
+    
+    /* Typography */
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 6rem;
+    --space-2xl: 8rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+}

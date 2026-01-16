@@ -1,0 +1,110 @@
+<!-- ============================================================
+     SECTION: STATS / PROOF
+     
+     Dependencies: 
+     - CSS: .stats-*, .stat-*, .section-* classes
+     - Variables: --color-*, --space-*, --font-*
+     
+     To customize:
+     - Update section header text
+     - Modify stat values, labels, and descriptions
+     - Add/remove stat cards as needed
+     
+     Stat Card Structure:
+     .stat-card
+       ├── .stat-value (big number/percentage)
+       ├── .stat-label (short label)
+       └── .stat-description (supporting text)
+     ============================================================ -->
+<section class="stats-section" id="proof">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <span class="section-label">Proven & Trusted</span>
+            <h2 class="section-title">The country's #1 intensive outpatient clinic</h2>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            
+            <!-- Stat 1 -->
+            <div class="stat-card">
+                <div class="stat-value">91%</div>
+                <div class="stat-label">Industry-leading outcomes</div>
+                <div class="stat-description">
+                    Of graduates report improvements in their most severe symptoms.
+                </div>
+            </div>
+            
+            <!-- Stat 2 -->
+            <div class="stat-card">
+                <div class="stat-value">50k+</div>
+                <div class="stat-label">Trusted by top clinicians</div>
+                <div class="stat-description">
+                    Providers refer their patients to our programs.
+                </div>
+            </div>
+            
+            <!-- Stat 3 -->
+            <div class="stat-card">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Science-backed methods</div>
+                <div class="stat-description">
+                    Peer-reviewed studies verify our treatment approach.
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- REQUIRED CSS -->
+<style>
+.stats-section {
+    padding: var(--space-2xl) 0;
+    background: var(--color-bg-warm);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.stat-card {
+    text-align: center;
+    padding: var(--space-lg);
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 400;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+}
+
+.stat-label {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.stat-description {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .stats-grid { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making Software — A Reference Manual</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ============================================
+         SECTION: HEADER
+         Navigation and site title
+         ============================================ -->
+    <header class="site-header" id="header">
+        <div class="header-content">
+            <h1 class="site-title">MAKING SOFTWARE</h1>
+            <p class="site-subtitle">A reference manual for people who design and build software.<br>Written and Illustrated by <span class="author-name">Dan Hollick</span></p>
+        </div>
+        <nav class="header-nav">
+            <span class="nav-indicator">◆</span>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============================================
+             SECTION: HERO INTRO
+             Main introduction with illustration
+             ============================================ -->
+        <section class="section hero-intro" id="hero-intro">
+            <div class="section-grid">
+                <div class="intro-text">
+                    <p class="drop-cap">Have you ever wondered how a digital camera captures an image? How can your CPU do a billion calculations a second? What's an algorithm and what can a computer even understand? These are the questions embedded in this eBook. While it won't turn you into a programmer or a developer, it's like being given a secret map to the underlying world.</p>
+                    
+                    <p>Humans live somewhere on this dial not as a guide, but as a companion, highlighting the marvellous way in which the understanding of how everything works.</p>
+                    
+                    <p>It's possible to go your entire day not knowing why each of the neighbouring pixels and it carefully draws an average weighted colour.</p>
+                    
+                    <p>The most common type of record (disc's protective distribution, averaging 1,800 rpm, while the lightest and most accurate) at the edges. This produces a more realistic blur without being too computationally expensive.</p>
+                </div>
+                
+                <aside class="intro-illustration">
+                    <div class="blueprint-diagram cd-diagram">
+                        <svg viewBox="0 0 300 300" class="diagram-svg">
+                            <!-- CD/Disc illustration -->
+                            <ellipse cx="150" cy="150" rx="140" ry="50" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                            <ellipse cx="150" cy="140" rx="140" ry="50" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                            <ellipse cx="150" cy="130" rx="140" ry="50" fill="none" stroke="var(--blue)" stroke-width="1" stroke-dasharray="4,4"/>
+                            
+                            <!-- Center hole -->
+                            <circle cx="150" cy="140" r="20" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                            
+                            <!-- Data tracks -->
+                            <ellipse cx="150" cy="140" rx="60" ry="22" fill="none" stroke="var(--blue)" stroke-width="0.5" stroke-dasharray="2,2"/>
+                            <ellipse cx="150" cy="140" rx="100" ry="37" fill="none" stroke="var(--blue)" stroke-width="0.5" stroke-dasharray="2,2"/>
+                            
+                            <!-- Labels -->
+                            <text x="280" y="80" class="diagram-label">TOP SHELL</text>
+                            <line x1="260" y1="85" x2="200" y2="120" stroke="var(--blue)" stroke-width="0.5"/>
+                            
+                            <text x="280" y="140" class="diagram-label">DATA LAYER</text>
+                            <line x1="260" y1="145" x2="200" y2="140" stroke="var(--blue)" stroke-width="0.5"/>
+                            
+                            <text x="280" y="200" class="diagram-label">REFLECTIVE COATING</text>
+                            <line x1="260" y1="195" x2="200" y2="160" stroke="var(--blue)" stroke-width="0.5"/>
+                        </svg>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: TYPOGRAPHY SHOWCASE
+             Font rendering and anti-aliasing
+             ============================================ -->
+        <section class="section typography-showcase" id="typography-showcase">
+            <div class="section-grid">
+                <div class="showcase-content">
+                    <p>Maybe you've always wanted to know how the pen tool works in Figma and what those handles actually do when you move them.</p>
+                    
+                    <div class="curve-diagram">
+                        <svg viewBox="0 0 400 200" class="bezier-svg">
+                            <!-- Bezier curve visualization -->
+                            <path d="M 50,150 C 100,50 300,50 350,150" fill="none" stroke="var(--blue)" stroke-width="2"/>
+                            
+                            <!-- Control points -->
+                            <circle cx="50" cy="150" r="6" fill="var(--blue)"/>
+                            <circle cx="350" cy="150" r="6" fill="var(--blue)"/>
+                            <circle cx="100" cy="50" r="4" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                            <circle cx="300" cy="50" r="4" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                            
+                            <!-- Control lines -->
+                            <line x1="50" y1="150" x2="100" y2="50" stroke="var(--blue)" stroke-width="0.5" stroke-dasharray="4,4"/>
+                            <line x1="350" y1="150" x2="300" y2="50" stroke="var(--blue)" stroke-width="0.5" stroke-dasharray="4,4"/>
+                            
+                            <!-- Labels -->
+                            <text x="30" y="175" class="diagram-label-sm">ANCHOR POINT</text>
+                            <text x="70" y="35" class="diagram-label-sm">CONTROL HANDLE</text>
+                        </svg>
+                    </div>
+                    
+                    <p>They control the points on a bezier curve which is a cool piece of math we use to draw curves in vector graphics, like fonts and SVGs.</p>
+                </div>
+                
+                <div class="font-preview">
+                    <div class="letter-grid">
+                        <div class="letter-large serif">Aa</div>
+                        <div class="letter-large mono">Aa</div>
+                    </div>
+                    <p class="caption">But of course, our screens are made of pixels and struggle to display smooth curves. So we have to take these curves and figure out how to display them so that they represent the shapes as accurately as possible.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: HARDWARE DIAGRAM
+             Electron beam / CRT explanation
+             ============================================ -->
+        <section class="section hardware-diagram" id="hardware-diagram">
+            <div class="diagram-full">
+                <h3 class="diagram-title">ELECTRON BEAM</h3>
+                <svg viewBox="0 0 800 400" class="electron-beam-svg">
+                    <!-- CRT tube outline -->
+                    <path d="M 100,100 L 250,100 L 350,50 L 700,50 L 700,350 L 350,350 L 250,300 L 100,300 Z" 
+                          fill="none" stroke="var(--blue)" stroke-width="1"/>
+                    
+                    <!-- Electron gun -->
+                    <rect x="70" y="170" width="60" height="60" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                    <text x="50" y="250" class="diagram-label">ELECTRON GUN</text>
+                    
+                    <!-- Focusing coils -->
+                    <ellipse cx="180" cy="200" rx="15" ry="40" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                    <text x="160" y="280" class="diagram-label">ANODES</text>
+                    
+                    <!-- Deflection plates -->
+                    <line x1="280" y1="140" x2="280" y2="180" stroke="var(--blue)" stroke-width="2"/>
+                    <line x1="280" y1="220" x2="280" y2="260" stroke="var(--blue)" stroke-width="2"/>
+                    <text x="230" y="310" class="diagram-label">DEFLECTING MAGNETS</text>
+                    
+                    <!-- Beam path -->
+                    <line x1="130" y1="200" x2="650" y2="200" stroke="var(--blue)" stroke-width="0.5" stroke-dasharray="8,4"/>
+                    <text x="400" y="190" class="diagram-label">LIGHT</text>
+                    
+                    <!-- Screen -->
+                    <rect x="650" y="80" width="30" height="240" fill="none" stroke="var(--blue)" stroke-width="1"/>
+                    <text x="640" y="350" class="diagram-label">THICK LEAD GLASS</text>
+                    
+                    <!-- Phosphor coating -->
+                    <line x1="680" y1="80" x2="680" y2="320" stroke="var(--blue)" stroke-width="3"/>
+                    <text x="690" y="200" class="diagram-label">PHOSPHORESCENT COATING</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: NEWSLETTER
+             Email signup for updates
+             ============================================ -->
+        <section class="section newsletter" id="newsletter">
+            <div class="newsletter-content">
+                <h3 class="newsletter-title">SIGNUP FOR UPDATES</h3>
+                <p class="newsletter-desc">Signup to the newsletter below to be the first to know once the book is out, how the project is going, and other progress updates.</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" placeholder="your@email.com" class="newsletter-input">
+                    <button type="submit" class="newsletter-btn">JOIN MAILING LIST</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: TABLE OF CONTENTS
+             Chapter listing and navigation
+             ============================================ -->
+        <section class="section toc" id="table-of-contents">
+            <h2 class="toc-header">TABLE OF CONTENTS <span class="toc-meta">v0.1 &nbsp;&nbsp;&nbsp;&nbsp; 5 CHAPTERS &nbsp;&nbsp;&nbsp;&nbsp; 44 ARTICLES &nbsp;&nbsp;&nbsp;&nbsp; ∞</span></h2>
+            
+            <div class="toc-grid">
+                <div class="toc-column">
+                    <h4 class="toc-chapter">1. PIXELS AND COLOR</h4>
+                    <ul class="toc-list">
+                        <li>What is a pixel?</li>
+                        <li>Pixels per inch</li>
+                        <li>What is a bitmap?</li>
+                        <li>Color gamuts, models and spaces</li>
+                        <li>Why making colors on screens is so difficult</li>
+                        <li>Digital color representation</li>
+                        <li>The math behind color blending</li>
+                    </ul>
+                    
+                    <h4 class="toc-chapter">2. FONTS AND VECTORS</h4>
+                    <ul class="toc-list">
+                        <li>Drawing curves</li>
+                        <li>Parametric functions</li>
+                        <li>SVG Polygons</li>
+                        <li>SVG Paths</li>
+                        <li>Bezier curves</li>
+                        <li>Being bold in vector shapes</li>
+                    </ul>
+                </div>
+                
+                <div class="toc-column">
+                    <h4 class="toc-chapter">3. 2D AND SHADERS</h4>
+                    <ul class="toc-list">
+                        <li>What is ray IPC mode?</li>
+                        <li>What is a shader?</li>
+                        <li>Fragment shaders work</li>
+                        <li>Blue noise and dither effects</li>
+                        <li>Circles and triangle shading pros</li>
+                    </ul>
+                    
+                    <h4 class="toc-chapter">4. A/C AND DC</h4>
+                    <ul class="toc-list">
+                        <li>Alternating current &amp; electrical networks</li>
+                        <li>What is LISP really?</li>
+                        <li>Current/voltage Basics</li>
+                        <li>Semiconductors</li>
+                    </ul>
+                    
+                    <h4 class="toc-chapter">5. COMPRESSION AND DATA</h4>
+                    <ul class="toc-list">
+                        <li>What is a file?</li>
+                        <li>Binary, hexadecimal and character</li>
+                        <li>Strings</li>
+                        <li>Lossless codecs</li>
+                        <li>Entropy compression</li>
+                        <li>Huffman Trees</li>
+                    </ul>
+                </div>
+                
+                <div class="toc-column">
+                    <h4 class="toc-chapter">6. NETWORKING AND THE WEB</h4>
+                    <ul class="toc-list">
+                        <li>What is a protocol?</li>
+                        <li>Client and servers</li>
+                        <li>How the internet works</li>
+                        <li>Protocols</li>
+                        <li>Web Browsers</li>
+                        <li>TLS &amp; Encryption</li>
+                        <li>VPNs in detail</li>
+                    </ul>
+                    
+                    <h4 class="toc-chapter">7. COMPILERS AND INTERPRETERS</h4>
+                    <ul class="toc-list">
+                        <li>How does code run?</li>
+                        <li>What is a compiler?</li>
+                        <li>What is an interpreter?</li>
+                    </ul>
+                    
+                    <h4 class="toc-chapter">8. MISC</h4>
+                    <ul class="toc-list">
+                        <li>Regular Expressions</li>
+                        <li>QR codes</li>
+                        <li>How a fingerprint sensor works</li>
+                        <li>Quantum computing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: FAQ / COMMON QUESTIONS
+             Frequently asked questions
+             ============================================ -->
+        <section class="section faq" id="faq">
+            <h2 class="faq-header">COMMON QUESTIONS</h2>
+            
+            <div class="faq-table">
+                <div class="faq-row">
+                    <span class="faq-num">01</span>
+                    <span class="faq-question">QUESTION</span>
+                    <span class="faq-answer">ANSWER</span>
+                </div>
+                
+                <div class="faq-row">
+                    <span class="faq-num">02</span>
+                    <span class="faq-question">Will this be a physical book?</span>
+                    <span class="faq-answer">Its a ebook with 10 free chapters, all the ebooks and all advanced editions. This is a once in a lifetime opportunity. Let me tell you that this is popular and that's for a good reason.</span>
+                </div>
+                
+                <div class="faq-row">
+                    <span class="faq-num">03</span>
+                    <span class="faq-question">What are updates?</span>
+                    <span class="faq-answer">As this is released as soon as this is up at no extra fee. Buyers of the early editions of this ebook will receive updates automatically.</span>
+                </div>
+                
+                <div class="faq-row">
+                    <span class="faq-num">04</span>
+                    <span class="faq-question">What if I have a legal issue?</span>
+                    <span class="faq-answer">Each tier represents an additional help I'll give you if the biggest contributor to the biggest parts the biggest results of the biggest stuff.</span>
+                </div>
+                
+                <div class="faq-row">
+                    <span class="faq-num">05</span>
+                    <span class="faq-question">Can I use this on Steam?</span>
+                    <span class="faq-answer">If I make the good, which one should they take a look at the different tiers there, for there to be as clear what the different stuff.</span>
+                </div>
+                
+                <div class="faq-row">
+                    <span class="faq-num">06</span>
+                    <span class="faq-question">How much will it cost?</span>
+                    <span class="faq-answer">I'm also using the free for now is something, a great portion of the actions will be the main tool and price level may vary.</span>
+                </div>
+                
+                <div class="faq-row">
+                    <span class="faq-num">07</span>
+                    <span class="faq-question">How do I access the ebook account?</span>
+                    <span class="faq-answer">When it is in Pages, That'll let you know a 45 on a day's notice to decide it's lim</span>
+                </div>
+                
+                <div class="faq-row">
+                    <span class="faq-num">08</span>
+                    <span class="faq-question">What formats is it?</span>
+                    <span class="faq-answer">Digital (for now).</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION: CTA / SIGNUP
+             Final call to action
+             ============================================ -->
+        <section class="section cta" id="cta">
+            <div class="cta-content">
+                <h3 class="cta-title">SIGNUP FOR UPDATES</h3>
+                <p class="cta-desc">Signup to your mailing list so that I can notify you when there's new updates, and that's what I shall do what.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-outline">LEARN MORE</a>
+                    <a href="#" class="btn btn-primary">BUY NOW · $XX USD</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================
+         SECTION: FOOTER
+         Copyright and social links
+         ============================================ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-content">
+            <p class="footer-credit">CURRENT VERSION: <span class="version-badge">0.1 ALPHA</span></p>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© SOFTWARE MANUAL. THE INSIGHT LAB: SPECIAL AND DAILY SOFTWARE<br>EDITION ONE • LIKE STUFF FROM THE TECH ERA FOR BETTER</p>
+            <p class="page-indicator">[ PAGE 1 ]</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

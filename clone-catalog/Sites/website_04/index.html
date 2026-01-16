@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every Layout Template | Learn Better CSS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ============================================
+         SECTION: HERO
+         Main landing section with product showcase
+         Dependencies: None
+         ============================================ -->
+    <section class="section section--hero" id="hero">
+        <div class="container hero__inner">
+            <div class="hero__media">
+                <div class="book-cover">
+                    <div class="book-cover__spine"></div>
+                    <div class="book-cover__front">
+                        <span class="book-cover__badge">3rd Edition</span>
+                        <div class="book-cover__title">
+                            <span class="book-cover__every">EVERY</span>
+                            <span class="book-cover__layout">LAYOUT</span>
+                        </div>
+                        <p class="book-cover__subtitle">Relearn CSS layout<br>by example</p>
+                        <p class="book-cover__authors">Heydon Pickering & Andy Bell</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__content">
+                <h1 class="hero__title">Learn to write better, resilient CSS</h1>
+                <p class="hero__description">If you find yourself wrestling with CSS layout, it's likely you're making decisions for browsers they should be making themselves.</p>
+                <p class="hero__description">Through a series of simple, composable layouts, <strong>Every Layout</strong> will teach you how to better harness the built-in algorithms that power browsers and CSS.</p>
+                <div class="hero__cta">
+                    <a href="#checkout" class="btn btn--primary">Buy Every Layout For <s>$69</s> $40</a>
+                </div>
+                <a href="#rudiments" class="hero__link">Read the free rudiments and axioms →</a>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: HERO -->
+
+    <main id="main">
+
+        <!-- ============================================
+             SECTION: ACCESS RECOVERY (Top)
+             Form for users who lost access
+             Dependencies: None
+             Removable: Yes - standalone utility section
+             ============================================ -->
+        <section class="section section--recovery" id="recovery-top">
+            <div class="container container--narrow">
+                <h2 class="section__title">Already purchased Every Layout, but lost your access?</h2>
+                <p class="section__description">No worries. Add the <strong>email address that you used to purchase Every Layout</strong> and we'll re-send your access link.</p>
+                <form class="recovery-form" action="#" method="post">
+                    <div class="form-group form-group--inline">
+                        <label for="recovery-email-top" class="visually-hidden">Your email</label>
+                        <input type="email" id="recovery-email-top" name="email" placeholder="Your email" class="form-input" required>
+                        <button type="submit" class="btn btn--secondary">Get my access link</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- END SECTION: ACCESS RECOVERY (Top) -->
+
+        <!-- ============================================
+             SECTION: SOCIAL PROOF / LOGOS
+             Company logos showing credibility
+             Dependencies: Logo images
+             Removable: Yes - social proof section
+             ============================================ -->
+        <section class="section section--logos" id="social-proof">
+            <div class="container">
+                <h2 class="section__title">Every Layout has helped thousands of developers and companies simplify CSS layout in their projects</h2>
+                <p class="section__description">Employing algorithmic layout design means doing away with <code>@media</code> breakpoints, "magic numbers", and other hacks, to create context-independent layout components.</p>
+                <p class="section__description">Your future design systems will be more consistent, terser in code, and more malleable in the hands of your users and their devices.</p>
+                
+                <div class="logo-grid">
+                    <div class="logo-item">
+                        <svg viewBox="0 0 100 40" class="logo-svg"><text x="50" y="28" text-anchor="middle" font-weight="bold" font-size="18">BBC</text></svg>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 100 40" class="logo-svg"><text x="50" y="28" text-anchor="middle" font-weight="bold" font-size="18">W3C</text></svg>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 100 40" class="logo-svg"><text x="50" y="28" text-anchor="middle" font-weight="bold" font-size="14">web.dev</text></svg>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 100 40" class="logo-svg"><text x="50" y="28" text-anchor="middle" font-weight="bold" font-size="12">Freeagent</text></svg>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 100 40" class="logo-svg"><text x="50" y="28" text-anchor="middle" font-weight="bold" font-size="18">bliss</text></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: SOCIAL PROOF / LOGOS -->
+
+        <!-- ============================================
+             SECTION: TESTIMONIALS
+             Customer quotes and reviews
+             Dependencies: Testimonial images (optional)
+             Removable: Yes - social proof section
+             ============================================ -->
+        <section class="section section--testimonials" id="testimonials">
+            <div class="container">
+                <h2 class="section__title">Let these happy folks tell you how Every Layout helped them</h2>
+                
+                <div class="testimonial-grid">
+                    <!-- Testimonial Card 1 -->
+                    <blockquote class="testimonial-card">
+                        <div class="testimonial-card__avatar">
+                            <div class="avatar avatar--placeholder">KP</div>
+                        </div>
+                        <div class="testimonial-card__content">
+                            <cite class="testimonial-card__author">Kevin Powell</cite>
+                            <p class="testimonial-card__quote">I can't recommend Every Layout enough. Fantastic for all of the layouts you can use in your projects obviously, but also for how much you'll learn about flexbox, and CSS in general.</p>
+                        </div>
+                    </blockquote>
+
+                    <!-- Testimonial Card 2 -->
+                    <blockquote class="testimonial-card">
+                        <div class="testimonial-card__avatar">
+                            <div class="avatar avatar--placeholder">AC</div>
+                        </div>
+                        <div class="testimonial-card__content">
+                            <cite class="testimonial-card__author">Amie Chen</cite>
+                            <p class="testimonial-card__quote">CSS is one of the few things I'm comfortable with, but I'm still learning A TON reading Every Layout. Such a great resource!</p>
+                        </div>
+                    </blockquote>
+
+                    <!-- Testimonial Card 3 -->
+                    <blockquote class="testimonial-card">
+                        <div class="testimonial-card__avatar">
+                            <div class="avatar avatar--placeholder">JT</div>
+                        </div>
+                        <div class="testimonial-card__content">
+                            <cite class="testimonial-card__author">Josh Tumath</cite>
+                            <p class="testimonial-card__quote">Even two years later, Every Layout is still the best resource for learning common, intrinsic layout patterns. It's revolutionized our design system at the BBC.</p>
+                        </div>
+                    </blockquote>
+
+                    <!-- Testimonial Card 4 -->
+                    <blockquote class="testimonial-card">
+                        <div class="testimonial-card__avatar">
+                            <div class="avatar avatar--placeholder">JP</div>
+                        </div>
+                        <div class="testimonial-card__content">
+                            <cite class="testimonial-card__author">Jess Peck</cite>
+                            <p class="testimonial-card__quote">Every Layout is a fantastic resource, a great reference, and also has really helped me understand the structure and styling decisions that go into building websites.</p>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: TESTIMONIALS -->
+
+        <!-- ============================================
+             SECTION: FEATURES / CONTENT INTRO
+             Introduction to what's included
+             Dependencies: None
+             Removable: Yes - content section
+             ============================================ -->
+        <section class="section section--features" id="features">
+            <div class="container">
+                <h2 class="section__title">Best practices do work</h2>
+                <div class="features__intro">
+                    <p>Some influential people have framed CSS as a flawed technology. They've encouraged CSS authors to brute force layout in ways that don't make the most of CSS's features.</p>
+                    <p>With our introductory chapters, <a href="#rudiments">the "rudiments"</a>, we catch you up on just how smart and elegant modern CSS can be. What you learn in these chapters is then applied to specially designed, modular layout solutions.</p>
+                    <p>We teach you best practices that are guaranteed to make you a better, well-rounded CSS programmer.</p>
+                </div>
+                <a href="#rudiments" class="btn btn--outline">Read the free rudiments and axioms →</a>
+            </div>
+        </section>
+        <!-- END SECTION: FEATURES / CONTENT INTRO -->
+
+        <!-- ============================================
+             SECTION: LAYOUT CARDS GRID
+             Grid of layout pattern cards
+             Dependencies: SVG icons
+             Removable: Yes - product showcase section
+             ============================================ -->
+        <section class="section section--layouts" id="layouts">
+            <div class="container">
+                <div class="layout-grid">
+                    <!-- Layout Card: The Stack -->
+                    <a href="#" class="layout-card layout-card--free">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="20" y="10" width="40" height="15" rx="2"/>
+                                <rect x="20" y="32" width="40" height="15" rx="2"/>
+                                <rect x="20" y="54" width="40" height="15" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Stack</h3>
+                        <span class="layout-card__badge">read for free</span>
+                    </a>
+
+                    <!-- Layout Card: The Box -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="15" y="15" width="50" height="50" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Box</h3>
+                    </a>
+
+                    <!-- Layout Card: The Center -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="25" width="70" height="30" rx="2" stroke-dasharray="4 2"/>
+                                <rect x="20" y="30" width="40" height="20" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Center</h3>
+                    </a>
+
+                    <!-- Layout Card: The Cluster -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="20" width="20" height="12" rx="2"/>
+                                <rect x="30" y="20" width="30" height="12" rx="2"/>
+                                <rect x="65" y="20" width="10" height="12" rx="2"/>
+                                <rect x="5" y="38" width="25" height="12" rx="2"/>
+                                <rect x="35" y="38" width="15" height="12" rx="2"/>
+                                <rect x="55" y="38" width="20" height="12" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Cluster</h3>
+                    </a>
+
+                    <!-- Layout Card: The Sidebar -->
+                    <a href="#" class="layout-card layout-card--free">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="20" width="20" height="40" rx="2"/>
+                                <rect x="30" y="20" width="45" height="40" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Sidebar</h3>
+                        <span class="layout-card__badge">read for free</span>
+                    </a>
+
+                    <!-- Layout Card: The Switcher -->
+                    <a href="#" class="layout-card layout-card--free">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="30" width="22" height="20" rx="2"/>
+                                <rect x="30" y="30" width="22" height="20" rx="2"/>
+                                <rect x="55" y="30" width="22" height="20" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Switcher</h3>
+                        <span class="layout-card__badge">read for free</span>
+                    </a>
+
+                    <!-- Layout Card: The Cover -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="20" y="5" width="40" height="10" rx="2"/>
+                                <rect x="15" y="28" width="50" height="24" rx="2"/>
+                                <rect x="20" y="65" width="40" height="10" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Cover</h3>
+                    </a>
+
+                    <!-- Layout Card: The Grid -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="5" width="22" height="22" rx="2"/>
+                                <rect x="30" y="5" width="22" height="22" rx="2"/>
+                                <rect x="55" y="5" width="22" height="22" rx="2"/>
+                                <rect x="5" y="30" width="22" height="22" rx="2"/>
+                                <rect x="30" y="30" width="22" height="22" rx="2"/>
+                                <rect x="55" y="30" width="22" height="22" rx="2"/>
+                                <rect x="5" y="55" width="22" height="22" rx="2"/>
+                                <rect x="30" y="55" width="22" height="22" rx="2"/>
+                                <rect x="55" y="55" width="22" height="22" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Grid</h3>
+                    </a>
+
+                    <!-- Layout Card: The Frame -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="10" y="10" width="60" height="60" rx="2"/>
+                                <path d="M10 10 L25 25 M70 10 L55 25 M10 70 L25 55 M70 70 L55 55"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Frame</h3>
+                    </a>
+
+                    <!-- Layout Card: The Reel -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="0" y="20" width="80" height="40" rx="2" stroke-dasharray="4 2"/>
+                                <rect x="5" y="25" width="20" height="30" rx="2"/>
+                                <rect x="30" y="25" width="20" height="30" rx="2"/>
+                                <rect x="55" y="25" width="20" height="30" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Reel</h3>
+                    </a>
+
+                    <!-- Layout Card: The Imposter -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="10" y="10" width="60" height="60" rx="2" stroke-dasharray="4 2"/>
+                                <rect x="25" y="25" width="30" height="30" rx="2" fill="currentColor" fill-opacity="0.1"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Imposter</h3>
+                    </a>
+
+                    <!-- Layout Card: The Icon -->
+                    <a href="#" class="layout-card">
+                        <div class="layout-card__icon">
+                            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="40" y1="15" x2="40" y2="65"/>
+                                <line x1="15" y1="40" x2="65" y2="40"/>
+                            </svg>
+                        </div>
+                        <h3 class="layout-card__title">The Icon</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: LAYOUT CARDS GRID -->
+
+        <!-- ============================================
+             SECTION: AUTHORS / TEAM
+             About the creators
+             Dependencies: Author images (optional)
+             Removable: Yes - about section
+             ============================================ -->
+        <section class="section section--authors" id="authors">
+            <div class="container">
+                <h2 class="section__title">Meet the authors who brought you Every Layout</h2>
+                
+                <div class="authors-grid">
+                    <!-- Author 1 -->
+                    <article class="author-card">
+                        <div class="author-card__avatar">
+                            <div class="avatar avatar--large avatar--placeholder">HP</div>
+                        </div>
+                        <div class="author-card__content">
+                            <h3 class="author-card__name"><a href="#">Heydon Pickering</a></h3>
+                            <p class="author-card__bio">Heydon is a front-end developer and technical writer specializing in inclusive interface design. They have written and edited a number of books on designing for the web.</p>
+                            <p class="author-card__bio">Heydon has consulted organizations like Spotify, The BBC, and SpringerNature, helping them to code and document accessible design systems.</p>
+                        </div>
+                    </article>
+
+                    <!-- Author 2 -->
+                    <article class="author-card">
+                        <div class="author-card__avatar">
+                            <div class="avatar avatar--large avatar--placeholder">AB</div>
+                        </div>
+                        <div class="author-card__content">
+                            <h3 class="author-card__name"><a href="#">Andy Bell</a></h3>
+                            <p class="author-card__bio">Andy is a designer and front-end developer who founded Set Studio: an agency who specialise in producing stunning websites that work for <em>everyone</em>.</p>
+                            <p class="author-card__bio">Andy has spent well over a decade specializing in simplifying CSS to make it scale-up for design system projects for organizations like Google, Harley-Davidson, Vice Media and the NHS.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: AUTHORS / TEAM -->
+
+        <!-- ============================================
+             SECTION: PRICING / CHECKOUT
+             Purchase section with payment form
+             Dependencies: Payment processor (Stripe)
+             Removable: Yes - commerce section
+             ============================================ -->
+        <section class="section section--pricing" id="checkout">
+            <div class="container container--narrow">
+                <h2 class="pricing__title">Buy Every Layout<br>For Only <s>$69</s> $40</h2>
+                <p class="pricing__subtitle">You get a lot of bang for your buck, including…</p>
+
+                <div class="pricing__features">
+                    <div class="pricing-feature">
+                        <div class="pricing-feature__icon book-cover book-cover--small">
+                            <div class="book-cover__front">
+                                <span class="book-cover__every">EVERY</span>
+                                <span class="book-cover__layout">LAYOUT</span>
+                            </div>
+                        </div>
+                        <p class="pricing-feature__text">Access to all the site content, including all the layouts and layout generators. All available offline too!</p>
+                    </div>
+
+                    <div class="pricing-feature">
+                        <div class="pricing-feature__icon">📖</div>
+                        <p class="pricing-feature__text"><strong>Every Layout</strong> as a book, in the EPUB format, for reading with your preferred reader.</p>
+                    </div>
+
+                    <div class="pricing-feature">
+                        <div class="pricing-feature__icon">
+                            <div class="more-badge">MORE<br>MORE<br>MORE</div>
+                        </div>
+                        <p class="pricing-feature__text">The full set of layout components, implemented as interoperable custom elements.</p>
+                    </div>
+
+                    <div class="pricing-feature">
+                        <div class="pricing-feature__icon">♾️</div>
+                        <p class="pricing-feature__text">Free updates for life. We are always improving, and have lots more content planned.</p>
+                    </div>
+                </div>
+
+                <div class="checkout-form">
+                    <h3 class="checkout-form__title">Checkout securely with Stripe</h3>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="checkout-email">Email address</label>
+                            <input type="email" id="checkout-email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-coupon">Coupon code</label>
+                            <input type="text" id="checkout-coupon" name="coupon" placeholder="ENTER_YOUR_COUPON" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter">
+                                <span>Get updates from us on new content and developments</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full">Purchase Every Layout</button>
+                        <p class="checkout-form__note">✓ By the fine folks at Stripe</p>
+                    </form>
+                </div>
+
+                <div class="bulk-notice">
+                    <h4>Are you buying a copy of Every Layout as a company?</h4>
+                    <p>We provide bulk discounts for multiple licences, so drop an email to <code>support@emails.every-layout.dev</code> and we'll sort you a bespoke price.</p>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: PRICING / CHECKOUT -->
+
+        <!-- ============================================
+             SECTION: ACCESS RECOVERY (Bottom)
+             Duplicate form for convenience
+             Dependencies: None
+             Removable: Yes - utility section
+             ============================================ -->
+        <section class="section section--recovery section--recovery-bottom" id="recovery-bottom">
+            <div class="container container--narrow">
+                <h2 class="section__title">Already purchased Every Layout, but lost your access?</h2>
+                <p class="section__description">No worries. Add the <strong>email address that you used to purchase Every Layout</strong> and we'll re-send your access link.</p>
+                <form class="recovery-form" action="#" method="post">
+                    <div class="form-group form-group--inline">
+                        <label for="recovery-email-bottom" class="visually-hidden">Your email</label>
+                        <input type="email" id="recovery-email-bottom" name="email" placeholder="Your email" class="form-input" required>
+                        <button type="submit" class="btn btn--secondary">Get my access link</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- END SECTION: ACCESS RECOVERY (Bottom) -->
+
+    </main>
+
+    <!-- ============================================
+         SECTION: FOOTER
+         Site footer with credits and links
+         Dependencies: None
+         Removable: No - required for site
+         ============================================ -->
+    <footer class="site-footer" id="footer">
+        <div class="container">
+            <p class="site-footer__credits"><strong>Every Layout</strong> is created by<br><a href="#">Heydon Pickering</a> & <a href="#">Andy Bell</a></p>
+            <nav class="site-footer__nav">
+                <a href="#">Privacy Policy</a>
+                <span class="separator">-</span>
+                <a href="#">Terms and conditions</a>
+            </nav>
+        </div>
+    </footer>
+    <!-- END SECTION: FOOTER -->
+
+</body>
+</html>

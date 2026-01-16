@@ -1,0 +1,313 @@
+<!--
+================================================================================
+SECTION: LEFT SIDEBAR
+================================================================================
+Purpose: Product navigation menu and promotional widgets
+Dependencies: Should be inside a flex container (#main-layout)
+To Use: Copy inside your main layout container, before the content area
+CSS: Included inline below - copy to your main stylesheet or keep inline
+================================================================================
+-->
+
+<!-- LEFT SIDEBAR CSS -->
+<style>
+#sidebar {
+    width: 180px;
+    background: linear-gradient(180deg, #3a4860 0%, #2a3648 100%);
+    border-right: 1px solid #1a2030;
+    padding: 15px;
+    flex-shrink: 0;
+}
+
+/* Sidebar Navigation Menu */
+.sidebar-nav {
+    margin-bottom: 20px;
+}
+
+.sidebar-nav-header {
+    background: linear-gradient(180deg, #5a6a85 0%, #4a5a75 100%);
+    color: #ffffff;
+    padding: 6px 10px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #4a5a75;
+    border-bottom: none;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #2f3a4d;
+    border: 1px solid #3a4860;
+    border-radius: 0 0 4px 4px;
+}
+
+.sidebar-nav li {
+    border-bottom: 1px solid #3a4860;
+}
+
+.sidebar-nav li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 6px 10px;
+    color: #6cb4ee;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.sidebar-nav a:hover {
+    background: #4a5a75;
+    text-decoration: none;
+}
+
+/* Sidebar Box (generic container) */
+.sidebar-box {
+    margin-bottom: 15px;
+}
+
+.sidebar-box-header {
+    background: linear-gradient(180deg, #4a5a75 0%, #3a4860 100%);
+    color: #ffffff;
+    padding: 6px 10px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    border: 1px solid #3a4860;
+    border-bottom: none;
+}
+
+.sidebar-box-content {
+    background: #2f3a4d;
+    border: 1px solid #3a4860;
+    padding: 10px;
+}
+
+/* Development Resources Widget */
+.dev-resource {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3a4860;
+}
+
+.dev-resource:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.dev-resource-logo {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4a90d9;
+    margin-bottom: 2px;
+}
+
+.dev-resource-logo.orange {
+    color: #e85d00;
+}
+
+.dev-resource-tagline {
+    font-size: 10px;
+    color: #8899aa;
+}
+
+/* Featured Skins Widget */
+.featured-skin {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.featured-skin:last-child {
+    margin-bottom: 0;
+}
+
+.featured-skin-thumb {
+    width: 100%;
+    height: 60px;
+    background: #2a3648;
+    border: 1px solid #3a4860;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8899aa;
+    font-size: 10px;
+}
+
+.featured-skin-title a {
+    font-size: 10px;
+    color: #6cb4ee;
+}
+
+.featured-skin-author {
+    font-size: 10px;
+    color: #8899aa;
+}
+
+/* News List Widget */
+.news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.news-list li {
+    margin-bottom: 6px;
+    font-size: 10px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.news-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 4px;
+    height: 4px;
+    background: #8899aa;
+    border-radius: 50%;
+}
+
+.news-list .news-date {
+    color: #8899aa;
+    margin-right: 3px;
+}
+
+.news-list a {
+    color: #6cb4ee;
+    text-decoration: none;
+}
+
+.news-list a:hover {
+    text-decoration: underline;
+}
+
+.more-link {
+    text-align: right;
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.more-link a {
+    color: #6cb4ee;
+    text-decoration: none;
+}
+</style>
+
+<!-- LEFT SIDEBAR HTML -->
+<aside id="sidebar">
+    
+    <!-- Product Navigation Menu -->
+    <nav class="sidebar-nav">
+        <div class="sidebar-nav-header">WindowBlinds</div>
+        <ul>
+            <li><a href="#">Information</a></li>
+            <li><a href="#">Workshop</a></li>
+            <li><a href="#">Download</a></li>
+            <li><a href="#">Get More Skins</a></li>
+            <li><a href="#">Get Premium Suites</a></li>
+            <li><a href="#">Forums</a></li>
+            <li><a href="#">Purchase</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Development Resources -->
+    <div class="sidebar-box">
+        <div class="sidebar-box-header">Development Resources</div>
+        <div class="sidebar-box-content">
+            <div class="dev-resource">
+                <div class="dev-resource-logo">DirectSkin</div>
+                <div class="dev-resource-tagline">Skin your application</div>
+            </div>
+            <div class="dev-resource">
+                <div class="dev-resource-logo orange">SkinStudio</div>
+                <div class="dev-resource-tagline">Create your own skins</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Featured Skins -->
+    <div class="sidebar-box">
+        <div class="sidebar-box-header">Featured Skins</div>
+        <div class="sidebar-box-content">
+            <div class="featured-skin">
+                <div class="featured-skin-thumb">[Skin Preview]</div>
+                <div class="featured-skin-title"><a href="#">gaiety for xp and vista</a></div>
+                <div class="featured-skin-author">by mkorashy</div>
+                <a href="#" style="font-size: 10px;">Download</a>
+            </div>
+            <div class="featured-skin">
+                <div class="featured-skin-thumb">[Skin Preview]</div>
+                <div class="featured-skin-title"><a href="#">Thundera by Z71</a></div>
+                <div class="featured-skin-author">Thundera</div>
+                <a href="#" style="font-size: 10px;">Download</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- In The News -->
+    <div class="sidebar-box">
+        <div class="sidebar-box-header">In The News</div>
+        <div class="sidebar-box-content">
+            <ul class="news-list">
+                <li><span class="news-date">5/7</span> <a href="#">WindowBlinds 6.1 Released</a></li>
+                <li><span class="news-date">3/19</span> <a href="#">SkinStudio 6 released!</a></li>
+                <li><span class="news-date">3/17</span> <a href="#">IconDeveloper 2.0 released</a></li>
+                <li><span class="news-date">3/12</span> <a href="#">DeskScapes Preview available</a></li>
+                <li><span class="news-date">3/11</span> <a href="#">Object Desktop 2008 Guided Tour</a></li>
+                <li><span class="news-date">2/12</span> <a href="#">TweakVista 1.1 released</a></li>
+                <li><span class="news-date">2/5</span> <a href="#">CursorFX released</a></li>
+            </ul>
+            <div class="more-link"><a href="#">More News ▶</a></div>
+        </div>
+    </div>
+    
+</aside>
+
+<!--
+================================================================================
+CUSTOMIZATION GUIDE:
+================================================================================
+1. SIDEBAR WIDTH: Change #sidebar width (default: 180px)
+
+2. NAVIGATION MENU:
+   - Header text: Change .sidebar-nav-header content
+   - Add item: Add <li><a href="#">Item</a></li> to the <ul>
+   - Remove item: Delete entire <li>...</li> element
+
+3. SIDEBAR BOXES:
+   - Add new box: Copy a <div class="sidebar-box">...</div> block
+   - Remove box: Delete entire <div class="sidebar-box">...</div>
+   - Change header: Modify .sidebar-box-header text
+
+4. DEVELOPMENT RESOURCES:
+   - Add resource: Copy a <div class="dev-resource">...</div> block
+   - Colors: Add class "orange" to .dev-resource-logo for orange color
+   
+5. FEATURED SKINS:
+   - Replace [Skin Preview] with actual <img> tags
+   - Update title and author information
+
+6. NEWS LIST:
+   - Add item: Add <li><span class="news-date">X/X</span> <a href="#">Title</a></li>
+   - Remove item: Delete entire <li>...</li>
+
+7. COLORS:
+   - Sidebar background: Change #sidebar background gradient
+   - Box headers: Modify .sidebar-box-header background
+   - Link color: Change .sidebar-nav a color and .news-list a color
+================================================================================
+-->
