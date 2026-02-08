@@ -1,0 +1,14 @@
+{
+  "name": "clone-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "screenshots": "node scripts/generate-screenshots.mjs",
+    "compare": "node scripts/compare-screenshot.mjs",
+    "fonts": "node scripts/get-fonts.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.35.0"
+  }
+}

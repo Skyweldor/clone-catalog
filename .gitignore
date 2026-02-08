@@ -1,0 +1,11 @@
+# Root-level dev artifacts
+node_modules/
+package-lock.json
+*.png
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/

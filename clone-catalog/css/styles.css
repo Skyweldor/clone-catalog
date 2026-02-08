@@ -3,15 +3,15 @@
    ============================================ */
 :root {
     /* Colors */
-    --color-bg: #f5f5f3;
+    --color-bg: #f7f3e9;
     --color-bg-dark: #1a1a1a;
     --color-text: #1a1a1a;
     --color-text-light: #f5f5f3;
     --color-text-muted: #666;
     --color-accent: #e63946;
-    --color-border: #ddd;
+    --color-border: #c4b89a;
     --color-border-dark: #333;
-    --color-card-bg: #fff;
+    --color-card-bg: #fdfbf5;
 
     /* Typography */
     --font-mono: 'IBM Plex Mono', monospace;
@@ -30,6 +30,9 @@
     --container-padding: 2rem;
     --radius: 4px;
     --transition: 0.2s ease;
+
+    /* Paper texture */
+    --paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
 /* ============================================
@@ -48,6 +51,7 @@ html {
 body {
     font-family: var(--font-sans);
     background-color: var(--color-bg);
+    background-image: var(--paper-texture);
     color: var(--color-text);
     line-height: 1.6;
     font-size: 16px;
@@ -86,7 +90,7 @@ a:hover {
    ============================================ */
 .header {
     padding: var(--spacing-md) 0;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px dashed var(--color-border);
 }
 
 .header__inner {
@@ -134,7 +138,7 @@ a:hover {
     padding: var(--spacing-lg) 0 var(--spacing-md);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px dashed var(--color-border);
 }
 
 .hero__content {
@@ -202,8 +206,9 @@ a:hover {
    ============================================ */
 .controls-section {
     padding: var(--spacing-sm) 0;
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg);
+    border-bottom: 1px dashed var(--color-border);
+    background-color: var(--color-bg);
+    background-image: var(--paper-texture);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -233,7 +238,7 @@ a:hover {
 .filter-tag {
     padding: 0.25rem 0.75rem;
     background: transparent;
-    border: 1px solid var(--color-border);
+    border: 1px dashed var(--color-border);
     border-radius: 9999px;
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -251,6 +256,128 @@ a:hover {
     background: var(--color-text);
     border-color: var(--color-text);
     color: var(--color-text-light);
+}
+
+/* ============================================
+   HIGHLIGHTS SECTION
+   ============================================ */
+.highlights-section {
+    padding: var(--spacing-md) 0 var(--spacing-lg);
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.highlights-section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--spacing-md);
+}
+
+.highlights-section__title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text);
+}
+
+.highlights-section__icon {
+    color: var(--color-text);
+    margin-right: 0.35rem;
+}
+
+.highlights-section__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.03em;
+}
+
+/* Highlights Carousel */
+.highlights-carousel {
+    display: flex;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+}
+
+.carousel-arrow {
+    flex-shrink: 0;
+    width: 40px;
+    background: transparent;
+    border: 1.5px dashed var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-arrow:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+/* Horizontal Featured Card */
+.highlights-card {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    border: 1.5px dashed var(--color-accent);
+    border-radius: var(--radius);
+    background: var(--color-card-bg);
+    overflow: hidden;
+    min-height: 0;
+}
+
+.highlights-card__thumbnail-wrapper {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--color-bg);
+}
+
+.highlights-card__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all var(--transition);
+}
+
+.highlights-card__thumbnail-wrapper:hover .highlights-card__thumbnail {
+    transform: scale(1.02);
+}
+
+.highlights-card__thumbnail-wrapper:hover .site-card__overlay {
+    opacity: 1;
+}
+
+.highlights-card__content {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.highlights-card__title {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.highlights-card__description {
+    font-family: var(--font-serif);
+    font-size: 0.925rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+    font-style: italic;
 }
 
 /* ============================================
@@ -295,17 +422,19 @@ a:hover {
    ============================================ */
 .site-card {
     background: var(--color-card-bg);
-    border: 1px solid var(--color-border);
+    border: 1.5px dashed var(--color-border);
     border-radius: var(--radius);
     overflow: hidden;
     transition: all var(--transition);
     opacity: 0;
     transform: translateY(20px);
     animation: fadeSlideIn 0.5s ease forwards;
+    position: relative;
 }
 
 .site-card:hover {
     border-color: var(--color-text);
+    border-style: dashed;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
@@ -322,6 +451,19 @@ a:hover {
     overflow: hidden;
     cursor: pointer;
     background: var(--color-bg);
+}
+
+/* Halftone dot pattern overlay */
+.site-card__thumbnail-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #000 1px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: 0.08;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .site-card__thumbnail {
@@ -344,6 +486,7 @@ a:hover {
     justify-content: center;
     opacity: 0;
     transition: all var(--transition);
+    z-index: 2;
 }
 
 .site-card__overlay-text {
@@ -473,67 +616,28 @@ a:hover {
     border-color: var(--color-text);
 }
 
-/* ============================================
-   CTA SECTION (Dark)
-   ============================================ */
-.cta-section {
-    background: var(--color-bg-dark);
-    color: var(--color-text-light);
-    padding: var(--spacing-xl) 0;
+/* Disabled Button State */
+.btn-disabled,
+.btn-disabled:hover {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
-.cta-section__inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-}
-
-.cta-section__headline {
-    font-family: var(--font-mono);
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: var(--spacing-xs);
-}
-
-.cta-section__subtext {
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    opacity: 0.7;
-}
-
-.surprise-btn {
+.tooltip-wrapper {
     display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: 1rem 2rem;
-    background: var(--color-text-light);
-    color: var(--color-text);
-    border: none;
-    border-radius: var(--radius);
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all var(--transition);
+    flex: 1;
+    cursor: not-allowed;
 }
 
-.surprise-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+.tooltip-wrapper .btn {
+    width: 100%;
+    pointer-events: none;
 }
 
-.surprise-btn:active {
-    transform: translateY(0);
-}
-
-.surprise-btn__icon {
-    font-size: 1.2rem;
-    transition: transform var(--transition);
-}
-
-.surprise-btn:hover .surprise-btn__icon {
-    transform: translateX(4px);
+.modal-actions .tooltip-wrapper {
+    flex: none;
+    min-width: 120px;
 }
 
 /* ============================================
@@ -541,7 +645,7 @@ a:hover {
    ============================================ */
 .footer {
     padding: var(--spacing-lg) 0;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px dashed var(--color-border);
 }
 
 .footer__inner {
@@ -604,12 +708,12 @@ a:hover {
 
 .modal {
     background: var(--color-card-bg);
-    border: 1px solid var(--color-border);
+    border: 1.5px dashed var(--color-border);
     border-radius: var(--radius);
     max-width: 700px;
     width: 100%;
     max-height: 90vh;
-    overflow: auto;
+    overflow: hidden;
     position: relative;
     transform: scale(0.95) translateY(20px);
     transition: all var(--transition);
@@ -648,18 +752,54 @@ a:hover {
     padding: 0;
 }
 
+.modal-image-container {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-bottom: 1px dashed var(--color-border);
+    background: #1a1a1a;
+    cursor: ns-resize;
+}
+
+/* Custom scrollbar for image container */
+.modal-image-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-image-container::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.modal-image-container::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+.modal-image-container::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
 .modal-image {
     width: 100%;
     height: auto;
-    max-height: 350px;
-    object-fit: cover;
-    border-bottom: 1px solid var(--color-border);
+    display: block;
 }
 
 .modal-fig {
     padding: var(--spacing-xs) var(--spacing-sm);
     margin: 0;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px dashed var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-scroll-hint {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    opacity: 0.7;
 }
 
 .modal-info {
@@ -715,6 +855,10 @@ a:hover {
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
+    .registration-marks {
+        display: none;
+    }
+
     .header__inner {
         flex-direction: column;
         gap: var(--spacing-sm);
@@ -730,6 +874,23 @@ a:hover {
 
     .catalog-grid {
         grid-template-columns: 1fr;
+    }
+
+    .highlights-carousel {
+        flex-direction: column;
+    }
+
+    .carousel-arrow {
+        width: 100%;
+        height: 36px;
+    }
+
+    .highlights-card {
+        grid-template-columns: 1fr;
+    }
+
+    .highlights-card__thumbnail {
+        height: 200px;
     }
 
     .catalog-grid.list-view .site-card {
@@ -768,6 +929,74 @@ a:hover {
         transform: translateY(0);
     }
 }
+
+/* ============================================
+   CATALOG ITEM NUMBER
+   ============================================ */
+.site-card__item-no {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+
+/* ============================================
+   PAGE VIGNETTE (Aged Paper Effect)
+   ============================================ */
+.page-vignette {
+    position: fixed;
+    inset: 0;
+    box-shadow: inset 0 0 150px rgba(139, 119, 84, 0.12);
+    pointer-events: none;
+    z-index: 50;
+}
+
+/* ============================================
+   PRINT REGISTRATION MARKS
+   ============================================ */
+.registration-marks {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 49;
+}
+
+.reg-mark {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.reg-mark::before,
+.reg-mark::after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.reg-mark::before {
+    width: 1px;
+    height: 20px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.reg-mark::after {
+    width: 20px;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.reg-mark--tl { top: 12px; left: 12px; }
+.reg-mark--tr { top: 12px; right: 12px; }
+.reg-mark--bl { bottom: 12px; left: 12px; }
+.reg-mark--br { bottom: 12px; right: 12px; }
 
 /* ============================================
    SCROLLBAR

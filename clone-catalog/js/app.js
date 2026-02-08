@@ -7,6 +7,8 @@ const CatalogApp = {
     sites: [],
     filteredSites: [],
     activeTags: new Set(),
+    currentHighlightIndex: 0,
+    featuredSites: [],
 
     /**
      * Initialize the application
@@ -14,6 +16,7 @@ const CatalogApp = {
     async init() {
         this.updateTimestamp();
         await this.loadCatalog();
+        this.renderHighlights();
         this.renderSites();
         this.renderFilterTags();
         this.bindEvents();
@@ -69,6 +72,60 @@ const CatalogApp = {
     },
 
     /**
+     * Initialize the highlights carousel with featured sites
+     */
+    renderHighlights() {
+        const container = document.getElementById('highlights-card');
+        if (!container) return;
+
+        this.featuredSites = this.sites.filter(site => site.featured);
+
+        if (this.featuredSites.length === 0) {
+            const section = document.getElementById('highlights');
+            if (section) section.style.display = 'none';
+            return;
+        }
+
+        this.currentHighlightIndex = 0;
+        this.renderHighlightCard();
+    },
+
+    /**
+     * Render the current featured site into the highlights carousel
+     */
+    renderHighlightCard() {
+        const container = document.getElementById('highlights-card');
+        if (!container || this.featuredSites.length === 0) return;
+
+        const site = this.featuredSites[this.currentHighlightIndex];
+        const thumbnail = site.thumbnail || 'assets/images/placeholder.png';
+        const tags = site.tags ? site.tags.map(tag =>
+            `<span class="site-card__tag" data-tag="${tag}">${tag}</span>`
+        ).join('') : '';
+
+        container.innerHTML = `
+            <div class="highlights-card__thumbnail-wrapper" data-site-id="${site.id}">
+                <img class="highlights-card__thumbnail" src="${thumbnail}" alt="${site.name}" loading="lazy">
+                <div class="site-card__overlay">
+                    <span class="site-card__overlay-text">Preview</span>
+                </div>
+            </div>
+            <div class="highlights-card__content">
+                <span class="site-card__item-no">Highlight ${this.currentHighlightIndex + 1} of ${this.featuredSites.length}</span>
+                <h3 class="highlights-card__title">${site.name}</h3>
+                <p class="highlights-card__description">${site.description || ''}</p>
+                <div class="site-card__tags">${tags}</div>
+                <div class="site-card__actions">
+                    <a href="${site.path}" class="btn btn-primary" target="_blank">View Site →</a>
+                    <span class="tooltip-wrapper" title="Coming Soon">
+                        <button class="btn btn-secondary btn-disabled" disabled>Try It Out!</button>
+                    </span>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
      * Create HTML for a site card with staggered animation delay
      */
     createSiteCard(site, index) {
@@ -88,12 +145,15 @@ const CatalogApp = {
                     </div>
                 </div>
                 <div class="site-card__content">
+                    <span class="site-card__item-no">Item No. ${String(index + 1).padStart(3, '0')}</span>
                     <h3 class="site-card__title">${site.name}</h3>
                     <p class="site-card__description">${site.description || ''}</p>
                     <div class="site-card__tags">${tags}</div>
                     <div class="site-card__actions">
                         <a href="${site.path}" class="btn btn-primary" target="_blank">View Site →</a>
-                        ${site.originalUrl ? `<a href="${site.originalUrl}" class="btn btn-secondary" target="_blank">Original</a>` : ''}
+                        <span class="tooltip-wrapper" title="Coming Soon">
+                            <button class="btn btn-secondary btn-disabled" disabled>Try It Out!</button>
+                        </span>
                     </div>
                 </div>
             </article>
@@ -163,6 +223,38 @@ const CatalogApp = {
             }
         });
 
+        // Highlights carousel arrows
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (this.featuredSites.length === 0) return;
+                this.currentHighlightIndex = (this.currentHighlightIndex - 1 + this.featuredSites.length) % this.featuredSites.length;
+                this.renderHighlightCard();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (this.featuredSites.length === 0) return;
+                this.currentHighlightIndex = (this.currentHighlightIndex + 1) % this.featuredSites.length;
+                this.renderHighlightCard();
+            });
+        }
+
+        // Thumbnail click for modal in highlights section
+        const highlightsCarousel = document.getElementById('highlights-carousel');
+        if (highlightsCarousel) {
+            highlightsCarousel.addEventListener('click', (e) => {
+                const thumbnailWrapper = e.target.closest('.highlights-card__thumbnail-wrapper');
+                if (thumbnailWrapper) {
+                    const siteId = thumbnailWrapper.dataset.siteId;
+                    this.openModal(siteId);
+                }
+            });
+        }
+
         // Modal events
         const modalOverlay = document.getElementById('modal-overlay');
         const modalClose = document.getElementById('modal-close');
@@ -181,11 +273,6 @@ const CatalogApp = {
             }
         });
 
-        // Surprise Me button
-        const surpriseBtn = document.getElementById('surprise-btn');
-        surpriseBtn.addEventListener('click', () => {
-            this.surpriseMe();
-        });
     },
 
     /**
@@ -233,14 +320,21 @@ const CatalogApp = {
 
         const modal = document.getElementById('modal-overlay');
         const modalImage = document.getElementById('modal-image');
+        const modalImageContainer = document.getElementById('modal-image-container');
         const modalTitle = document.getElementById('modal-title');
         const modalDescription = document.getElementById('modal-description');
         const modalTags = document.getElementById('modal-tags');
         const modalViewBtn = document.getElementById('modal-view-btn');
-        const modalOriginalBtn = document.getElementById('modal-original-btn');
 
-        modalImage.src = site.thumbnail || 'assets/images/placeholder.png';
-        modalImage.alt = `${site.name} preview`;
+        // Use full-page screenshot if available, otherwise fall back to thumbnail
+        const screenshotSrc = site.fullPageScreenshot || site.thumbnail || 'assets/images/placeholder.png';
+        modalImage.src = screenshotSrc;
+        modalImage.alt = `${site.name} full page preview`;
+
+        // Reset scroll position to top when opening modal
+        if (modalImageContainer) {
+            modalImageContainer.scrollTop = 0;
+        }
         modalTitle.textContent = site.name;
         modalDescription.textContent = site.description || '';
 
@@ -250,13 +344,6 @@ const CatalogApp = {
         ).join('') : '';
 
         modalViewBtn.href = site.path;
-
-        if (site.originalUrl) {
-            modalOriginalBtn.href = site.originalUrl;
-            modalOriginalBtn.style.display = 'inline-flex';
-        } else {
-            modalOriginalBtn.style.display = 'none';
-        }
 
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -269,20 +356,6 @@ const CatalogApp = {
         const modal = document.getElementById('modal-overlay');
         modal.classList.remove('active');
         document.body.style.overflow = '';
-    },
-
-    /**
-     * Open a random site (Surprise Me feature)
-     */
-    surpriseMe() {
-        if (this.sites.length === 0) return;
-
-        // Select random site
-        const randomIndex = Math.floor(Math.random() * this.sites.length);
-        const randomSite = this.sites[randomIndex];
-
-        // Open modal
-        this.openModal(randomSite.id);
     }
 };
 

@@ -5,52 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanetScale Template — Modular Dark Theme</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- System fonts only - no external fonts needed -->
     
     <style>
         /* ============================================
            CSS VARIABLES — Easy theme customization
            ============================================ */
         :root {
-            /* Colors */
-            --color-bg-primary: #0a0a0a;
-            --color-bg-secondary: #111111;
-            --color-bg-tertiary: #1a1a1a;
-            --color-bg-card: #141414;
-            --color-bg-hover: #1f1f1f;
-            
-            --color-text-primary: #f5f5f5;
-            --color-text-secondary: #a3a3a3;
-            --color-text-muted: #737373;
-            
+            /* Colors - matched to PlanetScale */
+            --color-bg-primary: #000000;
+            --color-bg-secondary: #0a0a0a;
+            --color-bg-tertiary: #111111;
+            --color-bg-card: #0d0d0d;
+            --color-bg-hover: #1a1a1a;
+
+            --color-text-primary: #e1e1e1;
+            --color-text-secondary: #a0a0a0;
+            --color-text-muted: #666666;
+
             --color-accent-primary: #f97316;
             --color-accent-secondary: #fb923c;
-            --color-accent-glow: rgba(249, 115, 22, 0.15);
-            
-            --color-border: #262626;
-            --color-border-subtle: #1f1f1f;
-            
+            --color-accent-glow: rgba(249, 115, 22, 0.08);
+
+            --color-border: #222222;
+            --color-border-subtle: #1a1a1a;
+
             --color-success: #22c55e;
             --color-info: #3b82f6;
-            
-            /* Typography */
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            
-            /* Spacing */
-            --section-padding: 100px 0;
-            --container-max: 1200px;
+
+            /* Typography - System monospace stack like PlanetScale */
+            --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+            --font-sans: var(--font-mono);
+
+            /* Spacing - tighter for density */
+            --section-padding: 64px 0;
+            --container-max: 1000px;
             --container-padding: 0 24px;
-            
-            /* Border radius */
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
-            
+
+            /* Border radius - minimal */
+            --radius-sm: 2px;
+            --radius-md: 4px;
+            --radius-lg: 6px;
+            --radius-xl: 8px;
+
             /* Transitions */
             --transition-fast: 150ms ease;
             --transition-base: 250ms ease;
@@ -70,10 +67,11 @@
         }
 
         body {
-            font-family: var(--font-sans);
+            font-family: var(--font-mono);
             background: var(--color-bg-primary);
             color: var(--color-text-primary);
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -104,10 +102,10 @@
            Remove this section if you don't need a top banner
            ============================================ */
         .announcement-banner {
-            background: linear-gradient(90deg, var(--color-accent-primary), #ea580c);
-            padding: 10px 20px;
+            background: var(--color-accent-primary);
+            padding: 8px 16px;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
         }
 
@@ -196,10 +194,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 20px;
+            padding: 8px 16px;
             font-size: 14px;
             font-weight: 500;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-sm);
             border: none;
             cursor: pointer;
             transition: all var(--transition-fast);
@@ -212,17 +210,15 @@
 
         .btn-ghost:hover {
             color: var(--color-text-primary);
-            background: var(--color-bg-hover);
         }
 
         .btn-primary {
-            background: var(--color-accent-primary);
-            color: white;
+            background: var(--color-text-primary);
+            color: var(--color-bg-primary);
         }
 
         .btn-primary:hover {
-            background: var(--color-accent-secondary);
-            transform: translateY(-1px);
+            background: #ffffff;
         }
 
         .btn-outline {
@@ -232,7 +228,6 @@
         }
 
         .btn-outline:hover {
-            background: var(--color-bg-hover);
             border-color: var(--color-text-muted);
         }
 
@@ -241,22 +236,9 @@
            Main hero section with headline and CTAs
            ============================================ */
         .hero {
-            padding: 80px 0 100px;
+            padding: 48px 0 64px;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .hero-content {
@@ -294,26 +276,23 @@
         }
 
         .hero h1 {
-            font-size: clamp(36px, 6vw, 64px);
+            font-size: clamp(24px, 4vw, 36px);
             font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
         }
 
         .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--color-accent-primary);
         }
 
         .hero-description {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--color-text-secondary);
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 24px;
+            line-height: 1.5;
         }
 
         .hero-actions {
@@ -334,40 +313,60 @@
            Trusted by companies logos grid
            ============================================ */
         .logo-cloud {
-            padding: 60px 0 80px;
-            border-top: 1px solid var(--color-border-subtle);
+            padding: 48px 0;
         }
 
         .logo-cloud-label {
             text-align: center;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--color-text-muted);
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .logo-grid {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px 60px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 1px solid var(--color-border);
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .logo-item {
-            opacity: 0.6;
-            transition: opacity var(--transition-base);
-            filter: grayscale(100%) brightness(2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            border-right: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            transition: background var(--transition-base);
+            min-height: 80px;
+        }
+
+        .logo-item:nth-child(5n) {
+            border-right: none;
+        }
+
+        .logo-item:nth-last-child(-n+5) {
+            border-bottom: none;
         }
 
         .logo-item:hover {
+            background: var(--color-bg-hover);
+        }
+
+        .logo-item span {
+            opacity: 0.8;
+        }
+
+        .logo-item:hover span {
             opacity: 1;
         }
 
         .logo-item svg,
         .logo-item img {
-            height: 28px;
+            height: 20px;
             width: auto;
         }
 
@@ -376,25 +375,25 @@
            Large featured quote block
            ============================================ */
         .testimonial-featured {
-            padding: 80px 0;
+            padding: 48px 0;
             background: var(--color-bg-secondary);
             border-top: 1px solid var(--color-border-subtle);
             border-bottom: 1px solid var(--color-border-subtle);
         }
 
         .testimonial-featured blockquote {
-            max-width: 900px;
+            max-width: 700px;
             margin: 0 auto;
             text-align: center;
             padding: 0 24px;
         }
 
         .testimonial-featured p {
-            font-size: clamp(20px, 3vw, 28px);
+            font-size: 16px;
             line-height: 1.5;
             color: var(--color-text-primary);
             font-weight: 400;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .testimonial-featured cite {
@@ -420,24 +419,24 @@
         }
 
         .section-header {
-            margin-bottom: 48px;
+            margin-bottom: 24px;
         }
 
         .section-eyebrow {
             font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             color: var(--color-accent-primary);
-            margin-bottom: 12px;
-            font-weight: 600;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .section-title {
-            font-size: clamp(28px, 4vw, 42px);
+            font-size: clamp(20px, 3vw, 28px);
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            letter-spacing: 0;
         }
 
         .section-title a {
@@ -450,10 +449,10 @@
         }
 
         .section-description {
-            font-size: 17px;
+            font-size: 16px;
             color: var(--color-text-secondary);
-            max-width: 700px;
-            line-height: 1.7;
+            max-width: 600px;
+            line-height: 1.5;
         }
 
         /* ============================================
@@ -465,50 +464,91 @@
         }
 
         .diagram-tabs {
-            display: flex;
-            gap: 4px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--color-border);
             margin-bottom: 24px;
-            background: var(--color-bg-tertiary);
-            padding: 4px;
-            border-radius: var(--radius-md);
-            width: fit-content;
+            max-width: 600px;
         }
 
         .diagram-tab {
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: transparent;
             border: none;
+            border-right: 1px solid var(--color-border);
             color: var(--color-text-muted);
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            border-radius: var(--radius-sm);
             transition: all var(--transition-fast);
+            text-align: center;
+        }
+
+        .diagram-tab:last-child {
+            border-right: none;
         }
 
         .diagram-tab:hover {
             color: var(--color-text-secondary);
+            background: var(--color-bg-hover);
         }
 
         .diagram-tab.active {
-            background: var(--color-bg-card);
+            background: var(--color-bg-primary);
             color: var(--color-text-primary);
+            border-bottom: 2px solid var(--color-text-primary);
+        }
+
+        .diagram-intro {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+            max-width: 800px;
+        }
+
+        .diagram-intro a {
+            color: var(--color-info);
         }
 
         .diagram-container {
             background: var(--color-bg-card);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            padding: 40px;
+            padding: 32px;
             overflow-x: auto;
         }
 
         .diagram-ascii {
             font-family: var(--font-mono);
-            font-size: 12px;
-            line-height: 1.4;
+            font-size: 13px;
+            line-height: 1.3;
             color: var(--color-text-secondary);
             white-space: pre;
+        }
+
+        .diagram-ascii .vtgate {
+            color: var(--color-text-primary);
+            background: var(--color-bg-tertiary);
+        }
+
+        .diagram-ascii .primary {
+            color: #60a5fa;
+        }
+
+        .diagram-ascii .replica {
+            color: var(--color-text-muted);
+        }
+
+        .diagram-ascii .line-orange {
+            color: #f97316;
+        }
+
+        .diagram-ascii .line-cyan {
+            color: #22d3ee;
+        }
+
+        .diagram-ascii .line-white {
+            color: var(--color-text-primary);
         }
 
         /* ============================================
@@ -516,14 +556,14 @@
            Key statistics in a grid layout
            ============================================ */
         .stats-section {
-            padding: var(--section-padding);
+            padding: 48px 0;
             background: var(--color-bg-secondary);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
         }
 
         .stat-item {
@@ -531,15 +571,15 @@
         }
 
         .stat-value {
-            font-size: clamp(36px, 5vw, 56px);
+            font-size: clamp(24px, 4vw, 32px);
             font-weight: 700;
-            color: var(--color-accent-primary);
-            line-height: 1;
-            margin-bottom: 8px;
+            color: var(--color-text-primary);
+            line-height: 1.2;
+            margin-bottom: 4px;
         }
 
         .stat-label {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--color-text-muted);
         }
 
@@ -550,33 +590,22 @@
         .feature-list {
             list-style: none;
             display: grid;
-            gap: 16px;
+            gap: 8px;
         }
 
         .feature-list li {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 8px;
             color: var(--color-text-secondary);
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .feature-list li::before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            min-width: 20px;
-            background: var(--color-accent-primary);
-            border-radius: 50%;
-            margin-top: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: 12px;
-            background-repeat: no-repeat;
-            background-position: center;
+            content: '•';
+            color: var(--color-text-muted);
+            font-weight: 700;
         }
 
         .feature-list a {
@@ -588,19 +617,17 @@
            Smaller inline quote within content
            ============================================ */
         .testimonial-inline {
-            margin: 48px 0;
-            padding: 32px;
-            background: var(--color-bg-tertiary);
-            border-left: 3px solid var(--color-accent-primary);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 24px 0;
+            padding: 16px 0;
+            border-top: 1px solid var(--color-border-subtle);
         }
 
         .testimonial-inline p {
-            font-size: 16px;
-            color: var(--color-text-primary);
-            font-style: italic;
-            margin-bottom: 16px;
-            line-height: 1.7;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            font-style: normal;
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
 
         .testimonial-inline cite {
@@ -637,39 +664,26 @@
            Call to action banner section
            ============================================ */
         .cta-section {
-            padding: 100px 0;
-            background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+            padding: 64px 0;
+            background: var(--color-bg-secondary);
             text-align: center;
-            position: relative;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(ellipse, var(--color-accent-glow) 0%, transparent 70%);
-            pointer-events: none;
+            border-top: 1px solid var(--color-border-subtle);
         }
 
         .cta-content {
             position: relative;
-            z-index: 1;
         }
 
         .cta-section h2 {
-            font-size: clamp(28px, 4vw, 40px);
+            font-size: clamp(20px, 3vw, 24px);
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .cta-section p {
-            font-size: 17px;
+            font-size: 16px;
             color: var(--color-text-secondary);
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
@@ -694,16 +708,16 @@
            Multi-column footer with links
            ============================================ */
         .footer {
-            padding: 80px 0 40px;
-            background: var(--color-bg-secondary);
+            padding: 48px 0 32px;
+            background: var(--color-bg-primary);
             border-top: 1px solid var(--color-border);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr repeat(4, 1fr);
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         @media (max-width: 900px) {
@@ -925,36 +939,42 @@
     <div class="container">
         <p class="logo-cloud-label">Trusted by industry leaders</p>
         <div class="logo-grid">
-            <div class="logo-item">
-                <svg height="28" viewBox="0 0 120 28" fill="currentColor">
-                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Block</text>
-                </svg>
-            </div>
-            <div class="logo-item">
-                <svg height="28" viewBox="0 0 80 28" fill="currentColor">
-                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Etsy</text>
-                </svg>
-            </div>
-            <div class="logo-item">
-                <svg height="28" viewBox="0 0 140 28" fill="currentColor">
-                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Intercom</text>
-                </svg>
-            </div>
-            <div class="logo-item">
-                <svg height="28" viewBox="0 0 100 28" fill="currentColor">
-                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Gusto</text>
-                </svg>
-            </div>
-            <div class="logo-item">
-                <svg height="28" viewBox="0 0 100 28" fill="currentColor">
-                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Slack</text>
-                </svg>
-            </div>
-            <div class="logo-item">
-                <svg height="28" viewBox="0 0 140 28" fill="currentColor">
-                    <text x="0" y="22" font-family="Inter, sans-serif" font-weight="700" font-size="22">Attentive</text>
-                </svg>
-            </div>
+            <!-- Row 1 -->
+            <div class="logo-item"><span style="font-weight:700;font-size:15px">▦ block</span></div>
+            <div class="logo-item"><span style="font-weight:700;font-size:18px;font-style:italic;color:#f97316">Etsy</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:14px">▣ intercom</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:14px;color:#00d4aa">◐ CURSOR</span></div>
+            <div class="logo-item"><span style="font-weight:900;font-size:18px;color:#53fc18">KICK</span></div>
+            <!-- Row 2 -->
+            <div class="logo-item"><span style="font-weight:700;font-size:15px;color:#ff6b4a">⋈ Whop</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:15px;color:#f4a261">◕ clay</span></div>
+            <div class="logo-item"><span style="font-weight:700;font-size:15px;color:#00ff88">⚙ Lime</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:14px;color:#ffcc00">☺ whatnot</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:14px">⁂ slack</span></div>
+            <!-- Row 3 -->
+            <div class="logo-item"><span style="font-weight:700;font-size:16px;color:#f45d48">gusto</span></div>
+            <div class="logo-item"><span style="font-weight:500;font-size:15px">◯ orb.</span></div>
+            <div class="logo-item"><span style="font-weight:700;font-size:15px;color:#6366f1">M MERCOR</span></div>
+            <div class="logo-item"><span style="font-weight:500;font-size:12px">myfitnesspal</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:13px;color:#00ffff">OPENCODE</span></div>
+            <!-- Row 4 -->
+            <div class="logo-item"><span style="font-weight:600;font-size:13px;color:#22c55e">▐ INFERENCE</span></div>
+            <div class="logo-item"><span style="font-weight:700;font-size:15px;color:#00d4aa">⊞ depot</span></div>
+            <div class="logo-item"><span style="font-weight:700;font-size:12px">⚽ BARSTOOL</span></div>
+            <div class="logo-item"><span style="font-weight:900;font-size:15px;color:#ff6b4a">ASTRAL</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:14px;color:#818cf8">↗ vallor</span></div>
+            <!-- Row 5 -->
+            <div class="logo-item"><span style="font-weight:700;font-size:16px;color:#ef4444">☰ SST</span></div>
+            <div class="logo-item"><span style="font-weight:500;font-size:13px">✿ turbopuffer</span></div>
+            <div class="logo-item"><span style="font-weight:700;font-size:13px;color:#06b6d4">✦ MANIFOLD</span></div>
+            <div class="logo-item"><span style="font-weight:700;font-size:15px">INNGEST</span></div>
+            <div class="logo-item"><span style="font-weight:600;font-size:14px;color:#a855f7">⊕ same</span></div>
+            <!-- Row 6 -->
+            <div class="logo-item"><span style="font-weight:600;font-size:15px;color:#10b981">🐢 atuin</span></div>
+            <div class="logo-item"><span style="font-weight:900;font-size:20px">dub</span></div>
+            <div class="logo-item"><span style="font-weight:500;font-size:12px;color:#06b6d4">✶ supermemory</span></div>
+            <div class="logo-item"><span style="font-weight:900;font-size:18px">lugg</span></div>
+            <div class="logo-item"><span style="font-weight:500;font-size:14px;color:#22d3ee">❋ vetcove</span></div>
         </div>
     </div>
 </section>
@@ -978,50 +998,48 @@
      ============================================ -->
 <section class="diagram-section" id="platform">
     <div class="container">
-        <div class="section-header">
-            <span class="section-eyebrow">Architecture</span>
-            <h2 class="section-title">Scale horizontally with sharding</h2>
-            <p class="section-description">
-                Our technology allows databases to scale horizontally through explicit sharding — enabling a shared nothing architecture distributing data across thousands of nodes.
-            </p>
-        </div>
-        
         <div class="diagram-tabs">
-            <button class="diagram-tab active">Basic</button>
-            <button class="diagram-tab">Standard</button>
-            <button class="diagram-tab">Enterprise</button>
+            <button class="diagram-tab active">Vitess</button>
+            <button class="diagram-tab">Postgres</button>
+            <button class="diagram-tab">Naki</button>
         </div>
-        
+
+        <p class="diagram-intro">
+            <a href="#">Vitess</a> allows MySQL databases to <a href="#">scale horizontally through explicit sharding</a> — enabling a shared nothing architecture distributing data across thousands of nodes, all routed through a single database connection.
+        </p>
+
+        <p class="diagram-intro">
+            Vitess was developed at YouTube by the founders of PlanetScale to scale their main MySQL database to petabytes of data on 70,000 nodes across 20 data centers. Now maintained and managed by PlanetScale, Vitess powers the databases of some of the web's largest properties: Slack, HubSpot, Blizzard, Etsy, GitHub, Block, Bloomberg, Yelp, and more.
+        </p>
+
         <div class="diagram-container">
             <pre class="diagram-ascii">
-       ┌────────────────────────────────┐   
-       │░░░░░░░░░░░░░Gateway░░░░░░░░░░░░│   
-       └────────────────────────────────┘   
-                        │                   
-                                            
-              ─ ─ ─ ─ ─ ┴ ─ ─ ─ ─ ┐         
-             │                              
-                                  │         
-             ▼                    ▼         
-       ╔═══════════╗        ╔═══════════╗   
-       ║           ║        ║           ║   
-       ║  Primary  ║        ║  Primary  ║   
-       ║           ║        ║           ║   
-       ╚═══════════╝        ╚═══════════╝   
-             │                    │         
-                                            
-         ─ ─ ┴ ─ ─            ─ ─ ┴ ─ ─     
-        │         │          │         │    
-        ▼         ▼          ▼         ▼    
-    ┌───────┐ ┌───────┐  ┌───────┐ ┌───────┐
-    │Replica│ │Replica│  │Replica│ │Replica│
-    └───────┘ └───────┘  └───────┘ └───────┘
+              ┌────────────────────────────────────────────────────┐
+              │<span class="vtgate">░░░░░░░░░░░░░░░░░░░░ VTGate ░░░░░░░░░░░░░░░░░░░░</span>│
+              └────────────────────────────────────────────────────┘
+                                        <span class="line-white">│</span>
+           <span class="line-white">- - - - - - - - - - - - - - -</span>┼<span class="line-white">- - - - - - - - - - - - - - -</span>
+          <span class="line-orange">│</span>                              <span class="line-white">│</span>                              <span class="line-orange">│</span>
+          <span class="line-orange">│</span>                              <span class="line-white">▼</span>                              <span class="line-orange">│</span>
+          <span class="line-orange">▼</span>                    ┌───────────────┐                    <span class="line-orange">▼</span>
+   ┌───────────────┐          │               │          ┌───────────────┐
+   │               │          │    <span class="primary">Primary</span>    │          │               │
+   │    <span class="primary">Primary</span>    │          │               │          │    <span class="primary">Primary</span>    │
+   │               │          └───────────────┘          │               │
+   └───────────────┘                  <span class="line-cyan">│</span>                   └───────────────┘
+          <span class="line-cyan">│</span>                    <span class="line-cyan">┌ - - ┴ - - ┐</span>                    <span class="line-cyan">│</span>
+    <span class="line-cyan">┌ - - ┴ - - ┐</span>            <span class="line-cyan">│</span>           <span class="line-cyan">│</span>            <span class="line-cyan">┌ - - ┴ - - ┐</span>
+    <span class="line-cyan">│</span>           <span class="line-cyan">│</span>            <span class="line-cyan">▼</span>           <span class="line-cyan">▼</span>            <span class="line-cyan">│</span>           <span class="line-cyan">│</span>
+    <span class="line-cyan">▼</span>           <span class="line-cyan">▼</span>       ┌─────────┐ ┌─────────┐       <span class="line-cyan">▼</span>           <span class="line-cyan">▼</span>
+┌─────────┐ ┌─────────┐ │ <span class="replica">Replica</span> │ │ <span class="replica">Replica</span> │ ┌─────────┐ ┌─────────┐
+│ <span class="replica">Replica</span> │ │ <span class="replica">Replica</span> │ └─────────┘ └─────────┘ │ <span class="replica">Replica</span> │ │ <span class="replica">Replica</span> │
+└─────────┘ └─────────┘                         └─────────┘ └─────────┘
             </pre>
         </div>
-        
-        <div class="testimonial-inline">
-            <p>"Our migration to this architecture is more than just a technological upgrade; it's a strategic move to future-proof our database for the next decade and beyond."</p>
-            <cite>— Ryan Sherlock, Engineering Lead @Intercom</cite>
+
+        <div class="testimonial-inline" style="border-left: 3px solid #eab308; padding-left: 16px; border-top: none; margin-top: 32px;">
+            <p>"Our migration to Vitess is more than just a technological upgrade; it's a strategic move to future-proof our database architecture for the next decade and beyond."</p>
+            <cite>— Ryan Sherlock @Intercom</cite>
         </div>
     </div>
 </section>

@@ -6,8 +6,13 @@
       "description": "Bold typographic landing page with neon cyan/magenta/green accents and l33t speak navigation. Features massive hero text about a universe 'born from the big spark'.",
       "path": "Sites/website_00/",
       "thumbnail": "assets/images/thumbnails/website_00.png",
-      "tags": ["creative", "dark-theme", "typography"],
-      "originalUrl": ""
+      "tags": [
+        "creative",
+        "dark-theme",
+        "typography"
+      ],
+      "originalUrl": "",
+      "fullPageScreenshot": "assets/images/screenshots/website-00.png"
     },
     {
       "id": "website-01",
@@ -15,8 +20,13 @@
       "description": "Clean prebiotic toothpaste e-commerce page with soft pastel circles, cream background, and elegant serif typography. Minimal, health-focused aesthetic.",
       "path": "Sites/website_01/",
       "thumbnail": "assets/images/thumbnails/website_01.png",
-      "tags": ["e-commerce", "healthcare", "pastel"],
-      "originalUrl": "https://revitin.com"
+      "tags": [
+        "e-commerce",
+        "healthcare",
+        "pastel"
+      ],
+      "originalUrl": "https://revitin.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-01.png"
     },
     {
       "id": "website-02",
@@ -24,8 +34,13 @@
       "description": "Warm peach-toned e-commerce landing with bold serif headlines, 'Products Made For This Century' tagline, and dual CTA buttons. Features NYT press mention banner.",
       "path": "Sites/website_02/",
       "thumbnail": "assets/images/thumbnails/website_02.png",
-      "tags": ["e-commerce", "editorial", "landing"],
-      "originalUrl": "https://swehl.com"
+      "tags": [
+        "e-commerce",
+        "editorial",
+        "landing"
+      ],
+      "originalUrl": "https://swehl.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-02.png"
     },
     {
       "id": "website-03",
@@ -33,8 +48,13 @@
       "description": "Dark cinematic landing page for a comic/game project with dramatic red gradient background, stark white logo, and social media integration. Comic book aesthetic.",
       "path": "Sites/website_03/",
       "thumbnail": "assets/images/thumbnails/website_03.png",
-      "tags": ["dark-theme", "gaming", "creative"],
-      "originalUrl": "https://daedalus.am"
+      "tags": [
+        "dark-theme",
+        "gaming",
+        "creative"
+      ],
+      "originalUrl": "https://daedalus.am",
+      "fullPageScreenshot": "assets/images/screenshots/website-03.png"
     },
     {
       "id": "website-04",
@@ -42,8 +62,13 @@
       "description": "Educational CSS book landing page with clean black/white design, book cover preview, pricing section, and email capture. Developer-focused with clear hierarchy.",
       "path": "Sites/website_04/",
       "thumbnail": "assets/images/thumbnails/website_04.png",
-      "tags": ["educational", "book", "developer"],
-      "originalUrl": "https://every-layout.dev"
+      "tags": [
+        "educational",
+        "book",
+        "developer"
+      ],
+      "originalUrl": "https://every-layout.dev",
+      "fullPageScreenshot": "assets/images/screenshots/website-04.png"
     },
     {
       "id": "website-05",
@@ -51,8 +76,13 @@
       "description": "Elegant investment/venture studio page with large serif 'Making things worth making' headline. Clean white background with mission-driven messaging.",
       "path": "Sites/website_05/",
       "thumbnail": "assets/images/thumbnails/website_05.png",
-      "tags": ["professional", "minimal", "enterprise"],
-      "originalUrl": "https://buildc.com"
+      "tags": [
+        "professional",
+        "minimal",
+        "enterprise"
+      ],
+      "originalUrl": "https://buildc.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-05.png"
     },
     {
       "id": "website-06",
@@ -60,8 +90,13 @@
       "description": "AI browser infrastructure SaaS landing with colorful app icons (red/yellow/blue), clean white design, VC logos (a16z, Y Combinator), and clear value proposition.",
       "path": "Sites/website_06/",
       "thumbnail": "assets/images/thumbnails/website_06.png",
-      "tags": ["saas", "ai", "startup"],
-      "originalUrl": "https://browserbase.com"
+      "tags": [
+        "saas",
+        "ai",
+        "startup"
+      ],
+      "originalUrl": "https://browserbase.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-06.png"
     },
     {
       "id": "website-07",
@@ -69,8 +104,13 @@
       "description": "Healthcare AI platform with cream background, large serif headlines, and striking purple-to-blue gradient hero image. Enterprise-focused with waitlist CTA.",
       "path": "Sites/website_07/",
       "thumbnail": "assets/images/thumbnails/website_07.png",
-      "tags": ["healthcare", "ai", "enterprise"],
-      "originalUrl": "https://anterior.com"
+      "tags": [
+        "healthcare",
+        "ai",
+        "enterprise"
+      ],
+      "originalUrl": "https://anterior.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-07.png"
     },
     {
       "id": "website-08",
@@ -78,8 +118,13 @@
       "description": "Professional healthcare template with sage green accents, 'Life-changing care' headline, 24/7 availability stats, and appointment booking interface.",
       "path": "Sites/website_08/",
       "thumbnail": "assets/images/thumbnails/website_08.png",
-      "tags": ["healthcare", "professional", "landing"],
-      "originalUrl": ""
+      "tags": [
+        "healthcare",
+        "professional",
+        "landing"
+      ],
+      "originalUrl": "",
+      "fullPageScreenshot": "assets/images/screenshots/website-08.png"
     },
     {
       "id": "website-09",
@@ -87,8 +132,13 @@
       "description": "Authentic late-2000s software product page with dark blue-gray theme, sidebar navigation, product screenshots, and $19.95 pricing. Nostalgic Web 2.0 design.",
       "path": "Sites/website_09/",
       "thumbnail": "assets/images/thumbnails/website_09.png",
-      "tags": ["retro", "nostalgia", "dark-theme"],
-      "originalUrl": "https://stardock.com"
+      "tags": [
+        "retro",
+        "nostalgia",
+        "dark-theme"
+      ],
+      "originalUrl": "https://stardock.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-09.png"
     },
     {
       "id": "website-10",
@@ -96,8 +146,13 @@
       "description": "Playful AI creative tool landing with pastel sticky-note cards, scrapbook aesthetic, and 'Give your ideas a glow up' headline. Whimsical, approachable design.",
       "path": "Sites/website_10/",
       "thumbnail": "assets/images/thumbnails/website_10.png",
-      "tags": ["ai", "playful", "pastel"],
-      "originalUrl": "https://hidaisy.ai"
+      "tags": [
+        "ai",
+        "playful",
+        "pastel"
+      ],
+      "originalUrl": "https://hidaisy.ai",
+      "fullPageScreenshot": "assets/images/screenshots/website-10.png"
     },
     {
       "id": "website-11",
@@ -105,8 +160,13 @@
       "description": "Dark DeFi/liquidity platform with gold 'HYPERACTIVE LIQUIDITY' headline, TVL stats ($12.4M), yield metrics (+127%), and sleek fintech dashboard aesthetic.",
       "path": "Sites/website_11/",
       "thumbnail": "assets/images/thumbnails/website_11.png",
-      "tags": ["fintech", "dark-theme", "web3"],
-      "originalUrl": ""
+      "tags": [
+        "fintech",
+        "dark-theme",
+        "web3"
+      ],
+      "originalUrl": "",
+      "fullPageScreenshot": "assets/images/screenshots/website-11.png"
     },
     {
       "id": "website-12",
@@ -114,8 +174,14 @@
       "description": "Technical ebook landing with blueprint-style diagrams, serif 'MAKING SOFTWARE' header, and educational content about how computers work. Clean, informative layout.",
       "path": "Sites/website_12/",
       "thumbnail": "assets/images/thumbnails/website_12.png",
-      "tags": ["educational", "book", "developer"],
-      "originalUrl": "https://makingsoftware.com"
+      "tags": [
+        "educational",
+        "book",
+        "developer"
+      ],
+      "originalUrl": "https://makingsoftware.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-12.png",
+      "featured": true
     },
     {
       "id": "website-13",
@@ -123,8 +189,13 @@
       "description": "Metaverse gallery platform with pink 'MONA' branding, space/earth imagery, and 'Explore new worlds' tagline. Features world showcases like 'MSS Pandora'.",
       "path": "Sites/website_13/",
       "thumbnail": "assets/images/thumbnails/website_13.png",
-      "tags": ["web3", "creative", "gaming"],
-      "originalUrl": "https://monaverse.com"
+      "tags": [
+        "web3",
+        "creative",
+        "gaming"
+      ],
+      "originalUrl": "https://monaverse.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-13.png"
     },
     {
       "id": "website-14",
@@ -132,8 +203,13 @@
       "description": "Playful card game e-commerce with soft pink background, mint product cards, 'Hello Handsome' greeting, and category filters (Cars, Animals, Humans).",
       "path": "Sites/website_14/",
       "thumbnail": "assets/images/thumbnails/website_14.png",
-      "tags": ["e-commerce", "playful", "pastel"],
-      "originalUrl": ""
+      "tags": [
+        "e-commerce",
+        "playful",
+        "pastel"
+      ],
+      "originalUrl": "",
+      "fullPageScreenshot": "assets/images/screenshots/website-14.png"
     },
     {
       "id": "website-15",
@@ -141,8 +217,13 @@
       "description": "Developer manifesto page with monospace typography, terminal-style login timestamp, and poetic 'CD, RM, PING: commands we memorized' messaging. Minimalist hacker aesthetic.",
       "path": "Sites/website_15/",
       "thumbnail": "assets/images/thumbnails/website_15.png",
-      "tags": ["developer", "minimal", "typography"],
-      "originalUrl": "https://mainframe.computer"
+      "tags": [
+        "developer",
+        "minimal",
+        "typography"
+      ],
+      "originalUrl": "https://mainframe.computer",
+      "fullPageScreenshot": "assets/images/screenshots/website-15.png"
     },
     {
       "id": "website-16",
@@ -150,8 +231,13 @@
       "description": "Vibrant yellow tinned seafood e-commerce with floating product tins (Mussels varieties), green navigation bar, and 'Just Dropped' new arrival callout.",
       "path": "Sites/website_16/",
       "thumbnail": "assets/images/thumbnails/website_16.png",
-      "tags": ["e-commerce", "food", "playful"],
-      "originalUrl": "https://fishwife.com"
+      "tags": [
+        "e-commerce",
+        "food",
+        "playful"
+      ],
+      "originalUrl": "https://fishwife.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-16.png"
     },
     {
       "id": "website-17",
@@ -159,26 +245,28 @@
       "description": "Book landing page with rich green background, tree-root cover illustration, 'The Antidote to a Culture Obsessed with Self' subtitle. Publishing/author focused.",
       "path": "Sites/website_17/",
       "thumbnail": "assets/images/thumbnails/website_17.png",
-      "tags": ["book", "editorial", "landing"],
-      "originalUrl": "https://agencybook.com"
-    },
-    {
-      "id": "website-18",
-      "name": "PlanetScale (Teal)",
-      "description": "Dark database SaaS landing with teal/cyan accents, 'world's fastest database' headline, feature pills (Performance, Security, Uptime), and enterprise trust signals.",
-      "path": "Sites/website_18/",
-      "thumbnail": "assets/images/thumbnails/website_18.png",
-      "tags": ["saas", "dark-theme", "startup"],
-      "originalUrl": "https://planetscale.com"
+      "tags": [
+        "book",
+        "editorial",
+        "landing"
+      ],
+      "originalUrl": "https://agencybook.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-17.png"
     },
     {
       "id": "website-19",
-      "name": "PlanetScale (Orange)",
-      "description": "Dark database SaaS variant with orange accents, same 'fastest database' messaging, and enterprise client logos (Block, Etsy, Slack, Gusto). Bold CTA buttons.",
+      "name": "PlanetScale",
+      "description": "Dark database SaaS landing with monospace typography, bordered logo grid (30 companies), VTGate architecture diagram, and text-dense sections. Authentic PlanetScale aesthetic.",
       "path": "Sites/website_19/",
       "thumbnail": "assets/images/thumbnails/website_19.png",
-      "tags": ["saas", "dark-theme", "enterprise"],
-      "originalUrl": "https://planetscale.com"
+      "tags": [
+        "saas",
+        "dark-theme",
+        "developer"
+      ],
+      "originalUrl": "https://planetscale.com",
+      "fullPageScreenshot": "assets/images/screenshots/website-19.png",
+      "featured": true
     }
   ]
 }
